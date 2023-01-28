@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=30)),
                 ('unit', models.CharField(default='', max_length=30)),
                 ('quantity', models.IntegerField(default=0)),
-                ('meal_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='meals.meal')),
+                ('meal', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='meals.meal')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
