@@ -11,3 +11,4 @@ class Car(models.Model):
     make = models.CharField(max_length=30)
     model = models.CharField(max_length=100)
     year = models.IntegerField()
+
