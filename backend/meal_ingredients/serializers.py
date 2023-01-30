@@ -6,4 +6,6 @@ class Meal_IngredientSerializer(serializers.ModelSerializer):
         model = Meal_Ingredient
         fields = ['id', 'name', 'unit', 'quantity', 'meal_id', 'user_id']
         depth = 1
+    meal_id = serializers.IntegerField(write_only=True)
+    user_id = serializers.IntegerField(write_only=True)
 # https://www.django-rest-framework.org/api-guide/serializers/#modelserializer

@@ -8,27 +8,31 @@ from .serializers import Meal_IngredientSerializer
 from django.shortcuts import get_object_or_404
 
 
-@api_view(['GET'])
-@permission_classes([AllowAny])
-def get_ingredients_by_meal_id(request):
-    ingredients = Meal_Ingredient.objects.all()
-    meal_id = request.query_params.get('meal_id')
-    meal_ingredients = ingredients.filter(meal_id = meal_id)
-    serializer = Meal_IngredientSerializer(meal_ingredients, many=True)
-    return Response(serializer.data)
+# @api_view(['GET'])
+# @permission_classes([AllowAny])
+# def get_ingredients_by_meal_id(request):
 
 
-@api_view(['POST'])
+@api_view(['POST', 'GET'])
 @permission_classes([IsAuthenticated])
-def add_ingredient_to_meal(request):
+def ingredient_list(request, meal_id):
     print(
         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
+    # meal_id = request.query_params.get('meal_id')
     if request.method == 'POST':
         serializer = Meal_IngredientSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    elif request.method == 'GET':
+        ingredients = Meal_Ingredient.objects.all()
+        meal_ingredients = ingredients.filter(meal_id = meal_id)
+        serializer = Meal_IngredientSerializer(meal_ingredients, many=True)
+        return Response(serializer.data)
+
+
 
 @api_view(["GET", "PUT", "DELETE"])
 @permission_classes([IsAuthenticated])
