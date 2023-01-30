@@ -6,3 +6,4 @@ class Meal_IngredientSerializer(serializers.ModelSerializer):
         model = Meal_Ingredient
         fields = ['id', 'name', 'unit', 'quantity', 'meal_id', 'user_id']
         depth = 1
+# https://www.django-rest-framework.org/api-guide/serializers/#modelserializer

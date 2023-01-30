@@ -16,18 +16,19 @@ def get_ingredients_by_meal_id(request):
     return Response(serializer.data)
 
 
-# @api_view(['GET', 'POST'])
-# @permission_classes([IsAuthenticated])
-# def user_cars(request):
-#     print(
-#         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
-#     if request.method == 'POST':
-#         serializer = CarSerializer(data=request.data)
-#         if serializer.is_valid():
-#             serializer.save(user=request.user)
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-#     elif request.method == 'GET':
-#         cars = Car.objects.filter(user_id=request.user.id)
-#         serializer = CarSerializer(cars, many=True)
-#         return Response(serializer.data)
+@api_view(['GET', 'PUT', 'POST'])
+@permission_classes([IsAuthenticated])
+def add_ingredient_to_meal(request):
+    print(
+        'User ', f"{request.user.id} {request.user.email} {request.user.username}")
+    if request.method == 'POST':
+        serializer = Meal_IngredientSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    # elif request.method == 'GET':
+    #     cars = Car.objects.filter(user_id=request.user.id)
+    #     serializer = CarSerializer(cars, many=True)
+    #     return Response(serializer.data)
