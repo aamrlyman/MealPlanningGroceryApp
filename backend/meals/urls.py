@@ -5,7 +5,8 @@ from meals import views
 
 urlpatterns = [
     path('', views.meal_list),
-    # path('user/', views.meals_list_authenticated),
-    # path('edit/', views.meals_detail),
+    path('user/', views.meals_list_authenticated),
+    path('<int:meal_id>/', views.meals_detail),
     # path('edit/', views.meals_detail),
 ]
+
