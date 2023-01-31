@@ -9,9 +9,13 @@ class ScheduleSerializer(serializers.ModelSerializer):
         model = Schedule
         fields = ['id', 'user_id']
         depth = 1
+    user_id = serializers.IntegerField(write_only=True)
 
 class Scheduled_MealSerializer(serializers.ModelSerializer):
     class Meta:
         model = Scheduled_Meal
         fields = ['id', 'isCooked', 'meal_id', 'schedule_id']
         depth = 1
+    user_id = serializers.IntegerField(write_only=True)
+    meal_id = serializers.IntegerField(write_only=True)
+    schedule_id = serializers.IntegerField(write_only=True)
