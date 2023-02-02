@@ -6,11 +6,14 @@ from rest_framework.decorators import api_view, permission_classes
 from .models import Meal
 from .serializers import MealSerializer
 from django.shortcuts import get_object_or_404
+from meal_schedules.models import Scheduled_Meal
+from meal_schedules.serializers import Scheduled_MealSerializer
+
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 
 
-@api_view(['GET'])
+@api_view(['GET']) #get all meals
 @permission_classes([AllowAny])
 def meal_list(request):
     meals = Meal.objects.all()
@@ -22,19 +25,18 @@ def meal_list(request):
 def meals_list_authenticated(request):
     print(
         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
-    if request.method == 'POST':
+    if request.method == 'POST': #create meal
         serializer = MealSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    elif request.method == 'GET':
+    elif request.method == 'GET': #get meals for user
         meals = Meal.objects.all()
         user_meals = meals.filter(user_id=request.user.id)
         serializer = MealSerializer(user_meals, many=True)
         return Response(serializer.data)
 
-#     pass
 
 @api_view(["GET", "PUT", "DELETE"])
 @permission_classes([IsAuthenticated])
@@ -42,19 +44,31 @@ def meals_detail(request, meal_id):
     print(
         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
     meal = get_object_or_404(Meal, id=meal_id)
-    if request.method == 'GET':
+    if request.method == 'GET': #get meal by id
         serializer = MealSerializer(meal);
         return Response(serializer.data)
-    elif request.method == "PUT":
+    elif request.method == "PUT": #edit meal
         serializer = MealSerializer(meal, data=request.data);
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
     elif request.method == "DELETE":
-             meal.delete()
-             return Response(status = status.HTTP_204_NO_CONTENT)
+        scheduled_meals = Scheduled_Meal.objects.filter(meal__id=meal_id)
+        if (len(scheduled_meals)> 0 ):
+            return Response(status=status.HTTP_409_CONFLICT)
+        else: 
+            meal.delete()
+            return Response(status = status.HTTP_204_NO_CONTENT)
 
 
-# def get_meal_Schedule_meals():
-#     pass
-
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def delete_meal_check(request,meal_id):
+    print(
+        'User ', f"{request.user.id} {request.user.email} {request.user.username}")
+    
+    scheduled_meals = Scheduled_Meal.objects.filter(meal__id=meal_id)
+        
+    if request.method == 'GET': #get scheduled_meals by meal_id(check before meal can be deleted from database)
+        serializer = Scheduled_MealSerializer(scheduled_meals, many=True )
+        return Response(serializer.data)
