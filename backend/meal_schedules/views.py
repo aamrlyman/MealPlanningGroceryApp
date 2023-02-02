@@ -64,13 +64,13 @@ def scheduled_meal_detail(request, scheduled_meal_id):
     if request.method == 'GET':
         serializer = Scheduled_MealSerializer(scheduled_meal);
         return Response(serializer.data)
-    # elif request.method == "PUT":
-    #     serializer = MealSerializer(meal, data=request.data);
-    #     serializer.is_valid(raise_exception=True)
-    #     serializer.save()
-    #     return Response(serializer.data)
+    elif request.method == "PUT":
+        is_cooked = {'is_Cooked': not scheduled_meal.is_Cooked }
+        serializer = Scheduled_MealSerializer(scheduled_meal, data=is_cooked, partial = True); #type: ignore
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status = status.HTTP_204_NO_CONTENT)
     elif request.method == "DELETE":
              scheduled_meal.delete()
              return Response(status = status.HTTP_204_NO_CONTENT)
-
 
