@@ -25,7 +25,7 @@ def get_create_Schedules(request):
         return Response(serializer.data)
 
 
-@api_view(["GET", "POST", "DELETE"])
+@api_view(["GET", "POST"])
 @permission_classes([IsAuthenticated])
 def schedule_detail(request,schedule_id):
     print(
@@ -41,27 +41,22 @@ def schedule_detail(request,schedule_id):
         serializer = Scheduled_MealSerializer(scheduled_meals, many=True )
         return Response(serializer.data)
 
-#     pass
+@api_view(["GET", "PUT", "DELETE"])
+@permission_classes([IsAuthenticated])
+def scheduled_meal_detail(request, scheduled_meal_id):
+    print(
+        'User ', f"{request.user.id} {request.user.email} {request.user.username}")
+    scheduled_meal = get_object_or_404(Scheduled_Meal, id=scheduled_meal_id)
+    if request.method == 'GET':
+        serializer = Scheduled_MealSerializer(scheduled_meal);
+        return Response(serializer.data)
+    # elif request.method == "PUT":
+    #     serializer = MealSerializer(meal, data=request.data);
+    #     serializer.is_valid(raise_exception=True)
+    #     serializer.save()
+    #     return Response(serializer.data)
+    elif request.method == "DELETE":
+             scheduled_meal.delete()
+             return Response(status = status.HTTP_204_NO_CONTENT)
 
-# @api_view(["GET", "PUT", "DELETE"])
-# @permission_classes([IsAuthenticated])
-# def meals_detail(request):
-#     print(
-#         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
-#     meal = get_object_or_404(Meal, id=meal_id)
-#     if request.method == 'GET':
-#         serializer = MealSerializer(meal);
-#         return Response(serializer.data)
-#     elif request.method == "PUT":
-#         serializer = MealSerializer(meal, data=request.data);
-#         serializer.is_valid(raise_exception=True)
-#         serializer.save()
-#         return Response(serializer.data)
-#     elif request.method == "DELETE":
-#              meal.delete()
-#              return Response(status = status.HTTP_204_NO_CONTENT)
-
-
-# def get_meal_Schedule_meals():
-#     pass
 

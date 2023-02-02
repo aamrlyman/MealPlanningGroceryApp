@@ -7,10 +7,9 @@ from .models import Schedule, Scheduled_Meal
 class ScheduleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Schedule
-        fields = ['id', 'user_id', 'meal_id']
+        fields = ['id', 'user_id']
         depth = 1
     user_id = serializers.IntegerField(write_only=True)
-    meal_id = serializers.IntegerField(write_only=True)
     # scheduled_meals = serializers.IntegerField(write_only=True)
 
 
