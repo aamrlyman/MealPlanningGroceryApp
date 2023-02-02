@@ -25,21 +25,35 @@ def get_create_Schedules(request):
         return Response(serializer.data)
 
 
-@api_view(["GET", "POST"])
+@api_view(["GET", "POST", "DELETE"])
 @permission_classes([IsAuthenticated])
 def schedule_detail(request,schedule_id):
     print(
         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
+    scheduled_meals = Scheduled_Meal.objects.filter(schedule_id=schedule_id)
+    
     if request.method == 'POST':
         serializer = Scheduled_MealSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
     elif request.method == 'GET':
-        scheduled_meals = Scheduled_Meal.objects.filter(schedule_id=schedule_id)
         serializer = Scheduled_MealSerializer(scheduled_meals, many=True )
         return Response(serializer.data)
+    
+    elif request.method == 'DELETE':
+        scheduled_meals.delete()    
+        return Response(status = status.HTTP_204_NO_CONTENT)
+
+
+
+# >>> # Beatles have broken up
+# >>> beatles.members.clear()
+# >>> # Note that this deletes the intermediate model instances
+# >>> Membership.objects.all()
+# <QuerySet []>
 
 @api_view(["GET", "PUT", "DELETE"])
 @permission_classes([IsAuthenticated])
