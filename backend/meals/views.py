@@ -54,21 +54,8 @@ def meals_detail(request, meal_id):
         return Response(serializer.data)
     elif request.method == "DELETE":
         scheduled_meals = Scheduled_Meal.objects.filter(meal__id=meal_id)
-        if (len(scheduled_meals)> 0 ):
+        if (len(scheduled_meals)> 0 ): #check if meal is on a meal schedule before deleting
             return Response(status=status.HTTP_409_CONFLICT)
         else: 
             meal.delete()
             return Response(status = status.HTTP_204_NO_CONTENT)
-
-
-@api_view(["GET"])
-@permission_classes([AllowAny])
-def delete_meal_check(request,meal_id):
-    print(
-        'User ', f"{request.user.id} {request.user.email} {request.user.username}")
-    
-    scheduled_meals = Scheduled_Meal.objects.filter(meal__id=meal_id)
-        
-    if request.method == 'GET': #get scheduled_meals by meal_id(check before meal can be deleted from database)
-        serializer = Scheduled_MealSerializer(scheduled_meals, many=True )
-        return Response(serializer.data)
