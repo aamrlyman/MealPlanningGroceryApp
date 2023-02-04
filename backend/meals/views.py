@@ -47,12 +47,17 @@ def meals_detail(request, meal_id):
     if request.method == 'GET': #get meal by id
         serializer = MealSerializer(meal);
         return Response(serializer.data)
-    elif request.method == "PUT": #edit meal
+
+    if meal.user.id != request.user.id: # type: ignore
+        return Response(status=status.HTTP_403_FORBIDDEN)        
+        
+    if request.method == "PUT": #edit meal
         serializer = MealSerializer(meal, data=request.data);
         serializer.is_valid(raise_exception=True)
         serializer.save()
+        
         return Response(serializer.data)
-    elif request.method == "DELETE":
+    if request.method == "DELETE":
         scheduled_meals = Scheduled_Meal.objects.filter(meal__id=meal_id)
         if (len(scheduled_meals)> 0 ): #check if meal is on a meal schedule before deleting
             return Response(status=status.HTTP_409_CONFLICT)

@@ -13,13 +13,13 @@ from django.shortcuts import get_object_or_404
 def get_create_Schedules(request):
     print(
         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
-    if request.method == 'POST': #create schedule user
+    if request.method == 'POST': #create schedule for user
         serializer = ScheduleSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    elif request.method == 'GET': #get user schedules
+    elif request.method == 'GET': #get user schedule(s)
         user_schedule = Schedule.objects.filter(user_id=request.user.id)
         serializer = ScheduleSerializer(user_schedule, many=True)
         return Response(serializer.data)
@@ -33,18 +33,21 @@ def schedule_detail(request,schedule_id):
     
     scheduled_meals = Scheduled_Meal.objects.filter(schedule_id=schedule_id)
     
+    if Scheduled_meals.user.id != request.user.id: # type: ignore
+        return Response(status=status.HTTP_403_FORBIDDEN) 
+    
     if request.method == 'POST': # add meal to scheduled_meal
         serializer = Scheduled_MealSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    elif request.method == 'GET': #get scheduled meals by scheduled id
+    if request.method == 'GET': #get all the meals on a schedule (scheduled_meals) by scheduled id
         serializer = Scheduled_MealSerializer(scheduled_meals, many=True )
         return Response(serializer.data)
     
-    elif request.method == 'DELETE': #clear meal schedule
+    if request.method == 'DELETE': #clear meal schedule
         scheduled_meals.delete()    
         return Response(status = status.HTTP_204_NO_CONTENT)
 
@@ -55,18 +58,22 @@ def schedule_detail(request,schedule_id):
 def scheduled_meal_detail(request, scheduled_meal_id):
     print(
         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
+    
     scheduled_meal = get_object_or_404(Scheduled_Meal, id=scheduled_meal_id)
+    
+    if scheduled_meal.user.id != request.user.id: # type: ignore
+        return Response(status=status.HTTP_403_FORBIDDEN) 
     
     if request.method == 'GET': #get scheduled_meal by scheduled meal id
         serializer = Scheduled_MealSerializer(scheduled_meal);
         return Response(serializer.data)
-    elif request.method == "PUT": #toggle is_Cooked 
+    if request.method == "PUT": #toggle is_Cooked 
         is_cooked = {'is_Cooked': not scheduled_meal.is_Cooked }
         serializer = Scheduled_MealSerializer(scheduled_meal, data=is_cooked, partial = True); #type: ignore
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status = status.HTTP_204_NO_CONTENT)
-    elif request.method == "DELETE": #remove meal from Scheduled_meals
+    if request.method == "DELETE": #remove meal from Scheduled_meals
              scheduled_meal.delete()
              return Response(status = status.HTTP_204_NO_CONTENT)
 
