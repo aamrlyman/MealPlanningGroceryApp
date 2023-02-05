@@ -96,7 +96,7 @@ function App() {
           />
         </Route>
 
-        <Route path="/" element={<LandingPage />} />
+        <Route path="landingPage" element={<LandingPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<NotFound />} />
