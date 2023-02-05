@@ -69,7 +69,10 @@ def ingredient_detail(request, pk):
 def grocery_list(request,schedule_id):
     print(
         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
-    grocery_list = Meal_Ingredient.objects.filter(scheduled_meal = schedule_id)
+    grocery_list = Meal_Ingredient.objects.filter(meal = schedule_id)
+    serializer = Meal_IngredientSerializer(grocery_list, many=True)
+    return Response(serializer.data)
+    
     # scheduled_meals = Scheduled_Meal.objects.filter(schedule_id=schedule_id)
     # meal_ids = []
     # grocery_list = []
@@ -77,6 +80,3 @@ def grocery_list(request,schedule_id):
     #     meal_ids.append(meal.meal.id) #type: ignore
     # for meal_id in meal_ids:
     #     grocery_list.append(Meal_Ingredient.objects.filter(meal_id = meal_id))
-    serializer = Meal_IngredientSerializer(grocery_list, many=True)
-    return Response(serializer.data)
-    
