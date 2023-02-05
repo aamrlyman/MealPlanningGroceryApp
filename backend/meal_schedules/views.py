@@ -33,7 +33,7 @@ def schedule_detail(request,schedule_id):
     
     scheduled_meals = Scheduled_Meal.objects.filter(schedule_id=schedule_id)
     
-    if Scheduled_meals.user.id != request.user.id: # type: ignore
+    if scheduled_meals[0].user.id != request.user.id: # type: ignore
         return Response(status=status.HTTP_403_FORBIDDEN) 
     
     if request.method == 'POST': # add meal to scheduled_meal
