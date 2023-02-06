@@ -110,3 +110,5 @@ function App() {
 }
 
 export default App;
+
+// managing state https://www.youtube.com/watch?v=FzlurzsCW4M

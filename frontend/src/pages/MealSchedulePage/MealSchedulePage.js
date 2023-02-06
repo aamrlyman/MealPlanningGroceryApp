@@ -9,25 +9,25 @@ const MealSchedulePage = (props) => {
   const [schedule, setSchedule] = useState();
 
   useEffect(() => {
-    // if (!schedule || schedule.length === 0) {
-    //     createUserSchedule();
-         getUserSchedule();
-    //   }
-    // ;
-  }, [token]);
-
-  const getUserSchedule = async () => {
-    try {
-      let response = await axios.get("http://127.0.0.1:8000/api/schedules/", {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      });
-      setSchedule(response.data[0]);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+    const getUserSchedule = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/schedules/", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        })
+        setSchedule(response.data[0]);
+        getScheduledMeals(response.data[0]);
+        if (response.data.length < 1) {
+             createUserSchedule();
+             getUserSchedule();
+          };
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    getUserSchedule()
+  }, []);
 
   const createUserSchedule = async () => {
     try {
@@ -40,31 +40,29 @@ const MealSchedulePage = (props) => {
           },
         }
       );
-      console.log(response);
+      console.log(response.data);
     } catch (error) {
       console.log(error.message);
     }
   };
 
 
-  useEffect(() => {
-    const getScheduledMeals = async () => {
-      try {
-        let response = await axios.get(
-          `http://127.0.0.1:8000/api/schedules/${schedule.id}/`,
-          {
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-          }
-        );
-        setScheduledMeals(response.data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    getScheduledMeals();
-  }, []);
+  const getScheduledMeals = async (schedule) => {
+    try {
+      let response = await axios.get(
+        `http://127.0.0.1:8000/api/schedules/${schedule.id}/`,
+        // `http://127.0.0.1:8000/api/schedules/1/`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      setScheduledMeals(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <div>
@@ -91,6 +89,7 @@ const MealSchedulePage = (props) => {
             ))}
       </tbody>
     </table>
+    <button>Clear Schedule</button>
     </div>
   );
 };
