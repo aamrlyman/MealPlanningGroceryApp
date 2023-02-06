@@ -1,22 +1,21 @@
-import React, { useState } from 'react';
-import axios from "axios"
-import { useEffect } from 'react';
+import React, { useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
 
-
-const ScheduledMeals = (props) => {
-
-    return ( 
-        <tr>
-        <td>Box</td>
-        <td>Chicken Enchiladas</td>
-        <td>Recipe URL</td>
-        <td>
-            <p>Prep time:1 hour</p>
-            <p>Cook time:45 minutes</p>
-            <p>X</p>
-        </td>
+const DisplayScheduledMeals = (props) => {
+  return (
+    <tr>
+      <td>
+        <input type="checkbox" value={props.meal.is_Cooked}></input>
+      </td>
+      <td>{props.meal.meal.name}</td>
+      <td><a href="{props.meal.meal.url}">Recipe Link </a></td>
+      <td>
+        prep time: {props.meal.meal.prep_time_hours} hrs,{" "} {props.meal.meal.prep_time_minutes} min. 
+        cook time:{" "} {props.meal.meal.cook_time_hours} hrs, {props.meal.meal.prep_cook_minutes}{" "} min
+        <button>X</button>
+      </td>
     </tr>
-     );
-}
- 
-export default ScheduledMeals;
+  );
+};
+export default DisplayScheduledMeals;

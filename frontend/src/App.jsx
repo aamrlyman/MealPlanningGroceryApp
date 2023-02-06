@@ -1,6 +1,8 @@
 // General Imports
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
 
 // Pages Imports
 import CibusPlanningPage from "./pages/CibusPlanningPage/CibusPlanningPage";
@@ -24,8 +26,10 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import useAuth from "./hooks/useAuth";
 
 function App() {
+
   return (
     <div>
       <Navbar />
@@ -46,7 +50,7 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route
+          {/* <Route
             path="/mealsList"
             element={
               <PrivateRoute>
@@ -93,10 +97,9 @@ function App() {
                 <GroceryList />
               </PrivateRoute>
             }
-          />
+          /> */}
         </Route>
-
-        <Route path="landingPage" element={<LandingPage />} />
+        {/* <Route path="landingPage" element={<LandingPage />} /> */}
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<NotFound />} />
