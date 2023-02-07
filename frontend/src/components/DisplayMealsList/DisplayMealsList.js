@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 
-const DisplayScheduledMeals = ({ schedule, meal }) => {
+const DisplayScheduledMeals = ({ schedule, meal, getScheduledMeals}) => {
   const [user, token] = useAuth();
 
   const addMealToSchedule = async (schedule, meal) => {
@@ -20,11 +20,12 @@ const DisplayScheduledMeals = ({ schedule, meal }) => {
             Authorization: "Bearer " + token,
           },
         }
-      );
+      )
+      getScheduledMeals(schedule);
+      console.log(response)
     } catch (error) {
       console.log(error.message);
     }
-    // console.log(meal, schedule)
   };
 
   return (

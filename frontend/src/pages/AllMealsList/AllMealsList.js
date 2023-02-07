@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import DisplayMealsList from "../../components/DisplayMealsList/DisplayMealsList";
 
-const AllMealsList = ({schedule}) => {
+const AllMealsList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
   const [meals, setMeals] = useState();
 
   useEffect(() => {
@@ -18,8 +18,6 @@ const AllMealsList = ({schedule}) => {
     fetchMeals();
   }, []);
 
-
-
   return (
     <div>
       <table>
@@ -32,14 +30,18 @@ const AllMealsList = ({schedule}) => {
             <th>Add</th>
           </tr>
         </thead>
-          <tbody>
-            {meals &&
-              meals.map((meal) => (
-                <Fragment key={meal.id}>
-                  <DisplayMealsList meal={meal} schedule={schedule}/>
-                </Fragment>
-              ))}
-          </tbody>
+        <tbody>
+          {meals &&
+            meals.map((meal) => (
+              <Fragment key={meal.id}>
+                <DisplayMealsList
+                  meal={meal}
+                  schedule={schedule}
+                  getScheduledMeals={getScheduledMeals}
+                />
+              </Fragment>
+            ))}
+        </tbody>
       </table>
     </div>
   );

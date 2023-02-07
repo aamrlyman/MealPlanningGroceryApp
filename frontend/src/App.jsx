@@ -114,7 +114,10 @@ function App() {
             path="/mealsList"
             element={
               <PrivateRoute>
-                <AllMealsList schedule={schedule} />
+                <AllMealsList
+                  schedule={schedule}
+                  getScheduledMeals={getScheduledMeals}
+                />
               </PrivateRoute>
             }
           />
