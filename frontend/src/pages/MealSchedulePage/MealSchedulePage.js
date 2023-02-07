@@ -1,15 +1,13 @@
-
-
 import React, { useState, useEffect, Fragment, useContext } from "react";
 import useAuth from "../../hooks/useAuth";
 import DisplayScheduledMeals from "../../components/DisplayScheduledMeals/DisplayScheduledMeals";
 import axios from "axios";
 // import ScheduleIdContext from "../../context/scheduleIdContext";
 
-const MealSchedulePage = ({schedule, scheduledMeals}) => {
+const MealSchedulePage = ({ schedule, scheduledMeals, getScheduledMeals }) => {
   // const [scheduledMeals, setScheduledMeals] = useState();
   const [user, token] = useAuth();
-  // const {schedule} = useContext(ScheduleIdContext); 
+  // const {schedule} = useContext(ScheduleIdContext);
   // const [schedule, setSchedule] = useState();
 
   // useEffect(() => {
@@ -50,40 +48,40 @@ const MealSchedulePage = ({schedule, scheduledMeals}) => {
   //   }
   // };
 
-  
-  
-  
+  // useEffect(() => {
+  //   getScheduledMeals(schedule);
+  // },[] )
 
-    // useEffect(() => {
-    //   getScheduledMeals(schedule);
-    // },[] )
-    
-    return (
+  return (
     <div>
-        {schedule ? (
-            <h1>Schedule_id: {schedule.id}</h1>
-          ) : (
-            <h1>No Schedule created yet</h1>
-          )}
-    <table>
-      <thead>
-        <tr>
-          <th>Cooked .</th>
-          <th>Meal .</th>
-          <th>Recipe URL .</th>
-          <th>Time .</th>
-        </tr>
-      </thead>
-      <tbody>
+      {schedule ? (
+        <h1>Schedule_id: {schedule.id}</h1>
+      ) : (
+        <h1>No Schedule created yet</h1>
+      )}
+      <table>
+        <thead>
+          <tr>
+            <th>Cooked .</th>
+            <th>Meal .</th>
+            <th>Recipe URL .</th>
+            <th>Time .</th>
+          </tr>
+        </thead>
+        <tbody>
           {scheduledMeals &&
             scheduledMeals.map((meal) => (
-                <Fragment key={meal.id}>
-                    <DisplayScheduledMeals meal={meal} />
-                </Fragment>
+              <Fragment key={meal.id}>
+                <DisplayScheduledMeals
+                  meal={meal}
+                  getScheduledMeals={getScheduledMeals}
+                  schedule={schedule}
+                />
+              </Fragment>
             ))}
-      </tbody>
-    </table>
-    <button>Clear Schedule</button>
+        </tbody>
+      </table>
+      <button>Clear Schedule</button>
     </div>
   );
 };

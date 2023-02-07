@@ -24,7 +24,7 @@ const DisplayScheduledMeals = ({ schedule, meal }) => {
     } catch (error) {
       console.log(error.message);
     }
-    console.log(meal, schedule)
+    // console.log(meal, schedule)
   };
 
   return (

@@ -1,9 +1,8 @@
 // General Imports
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-
 
 // Pages Imports
 import CibusPlanningPage from "./pages/CibusPlanningPage/CibusPlanningPage";
@@ -19,12 +18,9 @@ import GroceryList from "./pages/GroceryList/GroceryList";
 import NotFound from "./pages/NotFound/NotFound";
 import LandingPage from "./pages/LandingPage/LandingPage";
 
-
-
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
-
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
@@ -32,7 +28,6 @@ import useAuth from "./hooks/useAuth";
 import ScheduleIdProvider from "./context/scheduleIdContext";
 
 function App() {
-
   const [schedule, setSchedule] = useState();
   const [scheduledMeals, setScheduledMeals] = useState();
   const [user, token] = useAuth();
@@ -44,18 +39,18 @@ function App() {
           headers: {
             Authorization: "Bearer " + token,
           },
-        })
+        });
         setSchedule(response.data[0]);
         getScheduledMeals(response.data[0]);
         if (response.data.length < 1) {
-             createUserSchedule();
-             getUserSchedule();
-          };
+          createUserSchedule();
+          getUserSchedule();
+        }
       } catch (error) {
         console.log(error.message);
       }
     };
-    getUserSchedule()
+    getUserSchedule();
   }, []);
 
   const createUserSchedule = async () => {
@@ -84,13 +79,12 @@ function App() {
             Authorization: "Bearer " + token,
           },
         }
-        );
-        setScheduledMeals(response.data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-
+      );
+      setScheduledMeals(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <div>
@@ -108,15 +102,19 @@ function App() {
             path="/"
             element={
               <PrivateRoute>
-                <MealSchedulePage schedule={schedule} scheduledMeals={scheduledMeals} />
+                <MealSchedulePage
+                  schedule={schedule}
+                  scheduledMeals={scheduledMeals}
+                  getScheduledMeals={getScheduledMeals}
+                />
               </PrivateRoute>
             }
           />
-           <Route
+          <Route
             path="/mealsList"
             element={
               <PrivateRoute>
-                <AllMealsList schedule={schedule}/>
+                <AllMealsList schedule={schedule} />
               </PrivateRoute>
             }
           />
