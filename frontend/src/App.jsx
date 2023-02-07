@@ -4,6 +4,7 @@ import "./App.css";
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 
+
 // Pages Imports
 import CibusPlanningPage from "./pages/CibusPlanningPage/CibusPlanningPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -24,11 +25,72 @@ import LandingPage from "./pages/LandingPage/LandingPage";
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 
+
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 import useAuth from "./hooks/useAuth";
+import ScheduleIdProvider from "./context/scheduleIdContext";
 
 function App() {
+
+  const [schedule, setSchedule] = useState();
+  const [scheduledMeals, setScheduledMeals] = useState();
+  const [user, token] = useAuth();
+
+  useEffect(() => {
+    const getUserSchedule = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/schedules/", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        })
+        setSchedule(response.data[0]);
+        getScheduledMeals(response.data[0]);
+        if (response.data.length < 1) {
+             createUserSchedule();
+             getUserSchedule();
+          };
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    getUserSchedule()
+  }, []);
+
+  const createUserSchedule = async () => {
+    try {
+      let response = await axios.post(
+        "http://127.0.0.1:8000/api/schedules/",
+        { user_id: user.id },
+        {
+          headers: {
+            authorization: "Bearer " + token,
+          },
+        }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  const getScheduledMeals = async (schedule) => {
+    try {
+      let response = await axios.get(
+        `http://127.0.0.1:8000/api/schedules/${schedule.id}/`,
+        // `http://127.0.0.1:8000/api/schedules/1/`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+        );
+        setScheduledMeals(response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
 
   return (
     <div>
@@ -46,19 +108,19 @@ function App() {
             path="/"
             element={
               <PrivateRoute>
-                <MealSchedulePage />
+                <MealSchedulePage schedule={schedule} scheduledMeals={scheduledMeals} />
+              </PrivateRoute>
+            }
+          />
+           <Route
+            path="/mealsList"
+            element={
+              <PrivateRoute>
+                <AllMealsList schedule={schedule}/>
               </PrivateRoute>
             }
           />
           {/* <Route
-            path="/mealsList"
-            element={
-              <PrivateRoute>
-                <AllMealsList />
-              </PrivateRoute>
-            }
-          />
-          <Route
             path="/meal"
             element={
               <PrivateRoute>
@@ -97,7 +159,7 @@ function App() {
                 <GroceryList />
               </PrivateRoute>
             }
-          /> */}
+          />  */}
         </Route>
         {/* <Route path="landingPage" element={<LandingPage />} /> */}
         <Route path="/register" element={<RegisterPage />} />
