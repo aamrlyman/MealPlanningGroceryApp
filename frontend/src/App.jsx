@@ -73,7 +73,6 @@ function App() {
     try {
       let response = await axios.get(
         `http://127.0.0.1:8000/api/schedules/${schedule.id}/`,
-        // `http://127.0.0.1:8000/api/schedules/1/`,
         {
           headers: {
             Authorization: "Bearer " + token,

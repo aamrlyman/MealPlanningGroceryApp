@@ -51,6 +51,23 @@ const MealSchedulePage = ({ schedule, scheduledMeals, getScheduledMeals }) => {
   // useEffect(() => {
   //   getScheduledMeals(schedule);
   // },[] )
+  const clearSchedule = async (schedule) => {
+    try {
+      let response = await axios.delete(
+        `http://127.0.0.1:8000/api/schedules/${schedule.id}/`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        },
+        )
+        getScheduledMeals(schedule)
+        console.log(response);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
 
   return (
     <div>
@@ -81,7 +98,7 @@ const MealSchedulePage = ({ schedule, scheduledMeals, getScheduledMeals }) => {
             ))}
         </tbody>
       </table>
-      <button>Clear Schedule</button>
+      <button type="submit" onClick={()=>clearSchedule(schedule)}>Clear Schedule</button>
     </div>
   );
 };
