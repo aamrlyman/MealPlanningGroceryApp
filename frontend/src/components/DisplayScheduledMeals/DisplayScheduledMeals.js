@@ -48,7 +48,6 @@ const DisplayScheduledMeals = ({ meal, getScheduledMeals, schedule }) => {
         :
         <button type="submit" onClick={() => isCookedToggle(meal.id)}><i class="fa-regular fa-square"></i></button>
         }
-        {/* <input type="checkbox" value={isCooked} onClick={() => isCookedToggle(meal.id)}></input> */}
       </td>
       <td>{meal.meal.name}</td>
       <td>

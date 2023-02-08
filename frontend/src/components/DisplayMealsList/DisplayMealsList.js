@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 
-const DisplayScheduledMeals = ({ schedule, meal, getScheduledMeals}) => {
+const DisplayScheduledMeals = ({ schedule, meal, getScheduledMeals, scheduledMeals}) => {
   const [user, token] = useAuth();
 
   const addMealToSchedule = async (schedule, meal) => {
@@ -31,7 +31,11 @@ const DisplayScheduledMeals = ({ schedule, meal, getScheduledMeals}) => {
   return (
     <tr>
       <td>
-        <input type="checkbox"></input>
+      { scheduledMeals && scheduledMeals.some((sMeal) => sMeal.meal.id == meal.id)? 
+        <i class="fa-solid fa-check"></i>
+        :
+        <i class="fa-regular fa-square"></i>
+        }
       </td>
       <td>{meal.name}</td>
       <td>

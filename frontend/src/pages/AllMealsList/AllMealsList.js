@@ -37,6 +37,7 @@ const AllMealsList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
                 <DisplayMealsList
                   meal={meal}
                   schedule={schedule}
+                  scheduledMeals={scheduledMeals}
                   getScheduledMeals={getScheduledMeals}
                 />
               </Fragment>

@@ -115,6 +115,7 @@ function App() {
               <PrivateRoute>
                 <AllMealsList
                   schedule={schedule}
+                  scheduledMeals={scheduledMeals}
                   getScheduledMeals={getScheduledMeals}
                 />
               </PrivateRoute>
