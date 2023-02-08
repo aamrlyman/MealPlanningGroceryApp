@@ -12,9 +12,25 @@ const Navbar = () => {
       <ul>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>React/Django JWT</b>
+            <b>Cibus Planning</b>
           </Link>
         </li>
+        <li>
+          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+            Meals Planned
+          </Link>
+        </li>
+        <li>
+          <Link to="/mealsList" style={{ textDecoration: "none", color: "white" }}>
+            All Meals
+          </Link>
+        </li>
+        <li>
+          <Link to="/createMeal" style={{ textDecoration: "none", color: "white" }}>
+          <i class="fa-solid fa-plus"></i>
+          </Link>
+        </li>
+
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>

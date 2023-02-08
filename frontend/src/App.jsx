@@ -120,23 +120,23 @@ function App() {
               </PrivateRoute>
             }
           />
-          {/* <Route
+           {/* <Route
             path="/meal"
             element={
               <PrivateRoute>
                 <DisplayMeal />
               </PrivateRoute>
             }
-          />
+          /> */}
           <Route
-            path="/CreateMeal"
+            path="/createMeal"
             element={
               <PrivateRoute>
                 <CreateMeal />
               </PrivateRoute>
             }
           />
-          <Route
+          {/* <Route
             path="userMealsList/"
             element={
               <PrivateRoute>
