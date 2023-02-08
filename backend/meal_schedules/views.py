@@ -29,13 +29,20 @@ def get_create_Schedules(request):
 @permission_classes([IsAuthenticated])
 def schedule_detail(request,schedule_id):
     print(
-        'User ', f"{request.user.id} {request.user.email} {request.user.username}")
-    
-    scheduled_meals = Scheduled_Meal.objects.filter(schedule_id=schedule_id)
-    
-    if scheduled_meals[0].user.id != request.user.id: # type: ignore
+        'User ', f"{request.user.id} {request.user.email} {request.user.username}")    
+    user_schedule = Schedule.objects.filter(user_id=request.user.id)
+    serializer1 = ScheduleSerializer(user_schedule, many=True)
+
+    def user_id_check():
+        for id_obj in serializer1.data: 
+            if id_obj["id"] == schedule_id: # type: ignore
+                return True
+    if user_id_check() != True:
         return Response(status=status.HTTP_403_FORBIDDEN) 
-    
+
+    # if user_schedule.count(schedule_id) < 1: # type: ignore
+    scheduled_meals = Scheduled_Meal.objects.filter(schedule_id=schedule_id)
+    # if scheduled_meals[0].user.id != request.user.id: # type: ignore
     if request.method == 'POST': # add meal to scheduled_meal
         serializer = Scheduled_MealSerializer(data=request.data)
         if serializer.is_valid():
