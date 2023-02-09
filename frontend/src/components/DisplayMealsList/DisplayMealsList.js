@@ -32,9 +32,9 @@ const DisplayScheduledMeals = ({ schedule, meal, getScheduledMeals, scheduledMea
     <tr>
       <td>
       { scheduledMeals && scheduledMeals.some((sMeal) => sMeal.meal.id == meal.id)? 
-        <i class="fa-solid fa-check"></i>
+        <i className="fa-solid fa-check"></i>
         :
-        <i class="fa-regular fa-square"></i>
+        <i className="fa-regular fa-square"></i>
         }
       </td>
       <td>{meal.name}</td>

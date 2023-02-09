@@ -129,23 +129,27 @@ function App() {
               </PrivateRoute>
             }
           /> */}
-          <Route
+          {/* <Route
             path="/createMeal"
             element={
               <PrivateRoute>
                 <CreateMeal />
               </PrivateRoute>
             }
-          />
-          {/* <Route
+          /> */}
+          <Route
             path="userMealsList/"
             element={
               <PrivateRoute>
-                <UserMealsList />
+                <UserMealsList
+                   schedule={schedule}
+                   scheduledMeals={scheduledMeals}
+                   getScheduledMeals={getScheduledMeals}
+                />
               </PrivateRoute>
             }
           />
-          <Route
+          {/* <Route
             path="/userMeal"
             element={
               <PrivateRoute>
@@ -160,7 +164,7 @@ function App() {
                 <GroceryList />
               </PrivateRoute>
             }
-          />  */}
+          /> */}
         </Route>
         {/* <Route path="landingPage" element={<LandingPage />} /> */}
         <Route path="/register" element={<RegisterPage />} />

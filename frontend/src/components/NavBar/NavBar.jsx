@@ -26,8 +26,13 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
+          <Link to="userMealsList/" style={{ textDecoration: "none", color: "white" }}>
+            My Meals
+          </Link>
+        </li>
+        <li>
           <Link to="/createMeal" style={{ textDecoration: "none", color: "white" }}>
-          <i class="fa-solid fa-plus"></i>
+          <i className="fa-solid fa-plus"></i>
           </Link>
         </li>
 

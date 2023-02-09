@@ -44,9 +44,9 @@ const DisplayScheduledMeals = ({ meal, getScheduledMeals, schedule }) => {
     <tr>
       <td>
         { meal.is_Cooked ? 
-        <button type="submit" onClick={() => isCookedToggle(meal.id)}><i class="fa-solid fa-check"></i></button>
+        <button type="submit" onClick={() => isCookedToggle(meal.id)}><i className="fa-solid fa-check"></i></button>
         :
-        <button type="submit" onClick={() => isCookedToggle(meal.id)}><i class="fa-regular fa-square"></i></button>
+        <button type="submit" onClick={() => isCookedToggle(meal.id)}><i className="fa-regular fa-square"></i></button>
         }
       </td>
       <td>{meal.meal.name}</td>
