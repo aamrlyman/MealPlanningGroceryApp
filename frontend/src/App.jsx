@@ -121,14 +121,14 @@ function App() {
               </PrivateRoute>
             }
           />
-           {/* <Route
+          <Route
             path="/meal"
             element={
               <PrivateRoute>
                 <DisplayMeal />
               </PrivateRoute>
             }
-          /> */}
+          />
           {/* <Route
             path="/createMeal"
             element={
