@@ -51,7 +51,7 @@ const DisplayScheduledMeals = ({ meal, getScheduledMeals, schedule }) => {
       </td>
       <td>{meal.meal.name}</td>
       <td>
-        <a href="{meal.meal.url}">Recipe Link </a>
+        <a href={meal.meal.url}>Recipe Link </a>
       </td>
       <td>
         prep time: {meal.meal.prep_time_hours} hrs,{" "}

@@ -15,11 +15,9 @@ const DisplayMeal = (props) => {
         <p>Prep time</p>
         <p>Cook time</p>
       </div>
-        <div>
-        <DisplayIngredients />
-        </div>
+    <DisplayIngredients />
       <div>
-        <textarea>Notes and stuff</textarea>
+        <p>Notes about recipe</p>
       </div>
       <div>
         <a href="">Link</a>

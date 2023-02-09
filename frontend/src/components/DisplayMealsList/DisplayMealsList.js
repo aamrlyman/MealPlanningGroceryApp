@@ -39,7 +39,7 @@ const DisplayScheduledMeals = ({ schedule, meal, getScheduledMeals, scheduledMea
       </td>
       <td>{meal.name}</td>
       <td>
-        <a href="{props.meal.meal.url}">Recipe Link </a>
+        <a href={meal.meal.url}>Recipe Link </a>
       </td>
       <td>
         prep time: {meal.prep_time_hours} hrs, {meal.prep_time_minutes} min.
