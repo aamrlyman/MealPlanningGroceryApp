@@ -45,11 +45,11 @@ def ingredient_detail(request, pk):
         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
     ingredient = get_object_or_404(Meal_Ingredient, pk=pk)
 
-    if ingredient.user.id != request.user.id: # type: ignore
-        return Response(status=status.HTTP_403_FORBIDDEN) 
     if request.method == 'GET':
         serializer = Meal_IngredientSerializer(ingredient);
         return Response(serializer.data)
+    if ingredient.user.id != request.user.id: # type: ignore
+        return Response(status=status.HTTP_403_FORBIDDEN) 
     elif request.method == "PUT":
         serializer = Meal_IngredientSerializer(ingredient, data=request.data);
         serializer.is_valid(raise_exception=True)

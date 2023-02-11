@@ -33,19 +33,6 @@ const DisplayMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
     fetchMeals();
   }, []);
   
-  const getScheduledMeal = (mealId, scheduledMeals) => {
-      for(let index in scheduledMeals){
-        if(scheduledMeals[index].meal.id === mealId){
-          return index
-        } 
-      } 
-  }
-
-const index = getScheduledMeal(mealId, scheduledMeals);
-
-console.log(scheduledMeals);
-console.log(index);
-
   return (
     <div>
       <div>
@@ -58,7 +45,10 @@ console.log(index);
         <p>Prep time</p>
         <p>Cook time</p>
       </div>
-      <DisplayIngredients />
+      <h2>Ingredients</h2>
+      <DisplayIngredients 
+      meal={meal}
+      />
       <div>
         <p>Notes about recipe</p>
       </div>
@@ -69,7 +59,7 @@ console.log(index);
       scheduledMeals.some((sMeal) => sMeal.meal.id == mealId) ? (
         <RemoveMealFromScheduleButton
           scheduledMeals={scheduledMeals}
-          meal={scheduledMeals[0]}
+          meal={scheduledMeals && scheduledMeals.filter((m)=> m.meal.id===mealId)[0] }
           schedule={schedule}
           getScheduledMeals={getScheduledMeals}
         />

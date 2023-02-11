@@ -160,7 +160,7 @@ function App() {
                 <DisplayUserMeal />
               </PrivateRoute>
             }
-          />
+          /> */}
           <Route
             path="/groceries"
             element={
@@ -168,7 +168,7 @@ function App() {
                 <GroceryList />
               </PrivateRoute>
             }
-          /> */}
+          />
         </Route>
         {/* <Route path="landingPage" element={<LandingPage />} /> */}
         <Route path="/register" element={<RegisterPage />} />

@@ -21,7 +21,6 @@ const RemoveMealFromScheduleButton = ({meal, getScheduledMeals, schedule}) => {
         }
       };
 
-
     return (
         <button type="submit" onClick={() => removeMealFromSchedule(meal.id)}>
         X

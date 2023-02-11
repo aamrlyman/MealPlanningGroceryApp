@@ -35,6 +35,11 @@ const Navbar = () => {
           <i className="fa-solid fa-plus"></i>
           </Link>
         </li>
+        <li>
+          <Link to="/groceries" style={{ textDecoration: "none", color: "white" }}>
+          Grocery List
+          </Link>
+        </li>
 
         <li>
           {user ? (
