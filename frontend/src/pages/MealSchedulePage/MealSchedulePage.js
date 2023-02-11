@@ -93,6 +93,7 @@ const MealSchedulePage = ({ schedule, scheduledMeals, getScheduledMeals }) => {
                   meal={meal}
                   getScheduledMeals={getScheduledMeals}
                   schedule={schedule}
+                  scheduledMeals={scheduledMeals}
                 />
               </Fragment>
             ))}

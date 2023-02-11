@@ -40,7 +40,7 @@ function App() {
             Authorization: "Bearer " + token,
           },
         });
-        setSchedule(response.data[0]);
+        setSchedule(response.data[0]);       
         getScheduledMeals(response.data[0]);
         if (response.data.length < 1) {
           createUserSchedule();
@@ -122,21 +122,25 @@ function App() {
             }
           />
           <Route
-            path="/meal"
+            path="/meal/:mealId"
             element={
               <PrivateRoute>
-                <DisplayMeal />
+                <DisplayMeal 
+                    schedule={schedule}
+                    scheduledMeals={scheduledMeals}
+                    getScheduledMeals={getScheduledMeals}
+                />
               </PrivateRoute>
             }
           />
-          {/* <Route
+          <Route
             path="/createMeal"
             element={
               <PrivateRoute>
                 <CreateMeal />
               </PrivateRoute>
             }
-          /> */}
+          />
           <Route
             path="userMealsList/"
             element={

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import { useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
+import RemoveMealFromScheduleButton from "../../components/RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
 
-const DisplayScheduledMeals = ({ meal, getScheduledMeals, schedule }) => {
+const DisplayScheduledMeals = ({ meal, getScheduledMeals, schedule, scheduledMeals }) => {
   const [user, token] = useAuth();
   const removeMealFromSchedule = async (scheduledMealId) => {
     try {
@@ -49,7 +49,7 @@ const DisplayScheduledMeals = ({ meal, getScheduledMeals, schedule }) => {
         <button type="submit" onClick={() => isCookedToggle(meal.id)}><i className="fa-regular fa-square"></i></button>
         }
       </td>
-      <td>{meal.meal.name}</td>
+      <td><Link to={ meal && `/meal/${meal.meal.id}/`}>{meal.meal.name}</Link></td>
       <td>
         <a href={meal.meal.url}>Recipe Link </a>
       </td>
@@ -57,9 +57,12 @@ const DisplayScheduledMeals = ({ meal, getScheduledMeals, schedule }) => {
         prep time: {meal.meal.prep_time_hours} hrs,{" "}
         {meal.meal.prep_time_minutes} min. cook time:{" "}
         {meal.meal.cook_time_hours} hrs, {meal.meal.prep_cook_minutes} min
-        <button type="submit" onClick={() => removeMealFromSchedule(meal.id)}>
-          X
-        </button>
+        <RemoveMealFromScheduleButton 
+        schedule={schedule}
+        meal={meal}
+        getScheduledMeals={getScheduledMeals}
+        scheduledMeals={scheduledMeals}
+        />
       </td>
     </tr>
   );
