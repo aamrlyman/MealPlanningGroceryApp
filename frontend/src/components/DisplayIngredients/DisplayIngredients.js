@@ -32,7 +32,7 @@ const DisplayIngredients = ({ ingredient, fetchIngredients }) => {
           <tr key={ingredient.id}>
             <td>{ingredient.name}</td>
             <td>
-              : {ingredient.quantity}, {ingredient.unit}
+               {ingredient.quantity===0?" ": ": "+ ingredient.quantity + ","} {ingredient.unit==="na"? " ": ingredient.unit}
             </td>
             <td>
               <button>Edit</button>
