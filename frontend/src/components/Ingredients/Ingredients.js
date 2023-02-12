@@ -10,30 +10,36 @@ const Ingredients = ({ meal }) => {
   const { mealId } = useParams();
   const [user, token] = useAuth();
 
-  
   const fetchIngredients = async () => {
-      try {
-          let response = await axios.get(
-              `http://127.0.0.1:8000/api/ingredients/meal_id/${mealId}/`,
-              {
-            headers: {
-              Authorization: "Bearer " + token,
-            },
+    try {
+      let response = await axios.get(
+        `http://127.0.0.1:8000/api/ingredients/meal_id/${mealId}/`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
         }
-        );
-        setIngredients(response.data);
-        console.log(response.data);
+      );
+      setIngredients(response.data);
+      console.log(response.data);
     } catch (error) {
-        console.log(error.message);
+      console.log(error.message);
     }
-};
-useEffect(() => {
+  };
+  useEffect(() => {
     fetchIngredients();
   }, []);
 
   return (
     <div>
-      <DisplayIngredients key={meal.id} meal={meal} ingredients={ingredients} />
+      {ingredients &&
+        ingredients.map((ingredient) => (
+          <DisplayIngredients
+            meal={meal}
+            ingredient={ingredient}
+            fetchIngredients={fetchIngredients}
+          />
+        ))}
       <AddIngredient
         key={meal.id + "add"}
         meal={meal}

@@ -56,7 +56,9 @@ const DisplayUserMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
       {meal ? (
         <div>
           <h2>Ingredients</h2>
-            <Ingredients meal={meal} />
+            <Ingredients
+            key={mealId + "ing"}
+            meal={meal} />
         </div>
       ) : (
         ""
