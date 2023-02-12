@@ -20,6 +20,7 @@ from meal_schedules.serializers import ScheduleSerializer, Scheduled_MealSeriali
 @api_view(['POST', 'GET'])
 @permission_classes([IsAuthenticated])
 def ingredient_list(request, meal_id):
+
     print(
         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
     # meal_id = request.query_params.get('meal_id')

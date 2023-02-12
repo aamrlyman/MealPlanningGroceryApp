@@ -6,12 +6,12 @@ import axios from "axios";
 import IsScheduledIcon from "../../components/IsScheduledIcon/IsScheduledIcon";
 import AddMealToScheduleButton from "../../components/AddMealToScheduleButton/AddMealToScheduleButton";
 import RemoveMealFromScheduleButton from "../../components/RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
+import DisplayAllMealIngredients from "../../components/DisplayAllMealIngredients/DisplayAllMealIngredients";
 
 const DisplayMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
   const [user, token] = useAuth();
   const { mealId } = useParams();
   const [meal, setMeal] = useState();
-
 
   useEffect(() => {
     const fetchMeals = async () => {
@@ -32,7 +32,7 @@ const DisplayMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
     };
     fetchMeals();
   }, []);
-  
+
   return (
     <div>
       <div>
@@ -41,25 +41,34 @@ const DisplayMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
       <div>
         <h1>{meal && meal.name}</h1>
       </div>
-      <div>
-        <p>Prep time</p>
-        <p>Cook time</p>
-      </div>
+      {meal ? (
+        <div>
+          <p>
+            Prep time {meal.prep_time_hours} hrs, {meal.prep_time_minutes} min
+          </p>
+          <p>
+            Cook time {meal.cook_time_hours} hrs, {meal.cook_time_minutes} min
+          </p>
+        </div>
+      ) : (
+        ""
+      )}
       <h2>Ingredients</h2>
-      <DisplayIngredients 
-      meal={meal}
-      />
+      <DisplayAllMealIngredients />
       <div>
-        <p>Notes about recipe</p>
+        <p>{meal && meal.notes}</p>
       </div>
       <div>
-        <a href=""> Recipe Link</a>
+        <a href={meal && meal.url}> Recipe Link</a>
       </div>
       {scheduledMeals &&
       scheduledMeals.some((sMeal) => sMeal.meal.id == mealId) ? (
         <RemoveMealFromScheduleButton
           scheduledMeals={scheduledMeals}
-          meal={scheduledMeals && scheduledMeals.filter((m)=> m.meal.id===mealId)[0] }
+          meal={
+            scheduledMeals &&
+            scheduledMeals.filter((m) => m.meal.id === mealId)[0]
+          }
           schedule={schedule}
           getScheduledMeals={getScheduledMeals}
         />

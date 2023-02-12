@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import IsScheduledIcon from "../IsScheduledIcon/IsScheduledIcon";
 import AddMealToScheduleButton from "../AddMealToScheduleButton/AddMealToScheduleButton";
@@ -16,7 +15,7 @@ const DisplayScheduledMeals = ({ schedule, meal, getScheduledMeals, scheduledMea
        meal={meal}
        /> 
       </td>
-      <td><Link to={ meal && `/meal/${meal.id}/`} > {meal.name}</Link></td>
+      <td><Link to={ meal && `/userMeal/${meal.id}/`} > {meal.name}</Link></td>
       <td>
         <a href={meal.url}>Recipe Link </a>
       </td>

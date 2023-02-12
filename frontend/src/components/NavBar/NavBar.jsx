@@ -15,11 +15,11 @@ const Navbar = () => {
             <b>Cibus Planning</b>
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             Meals Planned
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/mealsList" style={{ textDecoration: "none", color: "white" }}>
             All Meals

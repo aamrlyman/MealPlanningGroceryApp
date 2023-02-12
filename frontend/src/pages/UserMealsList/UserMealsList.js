@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
-import DisplayMealsList from "../../components/DisplayMealsList/DisplayMealsList";
+import DisplayUserMealsList from "../../components/DisplayMealsList/DisplayUserMealsList";
 import useAuth from "../../hooks/useAuth";
 
 const UserMealsList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
@@ -41,7 +41,7 @@ const UserMealsList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
           {meals &&
             meals.map((meal) => (
               <Fragment key={meal.id}>
-                <DisplayMealsList
+                <DisplayUserMealsList
                   meal={meal}
                   schedule={schedule}
                   scheduledMeals={scheduledMeals}

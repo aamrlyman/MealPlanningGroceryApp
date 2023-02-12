@@ -153,14 +153,14 @@ function App() {
               </PrivateRoute>
             }
           />
-          {/* <Route
-            path="/userMeal"
+          <Route
+            path="/userMeal/:mealId"
             element={
               <PrivateRoute>
                 <DisplayUserMeal />
               </PrivateRoute>
             }
-          /> */}
+          />
           <Route
             path="/groceries"
             element={

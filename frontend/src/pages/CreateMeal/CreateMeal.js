@@ -12,7 +12,6 @@ let initialValues = {
   prep_time_hours: 0,
   cook_time_minutes: 0,
   cook_time_hours: 0,
-//   user_id: 2
 };
 
 const CreateMeal = () => {
@@ -34,7 +33,8 @@ const CreateMeal = () => {
           },
         }
       );
-      // navigate
+      console.log(response.data);
+      navigate(`/userMeal/${response.data.id}`)
     } catch (error) {
       console.log(error.message);
     }
