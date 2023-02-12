@@ -54,7 +54,8 @@ const DisplayMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
         ""
       )}
       <h2>Ingredients</h2>
-      <DisplayAllMealIngredients />
+      <DisplayAllMealIngredients 
+      />
       <div>
         <p>{meal && meal.notes}</p>
       </div>

@@ -7,11 +7,13 @@ import IsScheduledIcon from "../../components/IsScheduledIcon/IsScheduledIcon";
 import AddMealToScheduleButton from "../../components/AddMealToScheduleButton/AddMealToScheduleButton";
 import RemoveMealFromScheduleButton from "../../components/RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
 import Ingredients from "../../components/Ingredients/Ingredients";
+import { useNavigate } from "react-router-dom";
 
 const DisplayUserMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
   const [user, token] = useAuth();
   const { mealId } = useParams();
   const [meal, setMeal] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMeal = async () => {
@@ -32,6 +34,25 @@ const DisplayUserMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
     };
     fetchMeal();
   }, []);
+
+  const deleteMeal = async () => {
+    try {
+      let response = await axios.delete(
+        `http://127.0.0.1:8000/api/meals/${mealId}/`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      navigate("/userMealsList/")
+      console.log(response);
+    } catch (error) {
+      console.log(error.message);
+      alert("You can't delete a meal that is being used on a schedule");
+    }
+  };
+
 
   return (
     <div>
@@ -88,6 +109,7 @@ const DisplayUserMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
           getScheduledMeals={getScheduledMeals}
         />
       )}
+      <button type="submit" onClick={() => deleteMeal()} >Delete</button>
     </div>
   );
 };

@@ -32,9 +32,9 @@ const DisplayAllMealIngredients = (props) => {
     <div>
       {ingredients &&
         ingredients.map((ingredient) => (
-          <table>
+          <table  key={ingredient.id + "amic"}>
             <tbody>
-              <tr key={ingredient.id}>
+              <tr>
                 <td>{ingredient.name}</td>
                 <td>
                   : {ingredient.quantity}, {ingredient.unit}
