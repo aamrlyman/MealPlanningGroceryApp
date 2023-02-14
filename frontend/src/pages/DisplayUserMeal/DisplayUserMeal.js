@@ -70,6 +70,7 @@ const DisplayUserMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
           <p>
             Cook time {meal.cook_time_hours} hrs, {meal.cook_time_minutes} min
           </p>
+    
         </div>
       ) : (
         ""
@@ -89,8 +90,18 @@ const DisplayUserMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
       </div>
       <div>
         <a href={meal && meal.url}> Recipe Link</a>
+        <div>
+        { meal &&
+           <AddMealToScheduleButton
+           meal={meal}
+           schedule={schedule}
+           getScheduledMeals={getScheduledMeals}
+         />
+      }
+        </div>
       </div>
-      {scheduledMeals &&
+   
+      {/* {scheduledMeals &&
       scheduledMeals.some((sMeal) => sMeal.meal.id == mealId) ? (
         <RemoveMealFromScheduleButton
           scheduledMeals={scheduledMeals}
@@ -108,8 +119,8 @@ const DisplayUserMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
           schedule={schedule}
           getScheduledMeals={getScheduledMeals}
         />
-      )}
-      <button type="submit" onClick={() => deleteMeal()} >Delete</button>
+      )} */}
+      <button type="button" onClick={() => deleteMeal()} >Delete</button>
     </div>
   );
 };

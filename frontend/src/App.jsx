@@ -40,7 +40,7 @@ function App() {
             Authorization: "Bearer " + token,
           },
         });
-        setSchedule(response.data[0]);       
+        setSchedule(response.data[0]);
         getScheduledMeals(response.data[0]);
         if (response.data.length < 1) {
           createUserSchedule();
@@ -51,7 +51,7 @@ function App() {
       }
     };
     getUserSchedule();
-  }, []);
+  }, [token]);
 
   const createUserSchedule = async () => {
     try {
@@ -125,10 +125,10 @@ function App() {
             path="/meal/:mealId"
             element={
               <PrivateRoute>
-                <DisplayMeal 
-                    schedule={schedule}
-                    scheduledMeals={scheduledMeals}
-                    getScheduledMeals={getScheduledMeals}
+                <DisplayMeal
+                  schedule={schedule}
+                  scheduledMeals={scheduledMeals}
+                  getScheduledMeals={getScheduledMeals}
                 />
               </PrivateRoute>
             }
@@ -146,9 +146,9 @@ function App() {
             element={
               <PrivateRoute>
                 <UserMealsList
-                   schedule={schedule}
-                   scheduledMeals={scheduledMeals}
-                   getScheduledMeals={getScheduledMeals}
+                  schedule={schedule}
+                  scheduledMeals={scheduledMeals}
+                  getScheduledMeals={getScheduledMeals}
                 />
               </PrivateRoute>
             }
@@ -157,7 +157,11 @@ function App() {
             path="/userMeal/:mealId"
             element={
               <PrivateRoute>
-                <DisplayUserMeal />
+                <DisplayUserMeal
+                  schedule={schedule}
+                  scheduledMeals={scheduledMeals}
+                  getScheduledMeals={getScheduledMeals}
+                />
               </PrivateRoute>
             }
           />
@@ -165,7 +169,7 @@ function App() {
             path="/groceries"
             element={
               <PrivateRoute>
-                <GroceryList />
+                <GroceryList schedule={schedule} />
               </PrivateRoute>
             }
           />

@@ -11,7 +11,7 @@ const CibusPlanning = ( props ) => {
 
   return (
     <div className="container">
-      <h1>Home Page for {user.username}!</h1>
+      <h1>Welcome {user.username}!</h1>
       <Outlet />
     </div>
   );

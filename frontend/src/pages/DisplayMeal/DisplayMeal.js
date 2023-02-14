@@ -54,16 +54,22 @@ const DisplayMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
         ""
       )}
       <h2>Ingredients</h2>
-      <DisplayAllMealIngredients 
-      />
+      <DisplayAllMealIngredients />
       <div>
         <p>{meal && meal.notes}</p>
       </div>
       <div>
         <a href={meal && meal.url}> Recipe Link</a>
       </div>
-      {scheduledMeals &&
-      scheduledMeals.some((sMeal) => sMeal.meal.id == mealId) ? (
+      {scheduledMeals && (
+        <AddMealToScheduleButton
+          scheduledMeals={scheduledMeals}
+          meal={meal}
+          schedule={schedule}
+          getScheduledMeals={getScheduledMeals}
+        />
+      )}
+      {/* scheduledMeals.some((sMeal) => sMeal.meal.id == mealId) ? (
         <RemoveMealFromScheduleButton
           scheduledMeals={scheduledMeals}
           meal={
@@ -80,7 +86,7 @@ const DisplayMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
           schedule={schedule}
           getScheduledMeals={getScheduledMeals}
         />
-      )}
+      )} */}
     </div>
   );
 };

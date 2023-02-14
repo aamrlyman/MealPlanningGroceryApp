@@ -10,67 +10,38 @@ import RemoveMealFromScheduleButton from "../../components/RemoveMealFromSchedul
 const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
   const [user, token] = useAuth();
   const { mealId } = useParams();
-  const [meal, setMeal] = useState();
-
+  const [groceryList, setGroceryList] = useState();
+  const [sortType, setSortType] = useState("ingredientsOnly");
 
   useEffect(() => {
-    const fetchMeals = async () => {
+    const fetchGroceries = async () => {
       try {
         let response = await axios.get(
-          `http://127.0.0.1:8000/api/meals/${mealId}/`,
+          `http://127.0.0.1:8000/api/ingredients/grocery_list/1/`,
           {
             headers: {
               Authorization: "Bearer " + token,
             },
           }
         );
-        setMeal(response.data);
+        setGroceryList(response.data);
         console.log(response.data);
       } catch (error) {
         console.log(error.message);
       }
     };
-    fetchMeals();
+    fetchGroceries();
   }, []);
 //   console.log(scheduledMeals.filter( (m)=> m.meal.id===mealId))
 
-
-
   return (
     <div>
-      <div>
-        <IsScheduledIcon scheduledMeals={scheduledMeals} meal={meal} />
-      </div>
-      <div>
-        <h1>{meal && meal.name}</h1>
-      </div>
-      <div>
-        <p>Prep time</p>
-        <p>Cook time</p>
-      </div>
-      <DisplayIngredients />
-      <div>
-        <p>Notes about recipe</p>
-      </div>
-      <div>
-        <a href=""> Recipe Link</a>
-      </div>
-      {scheduledMeals &&
-      scheduledMeals.some((sMeal) => sMeal.meal.id == mealId) ? (
-        <RemoveMealFromScheduleButton
-          scheduledMeals={scheduledMeals}
-          meal={scheduledMeals && scheduledMeals.filter( (m)=> m.meal.id===mealId)[0] }
-          schedule={schedule}
-          getScheduledMeals={getScheduledMeals}
-        />
-      ) : (
-        <AddMealToScheduleButton
-          scheduledMeals={scheduledMeals}
-          meal={meal}
-          schedule={schedule}
-          getScheduledMeals={getScheduledMeals}
-        />
-      )}
+        <ol>
+      {groceryList && groceryList.map((item) =>(
+          <li key={item.id}>{item.name}</li>
+      )
+        )}
+        </ol>
     </div>
   );
 };

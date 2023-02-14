@@ -37,7 +37,6 @@ formData.meal_id = mealId;
       fetchIngredients();
       reset();
       console.log(response.data);
-      //   navigate(`/userMeal/${response.data.id}`)
     } catch (error) {
       console.log(error.message);
     }

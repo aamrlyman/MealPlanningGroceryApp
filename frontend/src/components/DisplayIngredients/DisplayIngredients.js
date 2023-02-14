@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 
-const DisplayIngredients = ({ ingredient, fetchIngredients }) => {
+const DisplayIngredients = ({ ingredient, fetchIngredients, handleEditClick }) => {
   const [user, token] = useAuth();
   const { mealId } = useParams();
 
@@ -26,26 +26,26 @@ const DisplayIngredients = ({ ingredient, fetchIngredients }) => {
 
   return (
     <div>
-      <table>
-        <tbody>
          { ingredient? 
-          <tr key={ingredient.id}>
+      <table key={ingredient.id}>
+        <tbody>
+          <tr >
             <td>{ingredient.name}</td>
             <td>
                {ingredient.quantity===0?" ": ": "+ ingredient.quantity + ","} {ingredient.unit==="na"? " ": ingredient.unit}
             </td>
             <td>
-              <button>Edit</button>
+              <button onClick={() => handleEditClick(ingredient)}>Edit</button>
             </td>
             <td>
               <button type="submit" onClick={() => deleteIngredient(ingredient)} >Delete</button>
             </td>
           </tr>
+        </tbody>
+      </table>
           :
           ""
          } 
-        </tbody>
-      </table>
     </div>
   );
 };
