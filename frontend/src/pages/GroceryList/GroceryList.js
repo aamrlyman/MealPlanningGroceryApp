@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
-import DisplayIngredients from "../../components/DisplayIngredients/DisplayIngredients";
 import { useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
-import IsScheduledIcon from "../../components/IsScheduledIcon/IsScheduledIcon";
-import AddMealToScheduleButton from "../../components/AddMealToScheduleButton/AddMealToScheduleButton";
-import RemoveMealFromScheduleButton from "../../components/RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
 
 const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
   const [user, token] = useAuth();

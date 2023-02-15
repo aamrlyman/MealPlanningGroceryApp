@@ -13,7 +13,7 @@ import AllMealsList from "./pages/AllMealsList/AllMealsList";
 import DisplayMeal from "./pages/DisplayMeal/DisplayMeal";
 import CreateMeal from "./pages/CreateMeal/CreateMeal";
 import UserMealsList from "./pages/UserMealsList/UserMealsList";
-import DisplayUserMeal from "./pages/DisplayUserMeal/DisplayUserMeal";
+import UserMeal from "./pages/UserMeal/UserMeal";
 import GroceryList from "./pages/GroceryList/GroceryList";
 import NotFound from "./pages/NotFound/NotFound";
 import LandingPage from "./pages/LandingPage/LandingPage";
@@ -157,7 +157,7 @@ function App() {
             path="/userMeal/:mealId"
             element={
               <PrivateRoute>
-                <DisplayUserMeal
+                <UserMeal
                   schedule={schedule}
                   scheduledMeals={scheduledMeals}
                   getScheduledMeals={getScheduledMeals}

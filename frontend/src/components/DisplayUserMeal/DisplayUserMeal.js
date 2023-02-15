@@ -1,39 +1,36 @@
 import React, { useState, useEffect } from "react";
-import DisplayIngredients from "../../components/DisplayIngredients/DisplayIngredients";
 import { useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
-import IsScheduledIcon from "../../components/IsScheduledIcon/IsScheduledIcon";
-import AddMealToScheduleButton from "../../components/AddMealToScheduleButton/AddMealToScheduleButton";
-import RemoveMealFromScheduleButton from "../../components/RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
-import Ingredients from "../../components/Ingredients/Ingredients";
+import IsScheduledIcon from "../IsScheduledIcon/IsScheduledIcon";
+import AddMealToScheduleButton from "../AddMealToScheduleButton/AddMealToScheduleButton";
+// import RemoveMealFromScheduleButton from "../RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
 import { useNavigate } from "react-router-dom";
 
-const DisplayUserMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
+const DisplayUserMeal = ({setIsEdit, meal, schedule, getScheduledMeals, scheduledMeals }) => {
   const [user, token] = useAuth();
   const { mealId } = useParams();
-  const [meal, setMeal] = useState();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchMeal = async () => {
-      try {
-        let response = await axios.get(
-          `http://127.0.0.1:8000/api/meals/${mealId}/`,
-          {
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-          }
-        );
-        setMeal(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    fetchMeal();
-  }, []);
+  // useEffect(() => {
+  //   const fetchMeal = async () => {
+  //     try {
+  //       let response = await axios.get(
+  //         `http://127.0.0.1:8000/api/meals/${mealId}/`,
+  //         {
+  //           headers: {
+  //             Authorization: "Bearer " + token,
+  //           },
+  //         }
+  //       );
+  //       setMeal(response.data);
+  //       console.log(response.data);
+  //     } catch (error) {
+  //       console.log(error.message);
+  //     }
+  //   };
+  //   fetchMeal();
+  // }, []);
 
   const deleteMeal = async () => {
     try {
@@ -61,6 +58,7 @@ const DisplayUserMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
       </div>
       <div>
         <h1>{meal && meal.name}</h1>
+      <button type="button" onClick={()=>setIsEdit(true)}>Edit</button>
       </div>
       {meal ? (
         <div>
@@ -71,16 +69,6 @@ const DisplayUserMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
             Cook time {meal.cook_time_hours} hrs, {meal.cook_time_minutes} min
           </p>
     
-        </div>
-      ) : (
-        ""
-      )}
-      {meal ? (
-        <div>
-          <h2>Ingredients</h2>
-            <Ingredients
-            key={mealId + "ing"}
-            meal={meal} />
         </div>
       ) : (
         ""
@@ -98,6 +86,7 @@ const DisplayUserMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
            getScheduledMeals={getScheduledMeals}
          />
       }
+
         </div>
       </div>
    
