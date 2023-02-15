@@ -95,7 +95,7 @@ const EditMeal = ({setIsEdit}) => {
           onChange={handleInputChange}
         ></input>
         <button type="submit">Save</button>
-        <button type="button" onClick={()=>setIsEdit(false)}>cancle</button>
+        <button type="button" onClick={()=>setIsEdit(false)}>cancel</button>
       </form>
     </div>
   );
