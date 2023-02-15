@@ -71,7 +71,7 @@ const EditIngredients = ({
                   ></input>
                 </td>
                 <td>
-                  <button type="button" onClick={() => handleCancelClick()}>Cancle</button>
+                  <button type="button" onClick={() => handleCancelClick()}>Cancel</button>
                 </td>
                 <td>
                   <button type="submit">Save</button>

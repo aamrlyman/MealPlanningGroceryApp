@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import Meal_Ingredient
-from .serializers import Meal_IngredientSerializer
+from .serializers import Meal_IngredientSerializer, GroceriesSerializer
 from django.shortcuts import get_object_or_404
 from meals.models import Meal
 from meals.serializers import MealSerializer
@@ -74,7 +74,7 @@ def grocery_list(request,schedule_id):
     scheduled_meals = Scheduled_Meal.objects.filter(schedule_id=schedule_id)
     meal_ids = [scheduled_meal.meal.id for scheduled_meal in scheduled_meals] #type: ignore
     ingredients = Meal_Ingredient.objects.filter(meal_id__in=meal_ids)
-    serializer = Meal_IngredientSerializer(ingredients, many=True)
+    serializer = GroceriesSerializer(ingredients, many=True)
     print (ingredients)
     return Response(serializer.data)
       
