@@ -1,31 +1,24 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
 import axios from "axios";
+import UserMeal from "../../pages/UserMeal/UserMeal";
 
-let initialValues = {
-  name: "",
-  notes: "",
-  url: "",
-  prep_time_minutes: 0,
-  prep_time_hours: 0,
-  cook_time_minutes: 0,
-  cook_time_hours: 0,
-};
 
-const EditMeal = ({setIsEdit}) => {
+const EditMeal = ({setIsEdit, meal, fetchMeal}) => {
   const [user, token] = useAuth();
   const navigate = useNavigate();
+  const {mealId} = useParams();
   const [formData, handleInputChange, handleSubmit] = useCustomForm(
-    initialValues,
-    createMeal
+    meal,
+    editMeal
   );
 
-  async function createMeal() {
+  async function editMeal() {
     try {
-      let response = await axios.post(
-        `http://127.0.0.1:8000/api/meals/user/`,
+      let response = await axios.put(
+        `http://127.0.0.1:8000/api/meals/${mealId}/`,
         formData,
         {
           headers: {
@@ -34,7 +27,9 @@ const EditMeal = ({setIsEdit}) => {
         }
       );
       console.log(response.data);
-      navigate(`/userMeal/${response.data.id}`)
+      fetchMeal();
+      setIsEdit(false);
+      // navigate(`/userMeal/${mealId}`)
     } catch (error) {
       console.log(error.message);
     }

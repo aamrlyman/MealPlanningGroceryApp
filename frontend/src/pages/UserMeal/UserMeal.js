@@ -13,29 +13,34 @@ const UserMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
   const [isEdit, setIsEdit] = useState(false);
 
   useEffect(() => {
-    const fetchMeal = async () => {
-      try {
-        let response = await axios.get(
-          `http://127.0.0.1:8000/api/meals/${mealId}/`,
-          {
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-          }
-        );
-        setMeal(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
     fetchMeal();
   }, []);
+  
+  const fetchMeal = async () => {
+    try {
+      let response = await axios.get(
+        `http://127.0.0.1:8000/api/meals/${mealId}/`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      setMeal(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <div>
       {isEdit ? (
-        <EditMeal meal={meal} setIsEdit={setIsEdit} />
+        <EditMeal 
+        meal={meal} 
+        setIsEdit={setIsEdit}
+        fetchMeal={fetchMeal}
+        />
       ) : (
         <DisplayUserMeal
           meal={meal}
