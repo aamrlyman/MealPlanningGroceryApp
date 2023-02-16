@@ -155,6 +155,7 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
 //   alert(`List Copied to Clipboard!\n${list}`)
 //  }, [sortType] 
 //  );
+let counter = 0;
 
   return (
     
@@ -218,7 +219,7 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
           <tbody>
             {groceryList &&
               groceryList.map((item) => (
-                <tr key={item.id + "MC"}>
+                <tr key={`${item.id} + ${item.name}`}>
                   <td><input type="checkbox"/> {item.name}</td>
                   <td>{item.meals.length}</td>
                 </tr>
@@ -241,7 +242,7 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
           <tbody>
             {groceryList &&
               groceryList.map((item) => (
-                <tr key={item.id + "MN"}>
+                <tr key={`${item.id} + ${counter +=1}`}>
                   <td><input type="checkbox"/> {item.name}</td>
                   <td>{item.meals.length}</td>
                   <td>
@@ -267,7 +268,7 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
           <tbody>
             {groceryList &&
               groceryList.map((item) => (
-                <tr key={item.id + "q"}>
+                <tr key={`${item.id} + ${counter +=1.123}`}>
                   <td><input type="checkbox"/> {item.name}</td>
                   <td>
                     {/* <ol> */}
@@ -298,7 +299,7 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
           <tbody>
             {groceryList &&
               groceryList.map((item) => (
-                <tr key={item.id + "e"}>
+                <tr key={`${item.id} + ${counter +=1.321}`}>
                   <td><input type="checkbox"/> {item.name}</td>
                   <td>
                     {/* <ol> */}
