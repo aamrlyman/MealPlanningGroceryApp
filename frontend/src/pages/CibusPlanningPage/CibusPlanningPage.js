@@ -7,12 +7,12 @@ import axios from "axios";
 
 const CibusPlanning = ( props ) => {
   const [user, token] = useAuth();
-
+  const [testContext, setTestContext] = useState("IT WORKED");
 
   return (
     <div className="container">
       <h1>Welcome {user.username}!</h1>
-      <Outlet />
+      <Outlet context={[testContext, setTestContext]}/>
     </div>
   );
 };

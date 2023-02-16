@@ -28,6 +28,7 @@ const DeleteUserMeal = ({meal, fetchMeals}) => {
       console.log(response);
     } catch (error) {
       console.log(error.message);
+      if(error.message === "Request failed with status code 409")
       alert("You can't delete a meal that is being used on a schedule");
     }
   };
