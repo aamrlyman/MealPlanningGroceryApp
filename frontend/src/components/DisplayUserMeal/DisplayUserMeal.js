@@ -12,26 +12,6 @@ const DisplayUserMeal = ({setIsEdit, meal, schedule, getScheduledMeals, schedule
   const { mealId } = useParams();
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const fetchMeal = async () => {
-  //     try {
-  //       let response = await axios.get(
-  //         `http://127.0.0.1:8000/api/meals/${mealId}/`,
-  //         {
-  //           headers: {
-  //             Authorization: "Bearer " + token,
-  //           },
-  //         }
-  //       );
-  //       setMeal(response.data);
-  //       console.log(response.data);
-  //     } catch (error) {
-  //       console.log(error.message);
-  //     }
-  //   };
-  //   fetchMeal();
-  // }, []);
-
   const deleteMeal = async () => {
     try {
       let response = await axios.delete(
@@ -90,28 +70,31 @@ const DisplayUserMeal = ({setIsEdit, meal, schedule, getScheduledMeals, schedule
         </div>
       </div>
    
-      {/* {scheduledMeals &&
-      scheduledMeals.some((sMeal) => sMeal.meal.id == mealId) ? (
-        <RemoveMealFromScheduleButton
-          scheduledMeals={scheduledMeals}
-          meal={
-            scheduledMeals &&
-            scheduledMeals.filter((m) => m.meal.id === mealId)[0]
-          }
-          schedule={schedule}
-          getScheduledMeals={getScheduledMeals}
-        />
-      ) : (
-        <AddMealToScheduleButton
-          scheduledMeals={scheduledMeals}
-          meal={meal}
-          schedule={schedule}
-          getScheduledMeals={getScheduledMeals}
-        />
-      )} */}
       <button type="button" onClick={() => deleteMeal()} >Delete</button>
     </div>
   );
 };
 
 export default DisplayUserMeal;
+
+//I eventually want to be able to remove a meal from the meal list while in meal 
+//I ran into race conditions so I tabled that for now. 
+/* {scheduledMeals &&
+scheduledMeals.some((sMeal) => sMeal.meal.id == mealId) ? (
+  <RemoveMealFromScheduleButton
+    scheduledMeals={scheduledMeals}
+    meal={
+      scheduledMeals &&
+      scheduledMeals.filter((m) => m.meal.id === mealId)[0]
+    }
+    schedule={schedule}
+    getScheduledMeals={getScheduledMeals}
+  />
+) : (
+  <AddMealToScheduleButton
+    scheduledMeals={scheduledMeals}
+    meal={meal}
+    schedule={schedule}
+    getScheduledMeals={getScheduledMeals}
+  />
+)} */
