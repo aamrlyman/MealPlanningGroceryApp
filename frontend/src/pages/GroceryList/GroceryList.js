@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 
@@ -8,15 +8,16 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
   const { mealId } = useParams();
   const [groceryList, setGroceryList] = useState();
   const [sortType, setSortType] = useState("ingredientsOnly");
+  const [addDashes, setAddDashes] = useState(0);
 
 
   function copiedGroceries(array, sortType){
     let copiedList = "";
     switch(sortType){
       case "ingredientsOnly":
-      copiedList = "Ingredients Needed: ";
+      copiedList = "Ingredients";
       for(const index in array){
-        copiedList += `\n -${array[index].name}`
+        copiedList += `\n${array[index].name}`
       };
       return copiedList
   
@@ -148,7 +149,15 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
   }, []);
   //   console.log(scheduledMeals.filter( (m)=> m.meal.id===mealId))
 
+//  useEffect( ()=> {
+//   let list =   copiedGroceries(groceryList, sortType)
+//   navigator.clipboard.writeText(list);
+//   alert(`List Copied to Clipboard!\n${list}`)
+//  }, [sortType] 
+//  );
+
   return (
+    
     <div>
       <ul>
         <li>
@@ -189,7 +198,7 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
             {groceryList &&
               groceryList.map((item) => (
                 <tr key={item.id}>
-                  <td>{item.name}</td>
+                  <td><input type="checkbox"/> {item.name}</td>
                 </tr>
               ))}
           </tbody>
@@ -210,7 +219,7 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
             {groceryList &&
               groceryList.map((item) => (
                 <tr key={item.id + "MC"}>
-                  <td> {item.name}</td>
+                  <td><input type="checkbox"/> {item.name}</td>
                   <td>{item.meals.length}</td>
                 </tr>
               ))}
@@ -233,14 +242,12 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
             {groceryList &&
               groceryList.map((item) => (
                 <tr key={item.id + "MN"}>
-                  <td> {item.name}</td>
+                  <td><input type="checkbox"/> {item.name}</td>
                   <td>{item.meals.length}</td>
                   <td>
-                    {/* <ol> */}
                   {item && item.meals.map((meal)=>
-                   <p>{meal.name}</p> 
+                   <p><Link to={`/meal/${meal.id}`}>{meal.name}</Link></p> 
                   )}
-                    {/* </ol> */}
                   </td>
                 </tr>
               ))}
@@ -261,11 +268,11 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
             {groceryList &&
               groceryList.map((item) => (
                 <tr key={item.id + "q"}>
-                  <td> {item.name}</td>
+                  <td><input type="checkbox"/> {item.name}</td>
                   <td>
                     {/* <ol> */}
                   {item && item.meals.map((meal)=>
-                   <p>{meal.quantity}, {meal.unit}</p> 
+                   <p><Link to={`/meal/${meal.id}`}>{meal.quantity} {meal.unit}</Link></p> 
                   )}
                     {/* </ol> */}
                   </td>
@@ -280,6 +287,9 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
         <table>
           <thead>
             <tr>
+              <td>*Checkboxes will be reset on refresh</td>
+            </tr>
+            <tr>
               <th>Ingredients</th>
               <th>Meals</th>
               <th>Quantities</th>
@@ -289,11 +299,11 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
             {groceryList &&
               groceryList.map((item) => (
                 <tr key={item.id + "e"}>
-                  <td> {item.name}</td>
+                  <td><input type="checkbox"/> {item.name}</td>
                   <td>
                     {/* <ol> */}
                   {item && item.meals.map((meal)=>
-                   <p>{meal.name}</p> 
+                   <p><Link to={`/meal/${meal.id}`}>{meal.name}</Link></p> 
                   )}
                     {/* </ol> */}
                   </td>
@@ -313,14 +323,13 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
       )}
      <button
         onClick={() => {
-          navigator.clipboard.writeText(
-            copiedGroceries(groceryList, sortType)
-          );
+          let list =   copiedGroceries(groceryList, sortType)
+          navigator.clipboard.writeText(list);
+          alert(`List Copied to Clipboard!\n${list}`)
         }}
       >
         Copy List
       </button>
-<textarea></textarea>
     </div>
   );
 };

@@ -32,7 +32,7 @@ const DisplayIngredients = ({ ingredient, fetchIngredients, handleEditClick }) =
           <tr >
             <td>{ingredient.name}</td>
             <td>
-               {ingredient.quantity===0?" ": ": "+ ingredient.quantity + ","} {ingredient.unit==="na"? " ": ingredient.unit}
+               {ingredient.quantity===0?" ": ": "+ ingredient.quantity} {ingredient.unit==="na"? " ": ingredient.unit}
             </td>
             <td>
               <button onClick={() => handleEditClick(ingredient)}>Edit</button>
