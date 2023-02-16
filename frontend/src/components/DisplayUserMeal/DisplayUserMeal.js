@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import IsScheduledIcon from "../IsScheduledIcon/IsScheduledIcon";
 import AddMealToScheduleButton from "../AddMealToScheduleButton/AddMealToScheduleButton";
+import DeleteUserMeal from "../DeleteMeal/DeleteMeal";
 // import RemoveMealFromScheduleButton from "../RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
 import { useNavigate } from "react-router-dom";
 
@@ -66,11 +67,9 @@ const DisplayUserMeal = ({setIsEdit, meal, schedule, getScheduledMeals, schedule
            getScheduledMeals={getScheduledMeals}
          />
       }
-
         </div>
       </div>
-   
-      <button type="button" onClick={() => deleteMeal()} >Delete</button>
+      <DeleteUserMeal meal={meal}/>
     </div>
   );
 };

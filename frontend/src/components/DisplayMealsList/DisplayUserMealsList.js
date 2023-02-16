@@ -3,9 +3,11 @@ import useAuth from "../../hooks/useAuth";
 import IsScheduledIcon from "../IsScheduledIcon/IsScheduledIcon";
 import AddMealToScheduleButton from "../AddMealToScheduleButton/AddMealToScheduleButton";
 import { Link } from "react-router-dom";
+import DeleteUserMeal from "../DeleteMeal/DeleteMeal";
 
-const DisplayScheduledMeals = ({ schedule, meal, getScheduledMeals, scheduledMeals}) => {
+const DisplayScheduledMeals = ({ schedule, meal, getScheduledMeals, scheduledMeals, isDelete, fetchMeals}) => {
   const [user, token] = useAuth();
+
 
   return (
     <tr>
@@ -28,7 +30,9 @@ const DisplayScheduledMeals = ({ schedule, meal, getScheduledMeals, scheduledMea
         meal={meal} 
         getScheduledMeals={getScheduledMeals}
         />
-      </td>
+      </td>   
+    { isDelete && meal && 
+     <td><DeleteUserMeal meal={meal} fetchMeals={fetchMeals}/></td>}
     </tr>
   );
 };
