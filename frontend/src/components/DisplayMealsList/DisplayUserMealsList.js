@@ -5,7 +5,7 @@ import AddMealToScheduleButton from "../AddMealToScheduleButton/AddMealToSchedul
 import { Link } from "react-router-dom";
 import DeleteUserMeal from "../DeleteMeal/DeleteMeal";
 
-const DisplayScheduledMeals = ({ schedule, meal, getScheduledMeals, scheduledMeals, isDelete, fetchMeals}) => {
+const DisplayUserMealList = ({ schedule, meal, getScheduledMeals, scheduledMeals, isDelete, fetchMeals}) => {
   const [user, token] = useAuth();
 
 
@@ -36,4 +36,4 @@ const DisplayScheduledMeals = ({ schedule, meal, getScheduledMeals, scheduledMea
     </tr>
   );
 };
-export default DisplayScheduledMeals;
+export default DisplayUserMealList;

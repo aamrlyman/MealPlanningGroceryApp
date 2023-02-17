@@ -17,6 +17,11 @@ import UserMeal from "./pages/UserMeal/UserMeal";
 import GroceryList from "./pages/GroceryList/GroceryList";
 import NotFound from "./pages/NotFound/NotFound";
 import LandingPage from "./pages/LandingPage/LandingPage";
+import IngredientsOnly from "./pages/GroceryList/IngredientsOnly";
+import MealCount from "./pages/GroceryList/MealCount";
+import Quantities from "./pages/GroceryList/Quantities";
+import MealNames from "./pages/GroceryList/MealNames";
+import Everything from "./pages/GroceryList/Everything";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -26,6 +31,7 @@ import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./utils/PrivateRoute";
 import useAuth from "./hooks/useAuth";
 import ScheduleIdProvider from "./context/scheduleIdContext";
+import Ingredients from "./components/Ingredients/Ingredients";
 
 function App() {
   const [schedule, setSchedule] = useState();
@@ -172,7 +178,54 @@ function App() {
                 <GroceryList schedule={schedule} />
               </PrivateRoute>
             }
+          >
+               <Route
+            path="ingredientsOnly"
+            element={
+              <PrivateRoute>
+                <IngredientsOnly
+                />
+              </PrivateRoute>
+            }
           />
+               <Route
+            path="+MealCount"
+            element={
+              <PrivateRoute>
+                <MealCount
+                />
+              </PrivateRoute>
+            }
+          />
+               <Route
+            path="+MealNames"
+            element={
+              <PrivateRoute>
+                <MealNames
+                />
+              </PrivateRoute>
+            }
+          />
+               <Route
+            path="+quantities"
+            element={
+              <PrivateRoute>
+                <Quantities
+                />
+              </PrivateRoute>
+            }
+          />
+               <Route
+            path="everything"
+            element={
+              <PrivateRoute>
+                <Everything
+                />
+              </PrivateRoute>
+            }
+          />
+            
+            </Route>
         </Route>
         {/* <Route path="landingPage" element={<LandingPage />} /> */}
         <Route path="/register" element={<RegisterPage />} />

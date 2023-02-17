@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Outlet } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 
@@ -187,6 +187,7 @@ let counter = 0;
           </button>
         </li>
       </ul>
+      {/* <Outlet context={[groceryList]} /> */}
 
       {sortType === "ingredientsOnly" ? (
         <table>
