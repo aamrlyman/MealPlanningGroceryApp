@@ -3,6 +3,7 @@ import { useParams, Link, Outlet } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 
+
 const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
   const [user, token] = useAuth();
   const { mealId } = useParams();
@@ -24,7 +25,7 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
       case "+MealCount":
       copiedList = "Ingredients, # of Meals";
       for(const index in array){
-        copiedList += `\n  ${array[index].name}, ${array[index].meals.length}`
+        copiedList += `\n${array[index].name}, ${array[index].meals.length}`
       };
       return copiedList
 
@@ -32,7 +33,7 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
       copiedList = "Ingredients, (Meals)"
       let meals = ""
       for(const index in array){
-        copiedList += `\n - ${array[index].name} (` 
+        copiedList += `\n${array[index].name} (` 
         for(const i in array[index].meals){
           if(i ==! (array[index].meals.length - 1)){
             meals+= ` ${array[index].meals[i].name},`
@@ -50,7 +51,7 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
       copiedList = "Ingredients, (Quantities)"
       let quantities = ""
       for(const index in array){
-        copiedList += `\n - ${array[index].name} (` 
+        copiedList += `\n${array[index].name} (` 
         for(const i in array[index].meals){
           if(i ==! (array[index].meals.length - 1)){
             quantities+= ` ${array[index].meals[i].quantity} ${array[index].meals[i].unit},`
@@ -68,7 +69,7 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
       copiedList = "Ingredients |  Meals  |  Quantities"
       let everything = ""
       for(const index in array){
-        copiedList += `\n - ${array[index].name} (` 
+        copiedList += `\n${array[index].name} (` 
         for(const i in array[index].meals){
           if(i ==! (array[index].meals.length - 1)){
             everything+= ` ${array[index].meals[i].name}: ${array[index].meals[i].quantity} ${array[index].meals[i].unit},`
@@ -162,167 +163,34 @@ let counter = 0;
     <div>
       <ul>
         <li>
-          <button type="button" onClick={() => setSortType("ingredientsOnly")}>
+          <Link to=""><button type="button" onClick={() => setSortType("ingredientsOnly")}>
             Ingredients Only
-          </button>
+          </button></Link>
         </li>
         <li>
-          <button type="button" onClick={() => setSortType("+MealCount")}>
+          <Link to="+MealCount"><button type="button" onClick={() => setSortType("+MealCount")}>
             +MealCount
-          </button>
+          </button></Link>
         </li>
         <li>
-          <button type="button" onClick={() => setSortType("+MealNames")}>
+          <Link to="+MealNames"> <button type="button" onClick={() => setSortType("+MealNames")}>
             +MealNames
-          </button>
+          </button></Link>
         </li>
         <li>
-          <button type="button" onClick={() => setSortType("+quantities")}>
+          <Link to="+quantities"><button type="button" onClick={() => setSortType("+quantities")}>
             +Quantities
-          </button>
+          </button></Link>
         </li>
         <li>
-          <button type="button" onClick={() => setSortType("everything")}>
+          <Link to="everything"><button type="button" onClick={() => setSortType("everything")}>
             Everything
-          </button>
+          </button></Link>
         </li>
-      </ul>
-      {/* <Outlet context={[groceryList]} /> */}
+      </ul> 
+      <p>*Checkboxes will be reset on refresh</p>
+      <Outlet context={[groceryList, sortType]} />
 
-      {sortType === "ingredientsOnly" ? (
-        <table>
-          <thead>
-            <tr>
-              <th>Ingredients</th>
-            </tr>
-          </thead>
-          <tbody>
-            {groceryList &&
-              groceryList.map((item) => (
-                <tr key={item.id}>
-                  <td><input type="checkbox"/> {item.name}</td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-      ) : (
-        ""
-      )}
-
-      {sortType === "+MealCount" ? (
-        <table>
-          <thead>
-            <tr>
-              <th>Ingredients</th>
-              <th>Meals</th>
-            </tr>
-          </thead>
-          <tbody>
-            {groceryList &&
-              groceryList.map((item) => (
-                <tr key={`${item.id} + ${item.name}`}>
-                  <td><input type="checkbox"/> {item.name}</td>
-                  <td>{item.meals.length}</td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-      ) : (
-        ""
-      )}
-
-{sortType === "+MealNames" ? (
-        <table>
-          <thead>
-            <tr>
-              <th>Ingredients</th>
-              <th>Meals</th>
-              <th>Meal Names</th>
-            </tr>
-          </thead>
-          <tbody>
-            {groceryList &&
-              groceryList.map((item) => (
-                <tr key={`${item.id} + ${counter +=1}`}>
-                  <td><input type="checkbox"/> {item.name}</td>
-                  <td>{item.meals.length}</td>
-                  <td>
-                  {item && item.meals.map((meal)=>
-                   <p><Link to={`/meal/${meal.id}`}>{meal.name}</Link></p> 
-                  )}
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-      ) : (
-        ""
-      )}
-   {sortType === "+quantities" ? (
-        <table>
-          <thead>
-            <tr>
-              <th>Ingredients</th>
-              <th>Quantities</th>
-            </tr>
-          </thead>
-          <tbody>
-            {groceryList &&
-              groceryList.map((item) => (
-                <tr key={`${item.id} + ${counter +=1.123}`}>
-                  <td><input type="checkbox"/> {item.name}</td>
-                  <td>
-                    {/* <ol> */}
-                  {item && item.meals.map((meal)=>
-                   <p><Link to={`/meal/${meal.id}`}>{meal.quantity} {meal.unit}</Link></p> 
-                  )}
-                    {/* </ol> */}
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-      ) : (
-        ""
-      )}
-   {sortType === "everything" ? (
-        <table>
-          <thead>
-            <tr>
-              <td>*Checkboxes will be reset on refresh</td>
-            </tr>
-            <tr>
-              <th>Ingredients</th>
-              <th>Meals</th>
-              <th>Quantities</th>
-            </tr>
-          </thead>
-          <tbody>
-            {groceryList &&
-              groceryList.map((item) => (
-                <tr key={`${item.id} + ${counter +=1.321}`}>
-                  <td><input type="checkbox"/> {item.name}</td>
-                  <td>
-                    {/* <ol> */}
-                  {item && item.meals.map((meal)=>
-                   <p><Link to={`/meal/${meal.id}`}>{meal.name}</Link></p> 
-                  )}
-                    {/* </ol> */}
-                  </td>
-                  <td>
-                    {/* <ol> */}
-                  {item && item.meals.map((meal)=>
-                   <p>{meal.quantity} {meal.unit}</p> 
-                  )}
-                    {/* </ol> */}
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-      ) : (
-        ""
-      )}
      <button
         onClick={() => {
           let list =   copiedGroceries(groceryList, sortType)

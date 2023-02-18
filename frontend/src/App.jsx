@@ -179,53 +179,47 @@ function App() {
               </PrivateRoute>
             }
           >
-               <Route
-            path="ingredientsOnly"
-            element={
-              <PrivateRoute>
-                <IngredientsOnly
-                />
-              </PrivateRoute>
-            }
-          />
-               <Route
-            path="+MealCount"
-            element={
-              <PrivateRoute>
-                <MealCount
-                />
-              </PrivateRoute>
-            }
-          />
-               <Route
-            path="+MealNames"
-            element={
-              <PrivateRoute>
-                <MealNames
-                />
-              </PrivateRoute>
-            }
-          />
-               <Route
-            path="+quantities"
-            element={
-              <PrivateRoute>
-                <Quantities
-                />
-              </PrivateRoute>
-            }
-          />
-               <Route
-            path="everything"
-            element={
-              <PrivateRoute>
-                <Everything
-                />
-              </PrivateRoute>
-            }
-          />
-            
-            </Route>
+            <Route
+              path=""
+              element={
+                <PrivateRoute>
+                  <IngredientsOnly />
+                </PrivateRoute>
+              }
+            />
+             <Route
+              path="+MealCount"
+              element={
+                <PrivateRoute>
+                  <MealCount />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="+MealNames"
+              element={
+                <PrivateRoute>
+                  <MealNames />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="+quantities"
+              element={
+                <PrivateRoute>
+                  <Quantities />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="everything"
+              element={
+                <PrivateRoute>
+                  <Everything />
+                </PrivateRoute>
+              }
+            />
+          </Route>
         </Route>
         {/* <Route path="landingPage" element={<LandingPage />} /> */}
         <Route path="/register" element={<RegisterPage />} />
