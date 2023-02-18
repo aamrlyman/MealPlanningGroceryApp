@@ -5,9 +5,9 @@ import axios from "axios";
 import { useOutletContext } from "react-router-dom";
 // import ScheduleIdContext from "../../context/scheduleIdContext";
 
-const MealSchedulePage = ({ schedule, scheduledMeals, getScheduledMeals }) => {
+const MealSchedulePage = () => {
   const [user, token] = useAuth();
-  const [testContext, setTestContext] = useOutletContext();
+  const [schedule, scheduledMeals, getScheduledMeals] = useOutletContext();
 
   const clearSchedule = async (schedule) => {
     try {

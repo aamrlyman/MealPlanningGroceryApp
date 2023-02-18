@@ -34,63 +34,6 @@ import ScheduleIdProvider from "./context/scheduleIdContext";
 import Ingredients from "./components/Ingredients/Ingredients";
 
 function App() {
-  const [schedule, setSchedule] = useState();
-  const [scheduledMeals, setScheduledMeals] = useState();
-  const [user, token] = useAuth();
-
-  useEffect(() => {
-    const getUserSchedule = async () => {
-      try {
-        let response = await axios.get("http://127.0.0.1:8000/api/schedules/", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
-        setSchedule(response.data[0]);
-        getScheduledMeals(response.data[0].id);
-        if (response.data.length < 1) {
-          createUserSchedule();
-          getUserSchedule();
-        }
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    getUserSchedule();
-  }, [token]);
-
-  const createUserSchedule = async () => {
-    try {
-      let response = await axios.post(
-        "http://127.0.0.1:8000/api/schedules/",
-        { user_id: user.id },
-        {
-          headers: {
-            authorization: "Bearer " + token,
-          },
-        }
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-  const getScheduledMeals = async (scheduleId) => {
-    try {
-      let response = await axios.get(
-        `http://127.0.0.1:8000/api/schedules/${scheduleId}/`,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
-      setScheduledMeals(response.data);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
   return (
     <div>
       <Navbar />
@@ -107,11 +50,7 @@ function App() {
             path="/"
             element={
               <PrivateRoute>
-                <MealSchedulePage
-                  schedule={schedule}
-                  scheduledMeals={scheduledMeals}
-                  getScheduledMeals={getScheduledMeals}
-                />
+                <MealSchedulePage />
               </PrivateRoute>
             }
           />
@@ -119,11 +58,7 @@ function App() {
             path="/mealsList"
             element={
               <PrivateRoute>
-                <AllMealsList
-                  schedule={schedule}
-                  scheduledMeals={scheduledMeals}
-                  getScheduledMeals={getScheduledMeals}
-                />
+                <AllMealsList />
               </PrivateRoute>
             }
           />
@@ -131,11 +66,7 @@ function App() {
             path="/meal/:mealId"
             element={
               <PrivateRoute>
-                <DisplayMeal
-                  schedule={schedule}
-                  scheduledMeals={scheduledMeals}
-                  getScheduledMeals={getScheduledMeals}
-                />
+                <DisplayMeal />
               </PrivateRoute>
             }
           />
@@ -151,11 +82,7 @@ function App() {
             path="userMealsList/"
             element={
               <PrivateRoute>
-                <UserMealsList
-                  schedule={schedule}
-                  scheduledMeals={scheduledMeals}
-                  getScheduledMeals={getScheduledMeals}
-                />
+                <UserMealsList />
               </PrivateRoute>
             }
           />
@@ -163,11 +90,7 @@ function App() {
             path="/userMeal/:mealId"
             element={
               <PrivateRoute>
-                <UserMeal
-                  schedule={schedule}
-                  scheduledMeals={scheduledMeals}
-                  getScheduledMeals={getScheduledMeals}
-                />
+                <UserMeal />
               </PrivateRoute>
             }
           />
@@ -175,7 +98,7 @@ function App() {
             path="/groceries"
             element={
               <PrivateRoute>
-                <GroceryList schedule={schedule} />
+                <GroceryList />
               </PrivateRoute>
             }
           >
@@ -187,7 +110,7 @@ function App() {
                 </PrivateRoute>
               }
             />
-             <Route
+            <Route
               path="+MealCount"
               element={
                 <PrivateRoute>

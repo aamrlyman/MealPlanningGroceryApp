@@ -1,10 +1,12 @@
 import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import DisplayMealsList from "../../components/DisplayMealsList/DisplayMealsList";
+import { useOutletContext } from "react-router-dom";
 
-const AllMealsList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
+const AllMealsList = () => {
+  const [schedule, scheduledMeals, getScheduledMeals] = useOutletContext();
   const [meals, setMeals] = useState();
-
+  
   useEffect(() => {
     const fetchMeals = async () => {
       try {
@@ -36,7 +38,7 @@ const AllMealsList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
               <Fragment key={meal.id}>
                 <DisplayMealsList
                   meal={meal}
-                  schedule={schedule}
+                  scheduleId={schedule.id}
                   scheduledMeals={scheduledMeals}
                   getScheduledMeals={getScheduledMeals}
                 />

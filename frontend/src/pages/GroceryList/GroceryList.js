@@ -2,88 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link, Outlet } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import { useOutletContext } from "react-router-dom";
 
 
-const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
-  const [user, token] = useAuth();
-  const { mealId } = useParams();
+const GroceryList = () => {
+  const [schedule] = useOutletContext();
+  const [ user, token] = useAuth();
   const [groceryList, setGroceryList] = useState();
   const [sortType, setSortType] = useState("ingredientsOnly");
   const [addDashes, setAddDashes] = useState(0);
 
-
-  function copiedGroceries(array, sortType){
-    let copiedList = "";
-    switch(sortType){
-      case "ingredientsOnly":
-      copiedList = "Ingredients";
-      for(const index in array){
-        copiedList += `\n${array[index].name}`
-      };
-      return copiedList
-  
-      case "+MealCount":
-      copiedList = "Ingredients, # of Meals";
-      for(const index in array){
-        copiedList += `\n${array[index].name}, ${array[index].meals.length}`
-      };
-      return copiedList
-
-      case "+MealNames":
-      copiedList = "Ingredients, (Meals)"
-      let meals = ""
-      for(const index in array){
-        copiedList += `\n${array[index].name} (` 
-        for(const i in array[index].meals){
-          if(i ==! (array[index].meals.length - 1)){
-            meals+= ` ${array[index].meals[i].name},`
-          }
-          else(
-            meals+= ` ${array[index].meals[i].name}`
-          )
-        }
-        copiedList += `${meals})`;
-        meals="";
-      }
-      return copiedList
-    
-      case "+quantities":
-      copiedList = "Ingredients, (Quantities)"
-      let quantities = ""
-      for(const index in array){
-        copiedList += `\n${array[index].name} (` 
-        for(const i in array[index].meals){
-          if(i ==! (array[index].meals.length - 1)){
-            quantities+= ` ${array[index].meals[i].quantity} ${array[index].meals[i].unit},`
-          }
-          else(
-            quantities+= ` ${array[index].meals[i].quantity} ${array[index].meals[i].unit}`
-          )
-        }
-        copiedList += `${quantities})`;
-        quantities="";
-      }
-      return copiedList
-
-      case "everything":
-      copiedList = "Ingredients |  Meals  |  Quantities"
-      let everything = ""
-      for(const index in array){
-        copiedList += `\n${array[index].name} (` 
-        for(const i in array[index].meals){
-          if(i ==! (array[index].meals.length - 1)){
-            everything+= ` ${array[index].meals[i].name}: ${array[index].meals[i].quantity} ${array[index].meals[i].unit},`
-          }
-          else(
-            everything+= ` ${array[index].meals[i].name}: ${array[index].meals[i].quantity} ${array[index].meals[i].unit}`
-          )
-        }
-        copiedList += `${everything})`;
-        everything="";
-      }
-      return copiedList
-    }
-  }
 
   function eliminateDuplicates(arr) {
     let namesOnly = arr.map((el) => el.name.toLowerCase());
@@ -130,10 +58,10 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
   }
 
   useEffect(() => {
-    const fetchGroceries = async () => {
+    const fetchGroceries = async (schedule) => {
       try {
         let response = await axios.get(
-          `http://127.0.0.1:8000/api/ingredients/grocery_list/1/`,
+          `http://127.0.0.1:8000/api/ingredients/grocery_list/${schedule.id}/`,
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -146,7 +74,7 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
         console.log(error.message);
       }
     };
-    fetchGroceries();
+    fetchGroceries(schedule);
   }, []);
   //   console.log(scheduledMeals.filter( (m)=> m.meal.id===mealId))
 
@@ -156,7 +84,80 @@ const GroceryList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
 //   alert(`List Copied to Clipboard!\n${list}`)
 //  }, [sortType] 
 //  );
-let counter = 0;
+
+function copiedGroceries(array, sortType){
+  let copiedList = "";
+  switch(sortType){
+    case "ingredientsOnly":
+    copiedList = "Ingredients";
+    for(const index in array){
+      copiedList += `\n${array[index].name}`
+    };
+    return copiedList
+
+    case "+MealCount":
+    copiedList = "Ingredients, # of Meals";
+    for(const index in array){
+      copiedList += `\n${array[index].name}, ${array[index].meals.length}`
+    };
+    return copiedList
+
+    case "+MealNames":
+    copiedList = "Ingredients, (Meals)"
+    let meals = ""
+    for(const index in array){
+      copiedList += `\n${array[index].name} (` 
+      for(const i in array[index].meals){
+        if(i ==! (array[index].meals.length - 1)){
+          meals+= ` ${array[index].meals[i].name},`
+        }
+        else(
+          meals+= ` ${array[index].meals[i].name}`
+        )
+      }
+      copiedList += `${meals})`;
+      meals="";
+    }
+    return copiedList
+  
+    case "+quantities":
+    copiedList = "Ingredients, (Quantities)"
+    let quantities = ""
+    for(const index in array){
+      copiedList += `\n${array[index].name} (` 
+      for(const i in array[index].meals){
+        if(i ==! (array[index].meals.length - 1)){
+          quantities+= ` ${array[index].meals[i].quantity} ${array[index].meals[i].unit},`
+        }
+        else(
+          quantities+= ` ${array[index].meals[i].quantity} ${array[index].meals[i].unit}`
+        )
+      }
+      copiedList += `${quantities})`;
+      quantities="";
+    }
+    return copiedList
+
+    case "everything":
+    copiedList = "Ingredients |  Meals  |  Quantities"
+    let everything = ""
+    for(const index in array){
+      copiedList += `\n${array[index].name} (` 
+      for(const i in array[index].meals){
+        if(i ==! (array[index].meals.length - 1)){
+          everything+= ` ${array[index].meals[i].name}: ${array[index].meals[i].quantity} ${array[index].meals[i].unit},`
+        }
+        else(
+          everything+= ` ${array[index].meals[i].name}: ${array[index].meals[i].quantity} ${array[index].meals[i].unit}`
+        )
+      }
+      copiedList += `${everything})`;
+      everything="";
+    }
+    return copiedList
+  }
+}
+
 
   return (
     

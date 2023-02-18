@@ -5,8 +5,12 @@ import DisplayUserMeal from "../../components/DisplayUserMeal/DisplayUserMeal";
 import Ingredients from "../../components/Ingredients/Ingredients";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import { useOutletContext } from "react-router-dom";
 
-const UserMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
+
+const UserMeal = () => {
+  const [schedule, scheduledMeals, getScheduledMeals] = useOutletContext();
+
   const [user, token] = useAuth();
   const { mealId } = useParams();
   const [meal, setMeal] = useState();
@@ -44,7 +48,7 @@ const UserMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
       ) : (
         <DisplayUserMeal
           meal={meal}
-          scheduleId={schedule.id}
+          scheduleId={schedule && schedule.id}
           getScheduledMeals={getScheduledMeals}
           scheduledMeals={scheduledMeals}
           setIsEdit={setIsEdit}

@@ -2,8 +2,10 @@ import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import DisplayUserMealsList from "../../components/DisplayMealsList/DisplayUserMealsList";
 import useAuth from "../../hooks/useAuth";
+import { useOutletContext } from "react-router-dom";
 
-const UserMealsList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
+const UserMealsList = () => {
+  const [schedule, scheduledMeals, getScheduledMeals] = useOutletContext();
   const [meals, setMeals] = useState();
   const [user, token] = useAuth();
   const [isDelete, setIsDelete]= useState(false);
@@ -48,7 +50,7 @@ const UserMealsList = ({ schedule, getScheduledMeals, scheduledMeals }) => {
               <Fragment key={meal.id}>
                 <DisplayUserMealsList
                   meal={meal}
-                  schedule={schedule}
+                  scheduleId={schedule.id}
                   scheduledMeals={scheduledMeals}
                   getScheduledMeals={getScheduledMeals}
                   isDelete={isDelete}

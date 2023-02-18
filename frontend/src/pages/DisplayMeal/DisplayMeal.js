@@ -7,8 +7,10 @@ import IsScheduledIcon from "../../components/IsScheduledIcon/IsScheduledIcon";
 import AddMealToScheduleButton from "../../components/AddMealToScheduleButton/AddMealToScheduleButton";
 import RemoveMealFromScheduleButton from "../../components/RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
 import DisplayAllMealIngredients from "../../components/DisplayAllMealIngredients/DisplayAllMealIngredients";
+import { useOutletContext } from "react-router-dom";
 
-const DisplayMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
+const DisplayMeal = () => {
+  const [schedule, scheduledMeals, getScheduledMeals] = useOutletContext();
   const [user, token] = useAuth();
   const { mealId } = useParams();
   const [meal, setMeal] = useState();
@@ -32,6 +34,20 @@ const DisplayMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
     };
     fetchMeals();
   }, []);
+
+  // function getId(array, id){
+  //   while(!array)
+  //   {console.log("loading") }
+  //   let obj = array.filter((i)=>i.meal.id === id);
+  //   console.log(obj.id);
+  //   return obj.id
+  // } 
+  
+  // let scheduledMeaId = getId(scheduledMeals,mealId)
+  // // scheduledMeals &&
+  // scheduledMeals.filter((m) => m.meal.id === mealId)[0].id
+
+
 
   return (
     <div>
@@ -69,26 +85,26 @@ const DisplayMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
           getScheduledMeals={getScheduledMeals}
         />
       )}
-      {/* scheduledMeals.some((sMeal) => sMeal.meal.id == mealId) ? (
-        <RemoveMealFromScheduleButton
-          scheduledMeals={scheduledMeals}
-          meal={
-            scheduledMeals &&
-            scheduledMeals.filter((m) => m.meal.id === mealId)[0]
-          }
-          schedule={schedule}
-          getScheduledMeals={getScheduledMeals}
-        />
-      ) : (
-        <AddMealToScheduleButton
-          scheduledMeals={scheduledMeals}
-          meal={meal}
-          schedule={schedule}
-          getScheduledMeals={getScheduledMeals}
-        />
-      )} */}
+
     </div>
   );
 };
 
 export default DisplayMeal;
+
+
+// {scheduledMeals && scheduledMeals.some((sMeal) => sMeal.meal.id == mealId) ? (
+//   <RemoveMealFromScheduleButton
+//     scheduledMeals={scheduledMeals}
+//     scheduledMealId={scheduledMeaId}
+//     scheduleId={schedule.id}
+//     getScheduledMeals={getScheduledMeals}
+//   />
+//   ) : (
+//     <AddMealToScheduleButton
+//     scheduledMeals={scheduledMeals}
+//     meal={meal}
+//     scheduleId={schedule.id}
+//     getScheduledMeals={getScheduledMeals}
+//     />
+//   )}

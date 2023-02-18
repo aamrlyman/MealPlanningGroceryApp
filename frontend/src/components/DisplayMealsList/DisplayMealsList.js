@@ -5,7 +5,7 @@ import IsScheduledIcon from "../IsScheduledIcon/IsScheduledIcon";
 import AddMealToScheduleButton from "../AddMealToScheduleButton/AddMealToScheduleButton";
 import { Link } from "react-router-dom";
 
-const DisplayScheduledMeals = ({ schedule, meal, getScheduledMeals, scheduledMeals}) => {
+const DisplayScheduledMeals = ({ scheduleId, meal, getScheduledMeals, scheduledMeals}) => {
   const [user, token] = useAuth();
 
   return (
@@ -24,7 +24,7 @@ const DisplayScheduledMeals = ({ schedule, meal, getScheduledMeals, scheduledMea
         prep time: { meal && meal.prep_time_hours} hrs, { meal && meal.prep_time_minutes} min.
         cook time: { meal && meal.cook_time_hours} hrs, { meal && meal.prep_cook_minutes} min
         <AddMealToScheduleButton
-        scheduleId={schedule.id} 
+        scheduleId={scheduleId} 
         scheduledMeals={scheduledMeals}
         meal={meal} 
         getScheduledMeals={getScheduledMeals}
