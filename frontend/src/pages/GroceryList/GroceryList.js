@@ -163,7 +163,7 @@ let counter = 0;
     <div>
       <ul>
         <li>
-          <Link to=""><button type="button" onClick={() => setSortType("ingredientsOnly")}>
+          <Link to="/groceries"><button type="button" onClick={() => setSortType("ingredientsOnly")}>
             Ingredients Only
           </button></Link>
         </li>

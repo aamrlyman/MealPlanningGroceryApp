@@ -24,7 +24,7 @@ const DisplayScheduledMeals = ({ schedule, meal, getScheduledMeals, scheduledMea
         prep time: { meal && meal.prep_time_hours} hrs, { meal && meal.prep_time_minutes} min.
         cook time: { meal && meal.cook_time_hours} hrs, { meal && meal.prep_cook_minutes} min
         <AddMealToScheduleButton
-        schedule={schedule} 
+        scheduleId={schedule.id} 
         scheduledMeals={scheduledMeals}
         meal={meal} 
         getScheduledMeals={getScheduledMeals}

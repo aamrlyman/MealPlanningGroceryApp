@@ -2,9 +2,9 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 
 const RemoveMealFromScheduleButton = ({
-  meal,
+  scheduledMealId,
   getScheduledMeals,
-  schedule,
+  scheduleId,
 }) => {
   const [user, token] = useAuth();
 
@@ -18,7 +18,7 @@ const RemoveMealFromScheduleButton = ({
           },
         }
       );
-      getScheduledMeals(schedule);
+      getScheduledMeals(scheduleId);
       console.log(response);
     } catch (error) {
       console.log(error.message);
@@ -26,7 +26,10 @@ const RemoveMealFromScheduleButton = ({
   };
 
   return (
-    <button type="submit" onClick={() => removeMealFromSchedule(meal.id)}>
+    <button
+      type="button"
+      onClick={() => removeMealFromSchedule(scheduledMealId)}
+    >
       X
     </button>
   );

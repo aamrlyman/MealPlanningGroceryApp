@@ -65,7 +65,7 @@ const DisplayMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
         <AddMealToScheduleButton
           scheduledMeals={scheduledMeals}
           meal={meal}
-          schedule={schedule}
+          scheduleId={schedule.id} 
           getScheduledMeals={getScheduledMeals}
         />
       )}

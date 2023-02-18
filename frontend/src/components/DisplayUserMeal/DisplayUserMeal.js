@@ -8,7 +8,7 @@ import DeleteUserMeal from "../DeleteMeal/DeleteMeal";
 // import RemoveMealFromScheduleButton from "../RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
 import { useNavigate } from "react-router-dom";
 
-const DisplayUserMeal = ({setIsEdit, meal, schedule, getScheduledMeals, scheduledMeals }) => {
+const DisplayUserMeal = ({setIsEdit, meal, scheduleId, getScheduledMeals, scheduledMeals }) => {
   const [user, token] = useAuth();
   const { mealId } = useParams();
   const navigate = useNavigate();
@@ -63,7 +63,7 @@ const DisplayUserMeal = ({setIsEdit, meal, schedule, getScheduledMeals, schedule
         { meal &&
            <AddMealToScheduleButton
            meal={meal}
-           schedule={schedule}
+           scheduleId={scheduleId} 
            getScheduledMeals={getScheduledMeals}
          />
       }

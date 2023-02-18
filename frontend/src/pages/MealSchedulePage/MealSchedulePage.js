@@ -50,7 +50,7 @@ const MealSchedulePage = ({ schedule, scheduledMeals, getScheduledMeals }) => {
                 <DisplayScheduledMeals
                   meal={meal}
                   getScheduledMeals={getScheduledMeals}
-                  schedule={schedule}
+                  scheduleId={schedule.id}
                   scheduledMeals={scheduledMeals}
                 />
               </Fragment>

@@ -1,16 +1,16 @@
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 
-const AddMealToScheduleButton = ({ schedule, meal, getScheduledMeals }) => {
+const AddMealToScheduleButton = ({ scheduleId, meal, getScheduledMeals }) => {
   const [user, token] = useAuth();
 
-  const addMealToSchedule = async (schedule, meal, evnet) => {
+  const addMealToSchedule = async (scheduleId, meal, event) => {
     try {
       let response = await axios.post(
-        `http://127.0.0.1:8000/api/schedules/${schedule.id}/`,
+        `http://127.0.0.1:8000/api/schedules/${scheduleId}/`,
         {
           meal_id: meal.id,
-          schedule_id: schedule.id,
+          schedule_id: scheduleId,
           user_id: user.id,
         },
         {
@@ -19,7 +19,7 @@ const AddMealToScheduleButton = ({ schedule, meal, getScheduledMeals }) => {
           },
         }
       );
-      getScheduledMeals(schedule);
+      getScheduledMeals(scheduleId);
       console.log(response);
     } catch (error) {
       console.log(error.message);
@@ -27,7 +27,7 @@ const AddMealToScheduleButton = ({ schedule, meal, getScheduledMeals }) => {
   };
 
   return (
-    <button onClick={(event) => addMealToSchedule(schedule, meal, event)}>
+    <button onClick={(event) => addMealToSchedule(scheduleId, meal, event)}>
       Add
     </button>
   );

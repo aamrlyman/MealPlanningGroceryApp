@@ -47,7 +47,7 @@ function App() {
           },
         });
         setSchedule(response.data[0]);
-        getScheduledMeals(response.data[0]);
+        getScheduledMeals(response.data[0].id);
         if (response.data.length < 1) {
           createUserSchedule();
           getUserSchedule();
@@ -75,10 +75,10 @@ function App() {
       console.log(error.message);
     }
   };
-  const getScheduledMeals = async (schedule) => {
+  const getScheduledMeals = async (scheduleId) => {
     try {
       let response = await axios.get(
-        `http://127.0.0.1:8000/api/schedules/${schedule.id}/`,
+        `http://127.0.0.1:8000/api/schedules/${scheduleId}/`,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -180,7 +180,7 @@ function App() {
             }
           >
             <Route
-              path=""
+              path="/groceries"
               element={
                 <PrivateRoute>
                   <IngredientsOnly />

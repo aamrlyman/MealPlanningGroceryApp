@@ -3,7 +3,7 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import RemoveMealFromScheduleButton from "../../components/RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
 
-const DisplayScheduledMeals = ({ meal, getScheduledMeals, schedule, scheduledMeals }) => {
+const DisplayScheduledMeals = ({ meal, getScheduledMeals, scheduleId, scheduledMeals }) => {
   const [user, token] = useAuth();
   const removeMealFromSchedule = async (scheduledMealId) => {
     try {
@@ -15,7 +15,7 @@ const DisplayScheduledMeals = ({ meal, getScheduledMeals, schedule, scheduledMea
           },
         }
       );
-      getScheduledMeals(schedule);
+      getScheduledMeals(scheduleId);
       console.log(response);
     } catch (error) {
       console.log(error.message);
@@ -33,7 +33,7 @@ const DisplayScheduledMeals = ({ meal, getScheduledMeals, schedule, scheduledMea
           },
         }
       );
-      getScheduledMeals(schedule);
+      getScheduledMeals(scheduleId);
       console.log(response);
     } catch (error) {
       console.log(error.message);
@@ -58,8 +58,8 @@ const DisplayScheduledMeals = ({ meal, getScheduledMeals, schedule, scheduledMea
         {meal.meal.prep_time_minutes} min. cook time:{" "}
         {meal.meal.cook_time_hours} hrs, {meal.meal.prep_cook_minutes} min
         <RemoveMealFromScheduleButton 
-        schedule={schedule}
-        meal={meal}
+        scheduleId={scheduleId}
+        scheduledMealId={meal.id}
         getScheduledMeals={getScheduledMeals}
         scheduledMeals={scheduledMeals}
         />

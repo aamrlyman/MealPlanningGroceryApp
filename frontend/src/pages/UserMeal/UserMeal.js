@@ -44,7 +44,7 @@ const UserMeal = ({ schedule, getScheduledMeals, scheduledMeals }) => {
       ) : (
         <DisplayUserMeal
           meal={meal}
-          schedule={schedule}
+          scheduleId={schedule.id}
           getScheduledMeals={getScheduledMeals}
           scheduledMeals={scheduledMeals}
           setIsEdit={setIsEdit}
