@@ -12,7 +12,6 @@ const GroceryList = () => {
   const [sortType, setSortType] = useState("ingredientsOnly");
   const [addDashes, setAddDashes] = useState(0);
 
-
   function eliminateDuplicates(arr) {
     let namesOnly = arr.map((el) => el.name.toLowerCase());
     let result = namesOnly

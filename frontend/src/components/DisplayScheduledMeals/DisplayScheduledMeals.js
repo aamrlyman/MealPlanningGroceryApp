@@ -3,24 +3,8 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import RemoveMealFromScheduleButton from "../../components/RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
 
-const DisplayScheduledMeals = ({ meal, getScheduledMeals, scheduleId, scheduledMeals }) => {
+const DisplayScheduledMeals = ({ meal, getScheduledMeals, scheduleId, scheduledMeals, removeMealFromSchedule }) => {
   const [user, token] = useAuth();
-  const removeMealFromSchedule = async (scheduledMealId) => {
-    try {
-      let response = await axios.delete(
-        `http://127.0.0.1:8000/api/schedules/scheduled_meal/${scheduledMealId}/`,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
-      getScheduledMeals(scheduleId);
-      console.log(response);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
 
   const isCookedToggle = async (scheduledMealId) => {
     try {
@@ -57,12 +41,16 @@ const DisplayScheduledMeals = ({ meal, getScheduledMeals, scheduleId, scheduledM
         prep time: {meal.meal.prep_time_hours} hrs,{" "}
         {meal.meal.prep_time_minutes} min. cook time:{" "}
         {meal.meal.cook_time_hours} hrs, {meal.meal.prep_cook_minutes} min
-        <RemoveMealFromScheduleButton 
+    
+        {/* <RemoveMealFromScheduleButton 
         scheduleId={scheduleId}
         scheduledMealId={meal.id}
         getScheduledMeals={getScheduledMeals}
         scheduledMeals={scheduledMeals}
-        />
+        /> */}
+      </td>
+      <td>
+        <button onClick={()=> removeMealFromSchedule(meal.id, scheduleId, getScheduledMeals)}>X</button>
       </td>
     </tr>
   );

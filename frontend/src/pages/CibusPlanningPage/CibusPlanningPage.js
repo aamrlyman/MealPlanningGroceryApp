@@ -4,7 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import { Outlet } from "react-router-dom";
 import axios from "axios";
 
-const CibusPlanning = ( props ) => {
+const CibusPlanning = (props) => {
   const [schedule, setSchedule] = useState();
   const [scheduledMeals, setScheduledMeals] = useState();
   const [user, token] = useAuth();
@@ -56,7 +56,36 @@ const CibusPlanning = ( props ) => {
           },
         }
       );
+      console.log(response.data);
       setScheduledMeals(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  // function removeMealFromScheduleMealView(mealId) {
+  //   let id = scheduledMeals
+  //     .filter((sMeal) => sMeal.meal.id === mealId)[0]
+  //     .id.then(removeMealFromSchedule(id, schedule.id, getScheduledMeals));
+  // }
+
+  const removeMealFromSchedule = async (
+    scheduledMealId,
+    scheduleId,
+    afterDelete
+  ) => {
+    try {
+      let response = await axios.delete(
+        `http://127.0.0.1:8000/api/schedules/scheduled_meal/${scheduledMealId}/`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      afterDelete(scheduleId);
+      // getScheduledMeals(scheduleId);
+      console.log(response);
     } catch (error) {
       console.log(error.message);
     }
@@ -66,7 +95,14 @@ const CibusPlanning = ( props ) => {
   return (
     <div className="container">
       <h1>Welcome {user.username}!</h1>
-      <Outlet context={[schedule, scheduledMeals, getScheduledMeals]}/>
+      <Outlet
+        context={[
+          schedule,
+          scheduledMeals,
+          getScheduledMeals,
+          removeMealFromSchedule
+        ]}
+      />
     </div>
   );
 };

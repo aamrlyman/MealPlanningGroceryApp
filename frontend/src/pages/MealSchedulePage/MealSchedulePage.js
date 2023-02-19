@@ -7,7 +7,7 @@ import { useOutletContext } from "react-router-dom";
 
 const MealSchedulePage = () => {
   const [user, token] = useAuth();
-  const [schedule, scheduledMeals, getScheduledMeals] = useOutletContext();
+  const [schedule, scheduledMeals, getScheduledMeals, removeMealFromSchedule] = useOutletContext();
 
   const clearSchedule = async (schedule) => {
     try {
@@ -52,6 +52,7 @@ const MealSchedulePage = () => {
                   getScheduledMeals={getScheduledMeals}
                   scheduleId={schedule.id}
                   scheduledMeals={scheduledMeals}
+                  removeMealFromSchedule={removeMealFromSchedule}
                 />
               </Fragment>
             ))}

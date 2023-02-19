@@ -4,7 +4,7 @@ import DisplayMealsList from "../../components/DisplayMealsList/DisplayMealsList
 import { useOutletContext } from "react-router-dom";
 
 const AllMealsList = () => {
-  const [schedule, scheduledMeals, getScheduledMeals] = useOutletContext();
+  const [schedule, scheduledMeals, getScheduledMeals, removeMealFromSchedule] = useOutletContext();
   const [meals, setMeals] = useState();
   
   useEffect(() => {
@@ -38,9 +38,10 @@ const AllMealsList = () => {
               <Fragment key={meal.id}>
                 <DisplayMealsList
                   meal={meal}
-                  scheduleId={schedule.id}
+                  scheduleId={schedule && schedule.id}
                   scheduledMeals={scheduledMeals}
                   getScheduledMeals={getScheduledMeals}
+                  removeMealFromSchedule={removeMealFromSchedule}
                 />
               </Fragment>
             ))}
