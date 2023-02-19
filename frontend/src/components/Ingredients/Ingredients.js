@@ -18,6 +18,8 @@ const Ingredients = ({ meal }) => {
     quantity: 0,
     meal_id: mealId,
   });
+  const [isAddIngredient, setIsAddIngredient] = useState(false);
+
 
   async function fetchIngredients() {
         try {
@@ -83,12 +85,19 @@ const Ingredients = ({ meal }) => {
           )
 
         ))}
-      <AddIngredient
-        key={meal.id + "add"}
-        meal={meal}
-        fetchIngredients={fetchIngredients}
-        // style={{visibility: "hidden"}} not sure how to do this yet
-      />
+    { !isAddIngredient?  (
+      <button type="button" onClick={()=>setIsAddIngredient(!isAddIngredient)}>+</button>
+    )
+    :
+(    
+  <AddIngredient
+    key={meal.id + "add"}
+    meal={meal}
+    fetchIngredients={fetchIngredients}
+    isAddIngredient={isAddIngredient}
+    setIsAddIngredient={setIsAddIngredient}
+    />
+  )}
     </div>
   );
 };

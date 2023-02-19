@@ -12,7 +12,7 @@ let initialValues = {
     meal_id:null
 };
 
-const AddIngredient = ({ fetchIngredients }) => {
+const AddIngredient = ({ fetchIngredients, isAddIngredient, setIsAddIngredient }) => {
   const {mealId} = useParams();
   const [user, token] = useAuth();
   const navigate = useNavigate();
@@ -68,6 +68,7 @@ formData.meal_id = mealId;
         ></input>
 
         <button type="submit">Add</button>
+        <button type="button" onClick={()=>setIsAddIngredient(!isAddIngredient)}>X</button>
       </form>
     </div>
   );

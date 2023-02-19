@@ -9,26 +9,27 @@ const CibusPlanning = (props) => {
   const [scheduledMeals, setScheduledMeals] = useState();
   const [user, token] = useAuth();
 
-  useEffect(() => {
-    const getUserSchedule = async () => {
-      try {
-        let response = await axios.get("http://127.0.0.1:8000/api/schedules/", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
-        setSchedule(response.data[0]);
-        getScheduledMeals(response.data[0] && response.data[0].id);
-        if (response.data.length < 1) {
-          createUserSchedule();
-          getUserSchedule();
-        }
-      } catch (error) {
-        console.log(error.message);
+  const getUserSchedule = async () => {
+    try {
+      let response = await axios.get("http://127.0.0.1:8000/api/schedules/", {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      setSchedule(response.data[0]);
+      getScheduledMeals(response.data[0] && response.data[0].id);
+      if (response.data.length < 1) {
+        createUserSchedule();
+        getUserSchedule();
       }
-    };
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  useEffect(() => {
     getUserSchedule();
   }, [token]);
+  
 
   const createUserSchedule = async () => {
     try {
@@ -62,12 +63,6 @@ const CibusPlanning = (props) => {
       console.log(error.message);
     }
   };
-
-  // function removeMealFromScheduleMealView(mealId) {
-  //   let id = scheduledMeals
-  //     .filter((sMeal) => sMeal.meal.id === mealId)[0]
-  //     .id.then(removeMealFromSchedule(id, schedule.id, getScheduledMeals));
-  // }
 
   const removeMealFromSchedule = async (
     scheduledMealId,
@@ -118,7 +113,8 @@ const CibusPlanning = (props) => {
           scheduledMeals,
           getScheduledMeals,
           removeMealFromSchedule,
-          clearSchedule
+          clearSchedule,
+          getUserSchedule
         ]}
       />
     </div>

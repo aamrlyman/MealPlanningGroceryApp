@@ -51,13 +51,12 @@ const UserMeal = () => {
           removeMealFromSchedule={removeMealFromSchedule}
         />
       )}
-      {meal ? (
+      
+      {meal && (
         <div>
           <h2>Ingredients</h2>
           <Ingredients key={mealId + "ing"} meal={meal} />
         </div>
-      ) : (
-        ""
       )}
     </div>
   );

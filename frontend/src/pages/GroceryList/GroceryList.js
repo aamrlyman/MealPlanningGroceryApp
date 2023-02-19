@@ -6,7 +6,7 @@ import { useOutletContext } from "react-router-dom";
 
 
 const GroceryList = () => {
-  const [schedule] = useOutletContext();
+  const [schedule, getUserSchedule] = useOutletContext();
   const [ user, token] = useAuth();
   const [groceryList, setGroceryList] = useState();
   const [sortType, setSortType] = useState("ingredientsOnly");
@@ -57,24 +57,25 @@ const GroceryList = () => {
   }
 
   useEffect(() => {
-    const fetchGroceries = async (schedule) => {
+    const fetchGroceries = async (scheduleId) => {
+        
       try {
-        let response = await axios.get(
-          `http://127.0.0.1:8000/api/ingredients/grocery_list/${schedule.id}/`,
-          {
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-          }
-        );
-        setGroceryList(sortedGroceryList(response.data));
-        console.log(response.data);
-      } catch (error) {
-        console.log(error.message);
+          let response = await axios.get(
+            `http://127.0.0.1:8000/api/ingredients/grocery_list/${scheduleId}/`,
+            {
+              headers: {
+                Authorization: "Bearer " + token,
+              },
+            }
+          );
+          setGroceryList(sortedGroceryList(response.data));
+          console.log(response.data);
+        } catch (error) {
+          console.log(error.message);
+        }
       }
-    };
-    fetchGroceries(schedule);
-  }, []);
+     fetchGroceries(schedule.id);
+  },[]);
   //   console.log(scheduledMeals.filter( (m)=> m.meal.id===mealId))
 
 //  useEffect( ()=> {
