@@ -7,9 +7,9 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { useOutletContext } from "react-router-dom";
 
-
 const UserMeal = () => {
-  const [schedule, scheduledMeals, getScheduledMeals, removeMealFromSchedule] = useOutletContext();
+  const [schedule, scheduledMeals, getScheduledMeals, removeMealFromSchedule] =
+    useOutletContext();
 
   const [user, token] = useAuth();
   const { mealId } = useParams();
@@ -19,7 +19,7 @@ const UserMeal = () => {
   useEffect(() => {
     fetchMeal();
   }, []);
-  
+
   const fetchMeal = async () => {
     try {
       let response = await axios.get(
@@ -40,11 +40,7 @@ const UserMeal = () => {
   return (
     <div>
       {isEdit ? (
-        <EditMeal 
-        meal={meal} 
-        setIsEdit={setIsEdit}
-        fetchMeal={fetchMeal}
-        />
+        <EditMeal meal={meal} setIsEdit={setIsEdit} fetchMeal={fetchMeal} />
       ) : (
         <DisplayUserMeal
           meal={meal}

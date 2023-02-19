@@ -91,6 +91,23 @@ const CibusPlanning = (props) => {
     }
   };
 
+  const clearSchedule = async (schedule) => {
+    try {
+      let response = await axios.delete(
+        `http://127.0.0.1:8000/api/schedules/${schedule.id}/`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      // getScheduledMeals(schedule);
+      setScheduledMeals(null)
+      console.log(response);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <div className="container">
@@ -100,7 +117,8 @@ const CibusPlanning = (props) => {
           schedule,
           scheduledMeals,
           getScheduledMeals,
-          removeMealFromSchedule
+          removeMealFromSchedule,
+          clearSchedule
         ]}
       />
     </div>

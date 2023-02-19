@@ -52,7 +52,7 @@ const UserMealsList = () => {
               <Fragment key={meal.id}>
                 <DisplayUserMealsList
                   meal={meal}
-                  scheduleId={schedule.id}
+                  scheduleId={ schedule && schedule.id}
                   scheduledMeals={scheduledMeals}
                   getScheduledMeals={getScheduledMeals}
                   isDelete={isDelete}
