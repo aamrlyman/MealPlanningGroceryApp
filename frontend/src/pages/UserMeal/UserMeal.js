@@ -9,7 +9,7 @@ import { useOutletContext } from "react-router-dom";
 
 
 const UserMeal = () => {
-  const [schedule, scheduledMeals, getScheduledMeals] = useOutletContext();
+  const [schedule, scheduledMeals, getScheduledMeals, removeMealFromSchedule] = useOutletContext();
 
   const [user, token] = useAuth();
   const { mealId } = useParams();
@@ -52,6 +52,7 @@ const UserMeal = () => {
           getScheduledMeals={getScheduledMeals}
           scheduledMeals={scheduledMeals}
           setIsEdit={setIsEdit}
+          removeMealFromSchedule={removeMealFromSchedule}
         />
       )}
       {meal ? (

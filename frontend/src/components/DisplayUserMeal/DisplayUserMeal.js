@@ -8,7 +8,14 @@ import DeleteUserMeal from "../DeleteMeal/DeleteMeal";
 // import RemoveMealFromScheduleButton from "../RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
 import { useNavigate } from "react-router-dom";
 
-const DisplayUserMeal = ({setIsEdit, meal, scheduleId, getScheduledMeals, scheduledMeals }) => {
+const DisplayUserMeal = ({
+  setIsEdit,
+  meal,
+  scheduleId,
+  getScheduledMeals,
+  scheduledMeals,
+  removeMealFromSchedule,
+}) => {
   const [user, token] = useAuth();
   const { mealId } = useParams();
   const navigate = useNavigate();
@@ -23,14 +30,13 @@ const DisplayUserMeal = ({setIsEdit, meal, scheduleId, getScheduledMeals, schedu
           },
         }
       );
-      navigate("/userMealsList/")
+      navigate("/userMealsList/");
       console.log(response);
     } catch (error) {
       console.log(error.message);
       alert("You can't delete a meal that is being used on a schedule");
     }
   };
-
 
   return (
     <div>
@@ -39,7 +45,9 @@ const DisplayUserMeal = ({setIsEdit, meal, scheduleId, getScheduledMeals, schedu
       </div>
       <div>
         <h1>{meal && meal.name}</h1>
-      <button type="button" onClick={()=>setIsEdit(true)}>Edit</button>
+        <button type="button" onClick={() => setIsEdit(true)}>
+          Edit
+        </button>
       </div>
       {meal ? (
         <div>
@@ -49,7 +57,6 @@ const DisplayUserMeal = ({setIsEdit, meal, scheduleId, getScheduledMeals, schedu
           <p>
             Cook time {meal.cook_time_hours} hrs, {meal.cook_time_minutes} min
           </p>
-    
         </div>
       ) : (
         ""
@@ -60,24 +67,37 @@ const DisplayUserMeal = ({setIsEdit, meal, scheduleId, getScheduledMeals, schedu
       <div>
         <a href={meal && meal.url}> Recipe Link</a>
         <div>
-        { meal &&
-           <AddMealToScheduleButton
-           meal={meal}
-           scheduleId={scheduleId} 
-           getScheduledMeals={getScheduledMeals}
-         />
-      }
+          {meal && (
+            <AddMealToScheduleButton
+              meal={meal}
+              scheduleId={scheduleId}
+              getScheduledMeals={getScheduledMeals}
+            />
+          )}
+          <button
+            type="button"
+            onClick={() =>
+              removeMealFromSchedule(
+                scheduledMeals.filter((sMeal) => sMeal.meal.id === meal.id)[0]
+                  .id,
+                scheduleId,
+                getScheduledMeals
+              )
+            }
+          >
+            X
+          </button>
         </div>
       </div>
-      <DeleteUserMeal meal={meal}/>
+      <DeleteUserMeal meal={meal} />
     </div>
   );
 };
 
 export default DisplayUserMeal;
 
-//I eventually want to be able to remove a meal from the meal list while in meal 
-//I ran into race conditions so I tabled that for now. 
+//I eventually want to be able to remove a meal from the meal list while in meal
+//I ran into race conditions so I tabled that for now.
 /* {scheduledMeals &&
 scheduledMeals.some((sMeal) => sMeal.meal.id == mealId) ? (
   <RemoveMealFromScheduleButton

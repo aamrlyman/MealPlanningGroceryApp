@@ -12,6 +12,7 @@ const DisplayUserMealList = ({
   scheduledMeals,
   isDelete,
   fetchMeals,
+  removeMealFromSchedule
 }) => {
   const [user, token] = useAuth();
 
@@ -30,12 +31,26 @@ const DisplayUserMealList = ({
         prep time: {meal && meal.prep_time_hours} hrs,{" "}
         {meal && meal.prep_time_minutes} min. cook time:{" "}
         {meal && meal.cook_time_hours} hrs, {meal && meal.prep_cook_minutes} min
+      </td>
+      <td>
         <AddMealToScheduleButton
           scheduleId={scheduleId}
           scheduledMeals={scheduledMeals}
           meal={meal}
           getScheduledMeals={getScheduledMeals}
         />
+      <button
+        type="button"
+        onClick={() =>
+          removeMealFromSchedule(
+            scheduledMeals.filter((sMeal) => sMeal.meal.id === meal.id)[0].id,
+            scheduleId,
+            getScheduledMeals
+          )
+        }
+      >
+        X
+      </button>
       </td>
       {isDelete && meal && (
         <td>

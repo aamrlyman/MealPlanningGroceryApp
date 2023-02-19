@@ -10,7 +10,8 @@ import DisplayAllMealIngredients from "../../components/DisplayAllMealIngredient
 import { useOutletContext } from "react-router-dom";
 
 const DisplayMeal = () => {
-  const [schedule, scheduledMeals, getScheduledMeals] = useOutletContext();
+  const [schedule, scheduledMeals, getScheduledMeals, removeMealFromSchedule] =
+    useOutletContext();
   const [user, token] = useAuth();
   const { mealId } = useParams();
   const [meal, setMeal] = useState();
@@ -41,13 +42,11 @@ const DisplayMeal = () => {
   //   let obj = array.filter((i)=>i.meal.id === id);
   //   console.log(obj.id);
   //   return obj.id
-  // } 
-  
+  // }
+
   // let scheduledMeaId = getId(scheduledMeals,mealId)
   // // scheduledMeals &&
   // scheduledMeals.filter((m) => m.meal.id === mealId)[0].id
-
-
 
   return (
     <div>
@@ -81,17 +80,27 @@ const DisplayMeal = () => {
         <AddMealToScheduleButton
           scheduledMeals={scheduledMeals}
           meal={meal}
-          scheduleId={schedule.id} 
+          scheduleId={schedule.id}
           getScheduledMeals={getScheduledMeals}
         />
       )}
-
+      <button
+        type="button"
+        onClick={() =>
+          removeMealFromSchedule(
+            scheduledMeals.filter((sMeal) => sMeal.meal.id === meal.id)[0].id,
+            schedule.id,
+            getScheduledMeals
+          )
+        }
+      >
+        X
+      </button>
     </div>
   );
 };
 
 export default DisplayMeal;
-
 
 // {scheduledMeals && scheduledMeals.some((sMeal) => sMeal.meal.id == mealId) ? (
 //   <RemoveMealFromScheduleButton

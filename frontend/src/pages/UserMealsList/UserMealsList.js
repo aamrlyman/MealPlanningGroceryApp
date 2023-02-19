@@ -5,31 +5,29 @@ import useAuth from "../../hooks/useAuth";
 import { useOutletContext } from "react-router-dom";
 
 const UserMealsList = () => {
-  const [schedule, scheduledMeals, getScheduledMeals] = useOutletContext();
+  const [schedule, scheduledMeals, getScheduledMeals, removeMealFromSchedule] =
+    useOutletContext();
   const [meals, setMeals] = useState();
   const [user, token] = useAuth();
-  const [isDelete, setIsDelete]= useState(false);
-  
+  const [isDelete, setIsDelete] = useState(false);
+
   useEffect(() => {
     fetchMeals();
   }, []);
-  
+
   const fetchMeals = async () => {
     try {
-      let response = await axios.get("http://127.0.0.1:8000/api/meals/user/",
-      {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        },     
-      )
+      let response = await axios.get("http://127.0.0.1:8000/api/meals/user/", {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
       setMeals(response.data);
       console.log(response.data);
     } catch (error) {
       console.log(error.message);
     }
   };
-
 
   return (
     <div>
@@ -40,8 +38,12 @@ const UserMealsList = () => {
             <th>Meal</th>
             <th>Recipe Url</th>
             <th>Time</th>
-            <th>Add</th> 
-           <th><button type="button" onClick={()=> setIsDelete(!isDelete)}>Delete Meals</button></th>
+            <th>Add</th>
+            <th>
+              <button type="button" onClick={() => setIsDelete(!isDelete)}>
+                Delete Meals
+              </button>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -55,6 +57,7 @@ const UserMealsList = () => {
                   getScheduledMeals={getScheduledMeals}
                   isDelete={isDelete}
                   fetchMeals={fetchMeals}
+                  removeMealFromSchedule={removeMealFromSchedule}
                 />
               </Fragment>
             ))}
