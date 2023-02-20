@@ -76,44 +76,35 @@ const DisplayMeal = () => {
       <div>
         <a href={meal && meal.url}> Recipe Link</a>
       </div>
-      {scheduledMeals && (
-        <AddMealToScheduleButton
-          scheduledMeals={scheduledMeals}
-          meal={meal}
-          scheduleId={schedule.id}
-          getScheduledMeals={getScheduledMeals}
-        />
+      {meal &&
+      scheduledMeals &&
+      scheduledMeals.some((sMeal) => sMeal.meal.id == meal.id) ? (
+        <button
+          type="button"
+          onClick={() =>
+            removeMealFromSchedule(
+              scheduledMeals.filter((sMeal) => sMeal.meal.id === meal.id)[0].id,
+              schedule.id,
+              getScheduledMeals
+            )
+          }
+        >
+          X
+        </button>
+      ) : (
+        scheduledMeals && (
+          <AddMealToScheduleButton
+            scheduledMeals={scheduledMeals}
+            meal={meal}
+            scheduleId={schedule.id}
+            getScheduledMeals={getScheduledMeals}
+          />
+        )
       )}
-      <button
-        type="button"
-        onClick={() =>
-          removeMealFromSchedule(
-            scheduledMeals.filter((sMeal) => sMeal.meal.id === meal.id)[0].id,
-            schedule.id,
-            getScheduledMeals
-          )
-        }
-      >
-        X
-      </button>
     </div>
   );
 };
 
 export default DisplayMeal;
 
-// {scheduledMeals && scheduledMeals.some((sMeal) => sMeal.meal.id == mealId) ? (
-//   <RemoveMealFromScheduleButton
-//     scheduledMeals={scheduledMeals}
-//     scheduledMealId={scheduledMeaId}
-//     scheduleId={schedule.id}
-//     getScheduledMeals={getScheduledMeals}
-//   />
-//   ) : (
-//     <AddMealToScheduleButton
-//     scheduledMeals={scheduledMeals}
-//     meal={meal}
-//     scheduleId={schedule.id}
-//     getScheduledMeals={getScheduledMeals}
-//     />
-//   )}
+

@@ -28,30 +28,35 @@ const DisplayScheduledMeals = ({
       <td>
         prep time: {meal && meal.prep_time_hours} hrs,{" "}
         {meal && meal.prep_time_minutes} min. cook time:{" "}
-        {meal && meal.cook_time_hours} hrs, {meal && meal.prep_cook_minutes} min.
-        </td>
-        <td>  
-        <AddMealToScheduleButton
-          scheduleId={scheduleId}
-          scheduledMeals={scheduledMeals}
-          meal={meal}
-          getScheduledMeals={getScheduledMeals}
-        />
-        </td>
-        <td>     
-        <button
-          type="button"
-          onClick={() =>
-            removeMealFromSchedule(
-              scheduledMeals.filter((sMeal) => sMeal.meal.id === meal.id)[0].id,
-              scheduleId,
-              getScheduledMeals
-            )
-          }
-        >
-          X
-        </button>
-        </td>
+        {meal && meal.cook_time_hours} hrs, {meal && meal.prep_cook_minutes}{" "}
+        min.
+      </td>
+      <td>
+        {meal &&
+        scheduledMeals &&
+        scheduledMeals.some((sMeal) => sMeal.meal.id == meal.id) ? (
+          <button
+            type="button"
+            onClick={() =>
+              removeMealFromSchedule(
+                scheduledMeals.filter((sMeal) => sMeal.meal.id === meal.id)[0]
+                  .id,
+                scheduleId,
+                getScheduledMeals
+              )
+            }
+          >
+            X
+          </button>
+        ) : (
+          <AddMealToScheduleButton
+            scheduleId={scheduleId}
+            scheduledMeals={scheduledMeals}
+            meal={meal}
+            getScheduledMeals={getScheduledMeals}
+          />
+        )}
+      </td>
     </tr>
   );
 };

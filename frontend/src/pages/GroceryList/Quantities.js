@@ -6,7 +6,6 @@ const MealCount = () => {
    let counter2 = 0;
     return (
         <div>
-      {sortType === "+quantities" ? (
         <table>
           <thead>
             <tr>
@@ -30,9 +29,6 @@ const MealCount = () => {
               ))}
           </tbody>
         </table>
-      ) : (
-        ""
-      )}
         </div>
     
       );

@@ -78,6 +78,7 @@ const CibusPlanning = (props) => {
           },
         }
       );
+      setScheduledMeals(scheduledMeals.filter((sMeal)=> sMeal.id !== scheduledMealId));
       afterDelete(scheduleId);
       // getScheduledMeals(scheduleId);
       console.log(response);
@@ -120,6 +121,8 @@ const CibusPlanning = (props) => {
     </div>
   );
 };
+
+
 
 export default CibusPlanning;
 

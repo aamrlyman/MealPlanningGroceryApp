@@ -67,26 +67,31 @@ const DisplayUserMeal = ({
       <div>
         <a href={meal && meal.url}> Recipe Link</a>
         <div>
-          {meal && (
-            <AddMealToScheduleButton
-              meal={meal}
-              scheduleId={scheduleId}
-              getScheduledMeals={getScheduledMeals}
-            />
+          {meal &&
+          scheduledMeals &&
+          scheduledMeals.some((sMeal) => sMeal.meal.id == meal.id) ? (
+            <button
+              type="button"
+              onClick={() =>
+                removeMealFromSchedule(
+                  scheduledMeals.filter((sMeal) => sMeal.meal.id === meal.id)[0]
+                    .id,
+                  scheduleId,
+                  getScheduledMeals
+                )
+              }
+            >
+              X
+            </button>
+          ) : (
+            meal && (
+              <AddMealToScheduleButton
+                meal={meal}
+                scheduleId={scheduleId}
+                getScheduledMeals={getScheduledMeals}
+              />
+            )
           )}
-          <button
-            type="button"
-            onClick={() =>
-              removeMealFromSchedule(
-                scheduledMeals.filter((sMeal) => sMeal.meal.id === meal.id)[0]
-                  .id,
-                scheduleId,
-                getScheduledMeals
-              )
-            }
-          >
-            X
-          </button>
         </div>
       </div>
       <DeleteUserMeal meal={meal} />
