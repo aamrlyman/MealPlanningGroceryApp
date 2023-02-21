@@ -13,6 +13,9 @@ html {
   font-family: "apple-chancery", sans-serif;
 }
 
+body {
+  background-color: #e6c593;
+}
 
 p {
   font-size: 20px;
@@ -58,6 +61,15 @@ button:hover {
   margin: 5px;
   padding: 3px 7px;
   font-size: 17px;
+}
+
+a {
+  text-decoration: underline;
+  color: #2c2219;
+}
+
+a:hover {
+  color:#7c262b
 }
 /* 
 https://www.w3schools.com/howto/howto_css_animate_buttons.asp */
