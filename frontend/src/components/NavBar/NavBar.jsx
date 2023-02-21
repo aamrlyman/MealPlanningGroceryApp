@@ -3,28 +3,31 @@ import { useContext, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import "./NavBar.css";
+import cibuslogo2 from "../../cibuslogo2.png";
+// import CibusLogo2 from "../../../public/CibusLogo2.png";
 
 const Navbar = () => {
   const { logoutUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [location, setLocation] = useState();
+  const [location, setLocation] = useState("home");
 
   let styleArray = [
     { textDecoration: "none", color: "#2c2219" },
-    { textDecoration: "underline", color: "#7c262b", "font-weight": "bold"},
+    { textDecoration: "underline", color: "#7c262b", "font-weight": "bold" },
   ];
 
   return (
     <div className="navBar">
-      <ul>
+      <ul className="navLi">
         <li className="brand">
           <Link
             to="/"
             style={styleArray[0]}
             onClick={() => setLocation("home")}
           >
-            <b>Cibus Planning</b>
+            <img src={cibuslogo2} width="400" height="100" />
           </Link>
+          {location === "home"? <hr/> : ""}
         </li>
         <li>
           {location !== "/mealsList" ? (
@@ -41,13 +44,12 @@ const Navbar = () => {
             </Link>
           )}
         </li>
-
         <li>
           {location !== "userMealsList/" ? (
             <Link
-              to="userMealsList/"
-              style={styleArray[0]}
-              onClick={() => setLocation("userMealsList/")}
+            to="userMealsList/"
+            style={styleArray[0]}
+            onClick={() => setLocation("userMealsList/")}
             >
               My Meals
             </Link>
@@ -56,23 +58,23 @@ const Navbar = () => {
               My Meals
             </Link>
           )}
+          <span className="plusIcon">
+          {location !== "/createMeal" ? (
+          <Link
+            to="/createMeal"
+            style={styleArray[0]}
+            onClick={() => setLocation("/createMeal")}
+          >
+            <i className="fa-solid fa-plus"></i>
+          </Link>
+        ) : (
+          <Link to="/createMeal" style={styleArray[1]}>
+            <i className="fa-solid fa-plus"></i>
+          </Link>
+        )}
+          </span>
         </li>
 
-        <li>
-          {location !== "/createMeal" ? (
-            <Link
-              to="/createMeal"
-              style={styleArray[0]}
-              onClick={() => setLocation("/createMeal")}
-            >
-              <i className="fa-solid fa-plus"></i>
-            </Link>
-          ) : (
-            <Link to="/createMeal" style={styleArray[1]}>
-              <i className="fa-solid fa-plus"></i>
-            </Link>
-          )}
-        </li>
         <li>
           {location !== "/groceries" ? (
             <Link

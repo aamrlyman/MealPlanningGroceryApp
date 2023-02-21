@@ -2,10 +2,11 @@ ul {
   display: flex;
   justify-content: space-between;
   list-style-type: none;
+  align-items: center;
 }
 
-li {
-  font-size: 1.25rem;
+.navLi li {
+  font-size: 1.75rem;
 }
 
 .navBar {
@@ -31,4 +32,15 @@ li {
 .brand {
   cursor: pointer;
   font-size: 2rem;
+}
+
+span.plusIcon {
+  position: relative;
+  left: 0.5vw;
+  top: -1.5vh;
+}
+
+hr {
+  border: 2px solid #7c262b;
+  border-radius: 31.25px;
 }
