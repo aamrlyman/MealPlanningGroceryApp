@@ -13,6 +13,7 @@ html {
   font-family: "Poppins", sans-serif;
 }
 
+
 p {
   font-size: 20px;
 }
@@ -39,6 +40,7 @@ button:hover {
   overflow: auto;
   text-align: center;
   margin-left: 1rem;
+  /* font-color: "green"; */
 }
 
 .form {
@@ -59,3 +61,15 @@ button:hover {
 }
 /* 
 https://www.w3schools.com/howto/howto_css_animate_buttons.asp */
+
+/* Evergreen: Hex #526861
+
+Burgundy: Hex #7c262b
+
+Pale Red: Hex #bb745c
+
+Soft Gold: Hex #e6c593
+
+Yellow Creme: Hex #f0e1b2
+
+Dark Charcoal: Hex #2c2219 */

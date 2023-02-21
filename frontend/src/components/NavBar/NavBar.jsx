@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import "./NavBar.css";
@@ -7,45 +7,104 @@ import "./NavBar.css";
 const Navbar = () => {
   const { logoutUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [location, setLocation] = useState();
+
+  let styleArray = [
+    { textDecoration: "none", color: "#2c2219" },
+    { textDecoration: "underline", color: "#7c262b", "font-weight": "bold"},
+  ];
+
   return (
     <div className="navBar">
       <ul>
         <li className="brand">
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+          <Link
+            to="/"
+            style={styleArray[0]}
+            onClick={() => setLocation("home")}
+          >
             <b>Cibus Planning</b>
           </Link>
         </li>
-        {/* <li>
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            Meals Planned
-          </Link>
-        </li> */}
         <li>
-          <Link to="/mealsList" style={{ textDecoration: "none", color: "white" }}>
-            All Meals
-          </Link>
+          {location !== "/mealsList" ? (
+            <Link
+              to="/mealsList"
+              style={styleArray[0]}
+              onClick={() => setLocation("/mealsList")}
+            >
+              All Meals
+            </Link>
+          ) : (
+            <Link to="/mealsList" style={styleArray[1]}>
+              All Meals
+            </Link>
+          )}
+        </li>
+
+        <li>
+          {location !== "userMealsList/" ? (
+            <Link
+              to="userMealsList/"
+              style={styleArray[0]}
+              onClick={() => setLocation("userMealsList/")}
+            >
+              My Meals
+            </Link>
+          ) : (
+            <Link to="userMealsList/" style={styleArray[1]}>
+              My Meals
+            </Link>
+          )}
+        </li>
+
+        <li>
+          {location !== "/createMeal" ? (
+            <Link
+              to="/createMeal"
+              style={styleArray[0]}
+              onClick={() => setLocation("/createMeal")}
+            >
+              <i className="fa-solid fa-plus"></i>
+            </Link>
+          ) : (
+            <Link to="/createMeal" style={styleArray[1]}>
+              <i className="fa-solid fa-plus"></i>
+            </Link>
+          )}
         </li>
         <li>
-          <Link to="userMealsList/" style={{ textDecoration: "none", color: "white" }}>
-            My Meals
-          </Link>
-        </li>
-        <li>
-          <Link to="/createMeal" style={{ textDecoration: "none", color: "white" }}>
-          <i className="fa-solid fa-plus"></i>
-          </Link>
-        </li>
-        <li>
-          <Link to="/groceries" style={{ textDecoration: "none", color: "white" }}>
-          Grocery List
-          </Link>
+          {location !== "/groceries" ? (
+            <Link
+              to="/groceries"
+              style={styleArray[0]}
+              onClick={() => setLocation("/groceries")}
+            >
+              Grocery List
+            </Link>
+          ) : (
+            <Link to="/groceries" style={styleArray[1]}>
+              Grocery List
+            </Link>
+          )}
         </li>
 
         <li>
           {user ? (
-            <button onClick={logoutUser}>Logout</button>
+            <Link
+              to="/login"
+              style={{ textDecoration: "none", color: "#2c2219" }}
+              onClick={logoutUser}
+            >
+              Logout
+            </Link>
           ) : (
-            <button onClick={() => navigate("/login")}>Login</button>
+            <Link
+              to="/login"
+              style={{ textDecoration: "none", color: "#2c2219" }}
+            >
+              Login
+            </Link>
           )}
         </li>
       </ul>
