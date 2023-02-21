@@ -13,7 +13,7 @@ const Navbar = () => {
 
   let styleArray = [
     { textDecoration: "none", color: "#2c2219" },
-    { textDecoration: "underline", color: "#7c262b", "font-weight": "bold" },
+    { textDecoration: "none", color: "#7c262b", "font-weight": "bold" },
   ];
 
   return (
@@ -41,6 +41,7 @@ const Navbar = () => {
           ) : (
             <Link to="/mealsList" style={styleArray[1]}>
               All Meals
+              <hr/>
             </Link>
           )}
         </li>
@@ -60,19 +61,20 @@ const Navbar = () => {
           )}
           <span className="plusIcon">
           {location !== "/createMeal" ? (
-          <Link
+            <Link
             to="/createMeal"
             style={styleArray[0]}
             onClick={() => setLocation("/createMeal")}
-          >
+            >
             <i className="fa-solid fa-plus"></i>
           </Link>
         ) : (
           <Link to="/createMeal" style={styleArray[1]}>
-            <i className="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-plus-minus"></i>
           </Link>
         )}
           </span>
+          {location === "userMealsList/"? <hr style={{width: "8.25vw"}} /> : ""}
         </li>
 
         <li>
@@ -87,6 +89,7 @@ const Navbar = () => {
           ) : (
             <Link to="/groceries" style={styleArray[1]}>
               Grocery List
+              <hr/>
             </Link>
           )}
         </li>

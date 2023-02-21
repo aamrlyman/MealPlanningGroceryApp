@@ -1,8 +1,7 @@
 // General Imports
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import React, { useState, useEffect } from "react";
 
 // Pages Imports
 import CibusPlanningPage from "./pages/CibusPlanningPage/CibusPlanningPage";
@@ -29,9 +28,9 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
-import useAuth from "./hooks/useAuth";
-import ScheduleIdProvider from "./context/scheduleIdContext";
-import Ingredients from "./components/Ingredients/Ingredients";
+// import useAuth from "./hooks/useAuth";
+// import ScheduleIdProvider from "./context/scheduleIdContext";
+// import Ingredients from "./components/Ingredients/Ingredients";
 
 function App() {
   return (
