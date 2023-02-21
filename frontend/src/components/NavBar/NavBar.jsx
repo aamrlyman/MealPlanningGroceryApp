@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
@@ -16,6 +16,17 @@ const Navbar = () => {
     { textDecoration: "none", color: "#7c262b", "font-weight": "bold" },
   ];
 
+  function changeLocation (user, string){
+    if (user){setLocation(string)}
+  }
+  useEffect (()=>{
+   if(user){
+    setLocation("home")
+   }
+   else (setLocation(null))
+  },[user]
+  )
+
   return (
     <div className="navBar">
       <ul className="navLi">
@@ -23,18 +34,18 @@ const Navbar = () => {
           <Link
             to="/"
             style={styleArray[0]}
-            onClick={() => setLocation("home")}
+            onClick={() => changeLocation(user,"home")}
           >
             <img src={cibuslogo2} width="400" height="100" />
           </Link>
-          {location === "home"? <hr/> : ""}
+          {location === "home" && user? <hr/> : ""}
         </li>
         <li>
           {location !== "/mealsList" ? (
             <Link
               to="/mealsList"
               style={styleArray[0]}
-              onClick={() => setLocation("/mealsList")}
+              onClick={() => changeLocation(user, "/mealsList")}
             >
               All Meals
             </Link>
@@ -50,7 +61,7 @@ const Navbar = () => {
             <Link
             to="userMealsList/"
             style={styleArray[0]}
-            onClick={() => setLocation("userMealsList/")}
+            onClick={() => changeLocation(user, "userMealsList/")}
             >
               My Meals
             </Link>
@@ -64,7 +75,7 @@ const Navbar = () => {
             <Link
             to="/createMeal"
             style={styleArray[0]}
-            onClick={() => setLocation("/createMeal")}
+            onClick={() => changeLocation(user,"/createMeal")}
             >
             <i className="fa-solid fa-plus"></i>
           </Link>
@@ -82,7 +93,7 @@ const Navbar = () => {
             <Link
               to="/groceries"
               style={styleArray[0]}
-              onClick={() => setLocation("/groceries")}
+              onClick={() => changeLocation(user,"/groceries")}
             >
               Grocery List
             </Link>
