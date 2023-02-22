@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link, Outlet } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 
 
 const GroceryList = () => {
@@ -11,6 +11,7 @@ const GroceryList = () => {
   const [groceryList, setGroceryList] = useState();
   const [sortType, setSortType] = useState("ingredientsOnly");
   const [addDashes, setAddDashes] = useState(0);
+  const navigate = useNavigate()
 
   function eliminateDuplicates(arr) {
     let namesOnly = arr.map((el) => el.name.toLowerCase());
@@ -56,25 +57,25 @@ const GroceryList = () => {
     return finalList;
   }
 
-  useEffect(() => {
-    const fetchGroceries = async (scheduleId) => {
-        
-      try {
-          let response = await axios.get(
-            `http://127.0.0.1:8000/api/ingredients/grocery_list/${scheduleId}/`,
-            {
-              headers: {
-                Authorization: "Bearer " + token,
-              },
-            }
-          );
-          setGroceryList(sortedGroceryList(response.data));
-          console.log(response.data);
-        } catch (error) {
-          console.log(error.message);
-        }
+  const fetchGroceries = async (scheduleId) => {
+      
+    try {
+        let response = await axios.get(
+          `http://127.0.0.1:8000/api/ingredients/grocery_list/${scheduleId}/`,
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
+        setGroceryList(sortedGroceryList(response.data));
+        console.log(response.data);
+      } catch (error) {
+        console.log(error.message);
       }
-     fetchGroceries(schedule.id);
+    }
+  useEffect(() => {
+    schedule? fetchGroceries(schedule.id): navigate("/");
   },[]);
   //   console.log(scheduledMeals.filter( (m)=> m.meal.id===mealId))
 
