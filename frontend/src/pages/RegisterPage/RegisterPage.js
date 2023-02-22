@@ -64,8 +64,8 @@ const RegisterPage = () => {
             onChange={handleInputChange}
           />
         </label>
-        <p style={{ fontSize: "12px" }}>
-          NOTE: Make this an uncommon password with characters, numbers, and
+        <p style={{ fontSize: "13px", "font-style": "italic" }}>
+          **Make this an uncommon password with characters, numbers, and
           special characters!
         </p>
         <button>Register!</button>

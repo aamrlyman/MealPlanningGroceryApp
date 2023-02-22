@@ -3,6 +3,7 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import IsScheduledIcon from "../IsScheduledIcon/IsScheduledIcon";
 import AddMealToScheduleButton from "../AddMealToScheduleButton/AddMealToScheduleButton";
+import DisplayTimes from "../DisplayTimes/DisplayTimes";
 import { Link } from "react-router-dom";
 
 const DisplayScheduledMeals = ({
@@ -26,10 +27,7 @@ const DisplayScheduledMeals = ({
         <a href={meal.url}>Recipe Link </a>
       </td>
       <td>
-        prep time: {meal && meal.prep_time_hours} hrs,{" "}
-        {meal && meal.prep_time_minutes} min. cook time:{" "}
-        {meal && meal.cook_time_hours} hrs, {meal && meal.prep_cook_minutes}{" "}
-        min.
+     <DisplayTimes meal={meal} />
       </td>
       <td>
         {meal &&

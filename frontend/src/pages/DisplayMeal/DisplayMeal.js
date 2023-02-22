@@ -8,6 +8,7 @@ import AddMealToScheduleButton from "../../components/AddMealToScheduleButton/Ad
 import RemoveMealFromScheduleButton from "../../components/RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
 import DisplayAllMealIngredients from "../../components/DisplayAllMealIngredients/DisplayAllMealIngredients";
 import { useOutletContext } from "react-router-dom";
+import DisplayTimes from "../../components/DisplayTimes/DisplayTimes";
 
 const DisplayMeal = () => {
   const [schedule, scheduledMeals, getScheduledMeals, removeMealFromSchedule] =
@@ -57,14 +58,7 @@ const DisplayMeal = () => {
         <h1>{meal && meal.name}</h1>
       </div>
       {meal ? (
-        <div>
-          <p>
-            Prep time {meal.prep_time_hours} hrs, {meal.prep_time_minutes} min
-          </p>
-          <p>
-            Cook time {meal.cook_time_hours} hrs, {meal.cook_time_minutes} min
-          </p>
-        </div>
+       <DisplayTimes meal={meal} />
       ) : (
         ""
       )}

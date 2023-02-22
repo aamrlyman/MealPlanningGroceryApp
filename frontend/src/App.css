@@ -24,18 +24,28 @@ p {
 
 button {
   background-color: transparent;
-  border: 2px solid steelblue;
-  color: steelblue;
+  border: 2px solid #7c262b;
+  color: #7c262b;
   font-size: 1rem;
   font-family: inherit;
   max-width: 100px;
   padding: 0.5rem 0.5rem;
+  border-radius: 5px;
 }
 
 button:hover {
   cursor: pointer;
-  color: white;
-  background-color: steelblue;
+  color: #f0e1b2;
+  background-color: #7c262b;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+button:active {
+  color: #f0e1b2;
+  background-color: #7c262b;
+  box-shadow: 0 5px #526861;
+  transform: translateY(4px);
 }
 
 .container {
@@ -44,7 +54,6 @@ button:hover {
   overflow: auto;
   text-align: center;
   margin-left: 1rem;
-  /* font-color: "green"; */
 }
 
 .form {
@@ -66,22 +75,36 @@ button:hover {
 
 a {
   color: #bb745c;
-  /* text-decoration: none; */
-
+  font-style: italic;
+  text-decoration: none;
 }
 
 a:hover {
-  color:#7c262b;
-  /* text-decoration: underline; */
-
+  color: #7c262b;
+  text-decoration: underline;
 }
-
 
 input {
   border-radius: 5px;
   background-color: #f0e1b2;
   border: solid 2px #7c262b;
 }
+
+.tableContainter {
+  margin: auto;
+  width: 40%;
+  border: solid;
+}
+
+table {
+  margin: auto;
+  /* border: solid 2px green; */
+}
+
+/* td,
+th {
+  border: solid 2px green;
+} */
 
 /* 
 https://www.w3schools.com/howto/howto_css_animate_buttons.asp */
@@ -97,3 +120,16 @@ Soft Gold: Hex #e6c593
 Yellow Creme: Hex #f0e1b2
 
 Dark Charcoal: Hex #2c2219 */
+
+/* tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  border-color: green;
+  border-style: solid;
+  border-width: 0;
+} */
+
+/* overflow-y: scroll; */

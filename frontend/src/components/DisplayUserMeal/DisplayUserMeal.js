@@ -5,6 +5,7 @@ import axios from "axios";
 import IsScheduledIcon from "../IsScheduledIcon/IsScheduledIcon";
 import AddMealToScheduleButton from "../AddMealToScheduleButton/AddMealToScheduleButton";
 import DeleteUserMeal from "../DeleteMeal/DeleteMeal";
+import DisplayTimes from "../DisplayTimes/DisplayTimes";
 // import RemoveMealFromScheduleButton from "../RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
 import { useNavigate } from "react-router-dom";
 
@@ -50,20 +51,10 @@ const DisplayUserMeal = ({
         </button>
       </div>
       {meal ? (
-        <div>
-          <p>
-            Prep time {meal.prep_time_hours} hrs, {meal.prep_time_minutes} min
-          </p>
-          <p>
-            Cook time {meal.cook_time_hours} hrs, {meal.cook_time_minutes} min
-          </p>
-        </div>
+       <DisplayTimes meal={meal} />
       ) : (
         ""
       )}
-      <div>
-        <p>{meal && meal.notes}</p>
-      </div>
       <div>
         <a href={meal && meal.url}> Recipe Link</a>
         <div>

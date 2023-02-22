@@ -21,7 +21,7 @@ const AllMealsList = () => {
   }, []);
 
   return (
-    <div>
+    <div className="tableContainter">
       <table>
         <thead>
           <tr>

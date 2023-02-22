@@ -4,6 +4,7 @@ import IsScheduledIcon from "../IsScheduledIcon/IsScheduledIcon";
 import AddMealToScheduleButton from "../AddMealToScheduleButton/AddMealToScheduleButton";
 import { Link } from "react-router-dom";
 import DeleteUserMeal from "../DeleteMeal/DeleteMeal";
+import DisplayTimes from "../DisplayTimes/DisplayTimes";
 
 const DisplayUserMealList = ({
   scheduleId,
@@ -28,9 +29,11 @@ const DisplayUserMealList = ({
         <a href={meal.url}>Recipe Link </a>
       </td>
       <td>
-        prep time: {meal && meal.prep_time_hours} hrs,{" "}
-        {meal && meal.prep_time_minutes} min. cook time:{" "}
-        {meal && meal.cook_time_hours} hrs, {meal && meal.prep_cook_minutes} min
+      {meal ? (
+       <DisplayTimes meal={meal} />
+      ) : (
+        ""
+      )}
       </td>
       <td>
         {meal &&

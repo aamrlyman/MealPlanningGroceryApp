@@ -28,7 +28,7 @@ const MealSchedulePage = () => {
           Or Click on the + to add some of your own.
         </div>
       ) : (
-        <div>
+        <div className="tableContainter">
           <table>
             <thead>
               <tr>

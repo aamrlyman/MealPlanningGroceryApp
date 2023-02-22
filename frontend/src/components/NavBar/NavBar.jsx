@@ -12,8 +12,8 @@ const Navbar = () => {
   const [location, setLocation] = useState("home");
 
   let styleArray = [
-    { textDecoration: "none", color: "#2c2219" },
-    { textDecoration: "none", color: "#7c262b", "font-weight": "bold" },
+    { textDecoration: "none", color: "#2c2219", "font-style":"normal" },
+    { textDecoration: "none", color: "#7c262b", "font-weight": "bold", "font-style":"normal" },
   ];
 
   function changeLocation (user, string){
@@ -109,7 +109,7 @@ const Navbar = () => {
           {user ? (
             <Link
               to="/login"
-              style={{ textDecoration: "none", color: "#2c2219" }}
+              style={styleArray[0]}
               onClick={logoutUser}
             >
               Logout
@@ -117,7 +117,7 @@ const Navbar = () => {
           ) : (
             <Link
               to="/login"
-              style={{ textDecoration: "none", color: "#2c2219" }}
+              style={styleArray[0]}
             >
               Login
             </Link>
