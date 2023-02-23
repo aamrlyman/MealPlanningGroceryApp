@@ -81,7 +81,7 @@ const Navbar = () => {
           </Link>
         ) : (
           <Link to="/createMeal" style={styleArray[1]}>
-            <i class="fa-solid fa-plus-minus"></i>
+            <i className="fa-solid fa-plus-minus"></i>
           </Link>
         )}
           </span>

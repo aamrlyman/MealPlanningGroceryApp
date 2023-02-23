@@ -35,11 +35,19 @@ const DisplayScheduledMeals = ({
     <tr>
       <td>
         {meal.is_Cooked ? (
-          <button type="submit" onClick={() => isCookedToggle(meal.id)}>
-            <i className="fa-solid fa-check"></i>
+          <button
+            className="noBorder"
+            type="submit"
+            onClick={() => isCookedToggle(meal.id)}
+          >
+           <i className="fa-regular fa-square-check"></i>
           </button>
         ) : (
-          <button type="submit" onClick={() => isCookedToggle(meal.id)}>
+          <button
+            className="noBorder"
+            type="submit"
+            onClick={() => isCookedToggle(meal.id)}
+          >
             <i className="fa-regular fa-square"></i>
           </button>
         )}
@@ -52,20 +60,15 @@ const DisplayScheduledMeals = ({
       </td>
       <td>
         <DisplayTimes meal={meal.meal} />
-        {/* <RemoveMealFromScheduleButton 
-        scheduleId={scheduleId}
-        scheduledMealId={meal.id}
-        getScheduledMeals={getScheduledMeals}
-        scheduledMeals={scheduledMeals}
-        /> */}
       </td>
       <td>
         <button
+          className="noBorder"
           onClick={() =>
             removeMealFromSchedule(meal.id, scheduleId, getScheduledMeals)
           }
         >
-          X
+          <i className="fa-regular fa-circle-xmark"></i>
         </button>
       </td>
     </tr>

@@ -38,7 +38,7 @@ button:hover {
   color: #f0e1b2;
   background-color: #7c262b;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 button:active {
@@ -48,6 +48,9 @@ button:active {
   transform: translateY(4px);
 }
 
+.noBorder{
+  border: none;
+}
 .container {
   margin: 0 auto;
   max-width: 100%;

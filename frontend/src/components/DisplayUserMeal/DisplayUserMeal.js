@@ -6,7 +6,7 @@ import IsScheduledIcon from "../IsScheduledIcon/IsScheduledIcon";
 import AddMealToScheduleButton from "../AddMealToScheduleButton/AddMealToScheduleButton";
 import DeleteUserMeal from "../DeleteMeal/DeleteMeal";
 import DisplayTimes from "../DisplayTimes/DisplayTimes";
-// import RemoveMealFromScheduleButton from "../RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
+import RemoveMealFromScheduleButton from "../RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
 import { useNavigate } from "react-router-dom";
 
 const DisplayUserMeal = ({
@@ -61,19 +61,13 @@ const DisplayUserMeal = ({
           {meal &&
           scheduledMeals &&
           scheduledMeals.some((sMeal) => sMeal.meal.id == meal.id) ? (
-            <button
-              type="button"
-              onClick={() =>
-                removeMealFromSchedule(
-                  scheduledMeals.filter((sMeal) => sMeal.meal.id === meal.id)[0]
-                    .id,
-                  scheduleId,
-                  getScheduledMeals
-                )
-              }
-            >
-              X
-            </button>
+            <RemoveMealFromScheduleButton
+            meal={meal}
+            scheduledMeals={scheduledMeals}
+            getScheduledMeals={getScheduledMeals}
+            removeMealFromSchedule={removeMealFromSchedule}
+            scheduleId={scheduleId}
+          />
           ) : (
             meal && (
               <AddMealToScheduleButton

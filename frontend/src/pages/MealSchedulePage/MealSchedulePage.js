@@ -53,8 +53,12 @@ const MealSchedulePage = () => {
                 ))}
             </tbody>
           </table>
-          <button type="submit" onClick={() => clearSchedule(schedule)}>
-            Clear Schedule
+          <button
+            className="noBorder"
+            type="submit"
+            onClick={() => clearSchedule(schedule)}
+          >
+            <i className="fa-regular fa-trash-can"></i>
           </button>
         </div>
       )}

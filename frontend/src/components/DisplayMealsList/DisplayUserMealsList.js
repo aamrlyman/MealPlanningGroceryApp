@@ -5,6 +5,7 @@ import AddMealToScheduleButton from "../AddMealToScheduleButton/AddMealToSchedul
 import { Link } from "react-router-dom";
 import DeleteUserMeal from "../DeleteMeal/DeleteMeal";
 import DisplayTimes from "../DisplayTimes/DisplayTimes";
+import RemoveMealFromScheduleButton from "../RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
 
 const DisplayUserMealList = ({
   scheduleId,
@@ -39,19 +40,13 @@ const DisplayUserMealList = ({
         {meal &&
         scheduledMeals &&
         scheduledMeals.some((sMeal) => sMeal.meal.id == meal.id) ? (
-          <button
-            type="button"
-            onClick={() =>
-              removeMealFromSchedule(
-                scheduledMeals.filter((sMeal) => sMeal.meal.id === meal.id)[0]
-                  .id,
-                scheduleId,
-                getScheduledMeals
-              )
-            }
-          >
-            X
-          </button>
+          <RemoveMealFromScheduleButton
+          meal={meal}
+          scheduledMeals={scheduledMeals}
+          getScheduledMeals={getScheduledMeals}
+          removeMealFromSchedule={removeMealFromSchedule}
+          scheduleId={scheduleId}
+        />
         ) : (
           <AddMealToScheduleButton
             scheduleId={scheduleId}

@@ -27,8 +27,11 @@ const AddMealToScheduleButton = ({ scheduleId, meal, getScheduledMeals }) => {
   };
 
   return (
-    <button onClick={(event) => addMealToSchedule(scheduleId, meal)}>
-      Add
+    <button
+      className="noBorder"
+      onClick={(event) => addMealToSchedule(scheduleId, meal)}
+    >
+     <i className="fa-solid fa-circle-plus"></i>{" "}
     </button>
   );
 };
