@@ -60,8 +60,6 @@ const DisplayScheduledMeals = ({
       </td>
       <td>
         <DisplayTimes meal={meal.meal} />
-      </td>
-      <td>
         <button
           className="noBorder"
           onClick={() =>

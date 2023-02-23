@@ -12,6 +12,7 @@ html {
   box-sizing: border-box;
   font-family: "apple-chancery", sans-serif;
   color: #2c2219;
+  /* font-size: 20px; */
 }
 
 body {
@@ -95,19 +96,27 @@ input {
 
 .tableContainter {
   margin: auto;
-  width: 40%;
-  border: solid;
+  width: 90%;
+  /* border: solid; */
 }
 
 table {
   margin: auto;
-  /* border: solid 2px green; */
+  border-radius: 5px;
+  width: 90%;
 }
 
-/* td,
-th {
-  border: solid 2px green;
-} */
+table, th {
+  border: 5px solid #526861;
+  border-collapse: collapse;
+  padding: 1em;
+  border-radius: 5px;
+}
+
+td {
+  border-bottom: dashed #526861;
+  border-left: solid #526861;
+}
 
 /* 
 https://www.w3schools.com/howto/howto_css_animate_buttons.asp */
