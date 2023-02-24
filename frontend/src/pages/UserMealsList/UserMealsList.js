@@ -38,13 +38,18 @@ const UserMealsList = () => {
             <th>Meal</th>
             <th>Recipe Url</th>
             <th>Time</th>
-            <th>Add
-              <button type="button" onClick={() => setIsDelete(!isDelete)}>
-              <i className="fa-regular fa-trash-can"></i>
+            <th>
+              Add
+              <span className="editMeals">
+              <button
+                className="noBorder"
+                type="button"
+                onClick={() => setIsDelete(!isDelete)}
+              >
+                <i class="fa-solid fa-pencil"></i>
               </button>
+              </span>
             </th>
-            {/* <th>
-            </th> */}
           </tr>
         </thead>
         <tbody>
@@ -53,7 +58,7 @@ const UserMealsList = () => {
               <Fragment key={meal.id}>
                 <DisplayUserMealsList
                   meal={meal}
-                  scheduleId={ schedule && schedule.id}
+                  scheduleId={schedule && schedule.id}
                   scheduledMeals={scheduledMeals}
                   getScheduledMeals={getScheduledMeals}
                   isDelete={isDelete}

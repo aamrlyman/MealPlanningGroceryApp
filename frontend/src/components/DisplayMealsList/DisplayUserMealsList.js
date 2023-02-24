@@ -37,6 +37,8 @@ const DisplayUserMealList = ({
       )}
       </td>
       <td>
+        <div className="addRemoveContainer">
+        <span>
         {meal &&
         scheduledMeals &&
         scheduledMeals.some((sMeal) => sMeal.meal.id == meal.id) ? (
@@ -55,10 +57,13 @@ const DisplayUserMealList = ({
             getScheduledMeals={getScheduledMeals}
           />
         )}
+        </span>
+           <span>
             {isDelete && meal && (
           <DeleteUserMeal meal={meal} fetchMeals={fetchMeals} />
-     
       )}
+            </span> 
+        </div>
       </td>
       {/* {isDelete && meal && (
         <td>

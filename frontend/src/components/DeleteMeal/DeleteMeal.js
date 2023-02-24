@@ -4,15 +4,19 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const DeleteUserMeal = ({meal, fetchMeals}) => {
+const DeleteUserMeal = ({ meal, fetchMeals }) => {
   const [user, token] = useAuth();
-//   const { mealId } = useParams();
+  //   const { mealId } = useParams();
   const navigate = useNavigate();
 
   const deleteMeal = async () => {
-   if (!window.confirm("Are you sure you want to delete this meal? This action cannot be undone.")){
-    return null
-   }
+    if (
+      !window.confirm(
+        "Are you sure you want to delete this meal? This action cannot be undone."
+      )
+    ) {
+      return null;
+    }
     try {
       let response = await axios.delete(
         `http://127.0.0.1:8000/api/meals/${meal.id}/`,
@@ -22,21 +26,22 @@ const DeleteUserMeal = ({meal, fetchMeals}) => {
           },
         }
       );
-      if (window.location.href==="http://localhost:3000/userMealsList/"){
+      if (window.location.href === "http://localhost:3000/userMealsList/") {
         fetchMeals();
-      } else(navigate("/userMealsList/"))
+      } else navigate("/userMealsList/");
       console.log(response);
     } catch (error) {
       console.log(error.message);
-      if(error.message === "Request failed with status code 409")
-      alert("You can't delete a meal that is being used on a schedule");
+      if (error.message === "Request failed with status code 409")
+        alert("You can't delete a meal that is being used on a schedule");
     }
   };
 
-
   return (
-      <div>
-      <button type="button" onClick={() => deleteMeal()}><i class="fa-solid fa-trash-can"></i></button>
+    <div>
+      <button className="noBorder" type="button" onClick={() => deleteMeal()}>
+        <i class="fa-solid fa-trash-can"></i>
+      </button>
     </div>
   );
 };
