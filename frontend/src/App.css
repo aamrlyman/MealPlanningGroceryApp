@@ -143,6 +143,8 @@ td.times {
   padding-left: 13px;
   width: 13%;
   border-right: none;
+  padding-bottom: 4px; 
+  padding-top: 4px; 
 }
 
 .trashCanContainer {
@@ -226,6 +228,10 @@ span.editMeals {
 .addRemoveContainer {
   display: flex;
   justify-content: space-evenly;
+}
+
+td.addRemoveTd {
+  width: 11%;
 }
 /* 
 https://www.w3schools.com/howto/howto_css_animate_buttons.asp */

@@ -29,14 +29,14 @@ const DisplayUserMealList = ({
       <td>
         <a href={meal.url}>Recipe Link </a>
       </td>
-      <td>
+      <td className="times">
       {meal ? (
        <DisplayTimes meal={meal} />
       ) : (
         ""
       )}
       </td>
-      <td>
+      <td className="addRemoveTd">
         <div className="addRemoveContainer">
         <span>
         {meal &&
