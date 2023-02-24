@@ -104,18 +104,52 @@ table {
   margin: auto;
   border-radius: 5px;
   width: 90%;
+  font-size: 1.5em;
+  margin-bottom: 30vh;
+  /* overflow-y: scroll; */
 }
 
 table, th {
   border: 5px solid #526861;
   border-collapse: collapse;
-  padding: 1em;
+  padding: .25em;
   border-radius: 5px;
+  font-size: 1.25em;
 }
 
 td {
   border-bottom: dashed #526861;
-  border-left: solid #526861;
+  border-left: solid 5px #526861;
+  font-size: 1em;
+  padding: 0;
+}
+
+td.times {
+  text-align: left;
+  padding-left: 13px;
+  width: 13%;
+  border-right: none;
+}
+
+
+th.filler {
+  border-left: none;
+}
+
+th.timeHeader {
+  border-right: none;
+  padding-left: 3vw;
+}
+
+td.removeButton {
+  border-left: none;
+  width: 2%;
+  /* border-top: solid 5px #526861 ; */
+}
+
+.fa-regular, .far {
+  font-weight: 400;
+  font-size: 2.5rem;
 }
 
 /* 

@@ -35,7 +35,8 @@ const MealSchedulePage = () => {
                 <th>Cooked</th>
                 <th>Meal</th>
                 <th>Recipe URL</th>
-                <th>Time</th>
+                <th className="timeHeader">Time</th>
+                <th className="filler"></th>
               </tr>
             </thead>
             <tbody>

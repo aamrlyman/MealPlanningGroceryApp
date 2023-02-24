@@ -85,7 +85,7 @@ const Navbar = () => {
           </Link>
         )}
           </span>
-          {location === "userMealsList/"? <hr style={{width: "8.25vw"}} /> : ""}
+          {location === "userMealsList/"? <hr style={{width: "85%"}} /> : ""}
         </li>
 
         <li>
