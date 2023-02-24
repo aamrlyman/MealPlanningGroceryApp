@@ -2,7 +2,7 @@
 const DisplayTimes = ({meal}) => {
     return (
         <div className="displayTimes">
-        <p>
+        <p className="displaytimeP">
         Prep:{" "}
         {meal.prep_time_hours === 0
           ? " "
@@ -10,8 +10,7 @@ const DisplayTimes = ({meal}) => {
         {meal.prep_time_minutes === 0
           ? " "
           : meal.prep_time_minutes + "m"}
-      </p>
-      <p>
+          <br/>
         Cook:{" "}
         {meal.cook_time_hours === 0
           ? " "
