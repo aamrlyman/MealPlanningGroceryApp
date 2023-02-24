@@ -34,7 +34,7 @@ const MealSchedulePage = () => {
               <tr>
                 <th>Cooked</th>
                 <th>Meal</th>
-                <th>Recipe URL</th>
+                <th>Recipes</th>
                 <th className="timeHeader">Time</th>
                 {/* <th className="filler"></th> */}
               </tr>
@@ -54,13 +54,15 @@ const MealSchedulePage = () => {
                 ))}
             </tbody>
           </table>
+          <div className="trashCanContainer">
           <button
-            className="noBorder"
+            className="noBorderTrashCan"
             type="submit"
             onClick={() => clearSchedule(schedule)}
           >
             <i className="fa-regular fa-trash-can"></i>
           </button>
+          </div>
         </div>
       )}
     </div>

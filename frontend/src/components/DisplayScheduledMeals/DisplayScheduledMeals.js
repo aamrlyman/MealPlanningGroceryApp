@@ -33,7 +33,7 @@ const DisplayScheduledMeals = ({
 
   return (
     <tr>
-      <td>
+      <td className="isCooked">
         {meal.is_Cooked ? (
           <button
             className="noBorder"
@@ -56,7 +56,7 @@ const DisplayScheduledMeals = ({
         <Link to={meal && `/meal/${meal.meal.id}/`}>{meal.meal.name}</Link>
       </td>
       <td>
-        <a href={meal.meal.url}>Recipe Link </a>
+        <a href={meal.meal.url}>{meal.meal.name} recipe Link </a>
       </td>
       <td className="displaytimesTd">
         <div className="displayTimesContainer">

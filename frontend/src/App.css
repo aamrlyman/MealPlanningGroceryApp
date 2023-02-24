@@ -97,6 +97,7 @@ input {
 .tableContainter {
   margin: auto;
   width: 90%;
+  margin-bottom: 30vh;
   /* border: solid; */
 }
 
@@ -105,7 +106,6 @@ table {
   border-radius: 5px;
   width: 90%;
   font-size: 1.5em;
-  margin-bottom: 30vh;
   /* overflow-y: scroll; */
 }
 
@@ -117,11 +117,18 @@ table, th {
   /* font-size: 1.25em; */
 }
 
+th {
+font-size: 2rem; 
+font-weight: lighter; 
+}
+
 td {
   border-bottom: dashed #526861;
   border-left: solid 5px #526861;
   font-size: 1em;
   padding: 0;
+  /* text-align: left;
+  padding-left: .5em; */
 }
 
 td.times {
@@ -131,6 +138,18 @@ td.times {
   border-right: none;
 }
 
+.trashCanContainer {
+  margin-left: auto;
+  width: 6%;
+}
+
+button.noBorderTrashCan {
+  border: none;
+}
+
+i.fa-regular.fa-trash-can {
+  font-size: 1.75em;
+}
 
 /* th.filler {
   border-left: none;
@@ -167,6 +186,10 @@ p.displaytimeP {
 .fa-regular, .far {
   font-weight: 400;
   font-size: 2.5rem;
+}
+
+td.isCooked {
+  width: 12%;
 }
 
 /* 
