@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment, useContext } from "react";
 import useAuth from "../../hooks/useAuth";
 import DisplayScheduledMeals from "../../components/DisplayScheduledMeals/DisplayScheduledMeals";
 import axios from "axios";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, Link } from "react-router-dom";
 // import ScheduleIdContext from "../../context/scheduleIdContext";
 
 const MealSchedulePage = () => {
@@ -17,15 +17,13 @@ const MealSchedulePage = () => {
 
   return (
     <div>
-      {/* {schedule ? (
-        <h1>Schedule_id: {schedule.id}</h1>
-      ) : (
-        <h1>No Schedule created yet</h1>
-      )} */}
+      <h1 className="Welcome">Welcome {user.username}!</h1>
       {!scheduledMeals ? (
         <div>
-          Click on the All Meals Link above to add some meals to your meal plan!
-          Or Click on the + to add some of your own.
+        <p>
+          Go to <Link to="/mealsList">All Meals</Link> to add some meals to your meal plan, 
+          Or Click on the <Link to="createMeal">+</Link> to add some of your own.
+        </p>
         </div>
       ) : (
         <div className="tableContainter">
@@ -55,13 +53,13 @@ const MealSchedulePage = () => {
             </tbody>
           </table>
           <div className="trashCanContainer">
-          <button
-            className="noBorderTrashCan"
-            type="submit"
-            onClick={() => clearSchedule(schedule)}
-          >
-            <i className="fa-regular fa-trash-can"></i>
-          </button>
+            <button
+              className="noBorderTrashCan"
+              type="submit"
+              onClick={() => clearSchedule(schedule)}
+            >
+              <i className="fa-regular fa-trash-can"></i>
+            </button>
           </div>
         </div>
       )}

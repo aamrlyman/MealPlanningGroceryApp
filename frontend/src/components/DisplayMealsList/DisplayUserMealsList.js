@@ -55,12 +55,16 @@ const DisplayUserMealList = ({
             getScheduledMeals={getScheduledMeals}
           />
         )}
+            {isDelete && meal && (
+          <DeleteUserMeal meal={meal} fetchMeals={fetchMeals} />
+     
+      )}
       </td>
-      {isDelete && meal && (
+      {/* {isDelete && meal && (
         <td>
           <DeleteUserMeal meal={meal} fetchMeals={fetchMeals} />
         </td>
-      )}
+      )} */}
     </tr>
   );
 };

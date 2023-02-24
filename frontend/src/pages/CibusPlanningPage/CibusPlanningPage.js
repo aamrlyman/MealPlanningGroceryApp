@@ -107,7 +107,6 @@ const CibusPlanning = (props) => {
 
   return (
     <div className="container">
-      <h1>Welcome {user.username}!</h1>
       <Outlet
         context={[
           schedule,

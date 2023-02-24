@@ -38,12 +38,13 @@ const UserMealsList = () => {
             <th>Meal</th>
             <th>Recipe Url</th>
             <th>Time</th>
-            <th>Add</th>
-            <th>
+            <th>Add
               <button type="button" onClick={() => setIsDelete(!isDelete)}>
-                Delete Meals
+              <i className="fa-regular fa-trash-can"></i>
               </button>
             </th>
+            {/* <th>
+            </th> */}
           </tr>
         </thead>
         <tbody>

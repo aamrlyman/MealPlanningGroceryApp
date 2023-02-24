@@ -88,6 +88,12 @@ a:hover {
   text-decoration: underline;
 }
 
+/* tr:hover {
+  background-color: #5268615e;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+} */
+
 input {
   border-radius: 5px;
   background-color: #f0e1b2;
@@ -103,7 +109,7 @@ input {
 
 table {
   margin: auto;
-  border-radius: 5px;
+  /* border-radius: 500px; */
   width: 90%;
   font-size: 1.5em;
   /* overflow-y: scroll; */
@@ -120,6 +126,7 @@ table, th {
 th {
 font-size: 2rem; 
 font-weight: lighter; 
+background-color: #526861cc;
 }
 
 td {
@@ -165,7 +172,7 @@ th.timeHeader {
   /* border-top: solid 5px #526861 ; */
 
 td.displaytimesTd {
-  width: 14%;
+  width: 15%;
 }
 
 .displayTimesContainer {
@@ -191,6 +198,16 @@ p.displaytimeP {
 td.isCooked {
   width: 12%;
 }
+
+h1.Welcome {
+  margin: 3px;
+}
+
+/* allmeals list diusplay times */
+td.mealtimesTd {
+  padding: 5px 0px 5px 0px;
+}
+
 
 /* 
 https://www.w3schools.com/howto/howto_css_animate_buttons.asp */

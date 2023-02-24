@@ -36,7 +36,7 @@ const DeleteUserMeal = ({meal, fetchMeals}) => {
 
   return (
       <div>
-      <button type="button" onClick={() => deleteMeal()}>Delete</button>
+      <button type="button" onClick={() => deleteMeal()}><i class="fa-solid fa-trash-can"></i></button>
     </div>
   );
 };

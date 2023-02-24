@@ -27,7 +27,7 @@ const AllMealsList = () => {
           <tr>
             <th>Scheduled</th>
             <th>Meal</th>
-            <th>Recipe Url</th>
+            <th>Recipes</th>
             <th>Time</th>
             <th>Add</th>
           </tr>
