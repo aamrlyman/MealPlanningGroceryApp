@@ -1,0 +1,36 @@
+h1.Welcome {
+  margin: 3px;
+}
+
+td.isCooked {
+  width: 12%;
+}
+
+.removeButton {
+  margin-right: 9px;
+}
+
+.displayTimesContainer {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  margin-left: 10px;
+}
+
+td.displaytimesTd {
+  width: 15%;
+}
+
+i.fa-regular.fa-trash-can {
+  font-size: 1.75em;
+}
+
+button.noBorderTrashCan {
+  border: none;
+}
+
+.trashCanContainer {
+    margin-left: auto;
+    width: 6%;
+  }
+  

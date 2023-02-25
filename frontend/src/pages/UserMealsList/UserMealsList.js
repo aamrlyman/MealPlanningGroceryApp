@@ -3,6 +3,7 @@ import axios from "axios";
 import DisplayUserMealsList from "../../components/DisplayMealsList/DisplayUserMealsList";
 import useAuth from "../../hooks/useAuth";
 import { useOutletContext } from "react-router-dom";
+import "./UserMealsList.css";
 
 const UserMealsList = () => {
   const [schedule, scheduledMeals, getScheduledMeals, removeMealFromSchedule] =

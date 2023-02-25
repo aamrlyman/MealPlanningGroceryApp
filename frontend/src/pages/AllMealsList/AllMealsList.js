@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import DisplayMealsList from "../../components/DisplayMealsList/DisplayMealsList";
 import { useOutletContext } from "react-router-dom";
-
+import "./AllMealsList.css"
 const AllMealsList = () => {
   const [schedule, scheduledMeals, getScheduledMeals, removeMealFromSchedule] = useOutletContext();
   const [meals, setMeals] = useState();

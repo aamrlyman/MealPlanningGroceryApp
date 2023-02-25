@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import DisplayScheduledMeals from "../../components/DisplayScheduledMeals/DisplayScheduledMeals";
 import axios from "axios";
 import { useOutletContext, Link } from "react-router-dom";
+import "./MealSchedulePage.css";
 // import ScheduleIdContext from "../../context/scheduleIdContext";
 
 const MealSchedulePage = () => {

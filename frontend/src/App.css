@@ -109,15 +109,16 @@ input {
 
 table {
   margin: auto;
-  /* border-radius: 500px; */
   width: 90%;
   font-size: 1.5em;
+  border-collapse: collapse;
+
   /* overflow-y: scroll; */
 }
 
 table, th {
   border: 5px solid #526861;
-  border-collapse: collapse;
+  
   padding: .25em;
   border-radius: 5px;
   /* font-size: 1.25em; */
@@ -130,111 +131,20 @@ background-color: #526861cc;
 }
 
 td {
+  /* border-collapse: collapse; */
   border-bottom: dashed #526861;
   border-left: solid 5px #526861;
   font-size: 1em;
   padding: 0;
-  /* text-align: left;
-  padding-left: .5em; */
 }
 
-td.times {
-  text-align: left;
-  padding-left: 13px;
-  width: 13%;
-  border-right: none;
-  padding-bottom: 4px; 
-  padding-top: 4px; 
-}
-
-.trashCanContainer {
-  margin-left: auto;
-  width: 6%;
-}
-
-button.noBorderTrashCan {
-  border: none;
-}
-
-i.fa-regular.fa-trash-can {
-  font-size: 1.75em;
-}
-
-/* th.filler {
-  border-left: none;
-}
-
-th.timeHeader {
-  border-right: none;
-  padding-left: 3vw;
-} */
-/* td.removeButton {
-  border-left: none;
-  width: 2%;
-  /* border-top: solid 5px #526861 ; */
-
-td.displaytimesTd {
-  width: 15%;
-}
-
-.displayTimesContainer {
-  display: flex;
-  justify-content: space-between;
-  text-align: left;
-  margin-left: 10px;
-}
-
-p.displaytimeP {
-  font-size: .75em;
-}
-
-span.pTitle {
-  font-weight: 600;
-  font-style: italic;
-}
-.removeButton {
-  margin-right: 9px;
-}
-
+/* Icons for MealSchedule, AllMeals, and MyMeals */
 .fa-regular, .far {
   font-weight: 400;
   font-size: 2.5rem;
 }
 
-td.isCooked {
-  width: 12%;
-}
-
-h1.Welcome {
-  margin: 3px;
-}
-
-/* allmeals list diusplay times */
-td.mealtimesTd {
-  padding: 5px 0px 5px 0px;
-}
-
-/* pencil icon in userMealsList */
-i.fa-solid.fa-pencil {
-  font-size: 1.5em;
-}
-
-/* pencil icon in userMealsList */
-span.editMeals {
-  margin-left: 5px;
-}
-
-/* addRemove column userMealsList */
-.addRemoveContainer {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-td.addRemoveTd {
-  width: 11%;
-}
-/* 
-https://www.w3schools.com/howto/howto_css_animate_buttons.asp */
+/* https://www.w3schools.com/howto/howto_css_animate_buttons.asp */ 
 
 /* Evergreen: Hex #526861
 
@@ -260,3 +170,4 @@ tr {
 } */
 
 /* overflow-y: scroll; */
+/* apple sd gothic neo light */

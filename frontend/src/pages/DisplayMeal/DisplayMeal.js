@@ -9,6 +9,7 @@ import RemoveMealFromScheduleButton from "../../components/RemoveMealFromSchedul
 import DisplayAllMealIngredients from "../../components/DisplayAllMealIngredients/DisplayAllMealIngredients";
 import { useOutletContext } from "react-router-dom";
 import DisplayTimes from "../../components/DisplayTimes/DisplayTimes";
+import "./DisplayMeal.css";
 
 const DisplayMeal = () => {
   const [schedule, scheduledMeals, getScheduledMeals, removeMealFromSchedule] =
@@ -37,33 +38,21 @@ const DisplayMeal = () => {
     fetchMeals();
   }, []);
 
-  // function getId(array, id){
-  //   while(!array)
-  //   {console.log("loading") }
-  //   let obj = array.filter((i)=>i.meal.id === id);
-  //   console.log(obj.id);
-  //   return obj.id
-  // }
-
-  // let scheduledMeaId = getId(scheduledMeals,mealId)
-  // // scheduledMeals &&
-  // scheduledMeals.filter((m) => m.meal.id === mealId)[0].id
-
   return (
-    <div>
-      <div>
+    <div className="mealViewContainer">
+      <div className="iconContainer">
         <IsScheduledIcon scheduledMeals={scheduledMeals} meal={meal} />
       </div>
-      <div>
-        <h1>{meal && meal.name}</h1>
+      <div className="mealTitleContainer">
+        <h1 className="mealTitle">{meal && meal.name}</h1>
       </div>
-      {meal ? (
-       <DisplayTimes meal={meal} />
-      ) : (
-        ""
-      )}
-      <h2>Ingredients</h2>
-      <DisplayAllMealIngredients />
+      <div className="displayTimeMealView">
+        {meal ? <DisplayTimes meal={meal} /> : ""}
+      </div>
+      <div className="ingredientContainer">
+        <h2>Ingredients</h2>
+        <DisplayAllMealIngredients />
+      </div>
       <div>
         <p>{meal && meal.notes}</p>
       </div>
@@ -74,12 +63,12 @@ const DisplayMeal = () => {
       scheduledMeals &&
       scheduledMeals.some((sMeal) => sMeal.meal.id == meal.id) ? (
         <RemoveMealFromScheduleButton
-        meal={meal}
-        scheduledMeals={scheduledMeals}
-        getScheduledMeals={getScheduledMeals}
-        removeMealFromSchedule={removeMealFromSchedule}
-        scheduleId={schedule.id}
-      />
+          meal={meal}
+          scheduledMeals={scheduledMeals}
+          getScheduledMeals={getScheduledMeals}
+          removeMealFromSchedule={removeMealFromSchedule}
+          scheduleId={schedule.id}
+        />
       ) : (
         scheduledMeals && (
           <AddMealToScheduleButton
@@ -95,5 +84,3 @@ const DisplayMeal = () => {
 };
 
 export default DisplayMeal;
-
-

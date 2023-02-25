@@ -27,22 +27,19 @@ const DisplayIngredients = ({ ingredient, fetchIngredients, handleEditClick }) =
   return (
     <div>
          { ingredient? 
-      <table key={ingredient.id}>
-        <tbody>
-          <tr >
-            <td>{ingredient.name}</td>
-            <td>
+      <ul key={ingredient.id}>
+            <li>{ingredient.name}</li>
+            <li>
                {ingredient.quantity===0?" ": ": "+ ingredient.quantity} {ingredient.unit==="na"? " ": ingredient.unit}
-            </td>
-            <td>
+            </li>
+            <li>
               <button onClick={() => handleEditClick(ingredient)}>Edit</button>
-            </td>
-            <td>
+            </li>
+            <li>
               <button type="submit" onClick={() => deleteIngredient(ingredient)} >Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </li>
+
+      </ul>
           :
           ""
          } 

@@ -1,0 +1,46 @@
+/* DisplayMeal */
+
+.mealViewContainer {
+  border: solid 5px #7c262b;
+  border-radius: 15px;
+  margin: auto;
+  width: 75%;
+}
+
+.iconContainer {
+    margin-right: auto;
+    width: 10%;
+  }
+  
+  h1.mealTitle {
+    font-size: 4rem;
+    margin-right: auto;
+    width: 43%;
+  }
+  
+  h1.mealTitle {
+    font-size: 4rem;
+    padding: 1vw;
+    font-style: italic;
+    font-family: apple-sd-gothic-light;
+    font-weight: 100;
+    letter-spacing: 3px;
+  }
+  
+  .mealTitleContainer {
+    border: solid 5px #7c262b;
+    width: fit-content;
+    margin-right: auto;
+    margin-left: 7vw;
+    border-radius: 15px;
+  }
+  
+  .displayTimeMealView {
+    margin-top: -15vh;
+    margin-left: 35vw;
+    width: fit-content;
+    border: dashed 3px #7c262b;
+    border-radius: 6px;
+    padding: 6px;
+  }
+  

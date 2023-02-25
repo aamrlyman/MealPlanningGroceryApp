@@ -1,3 +1,4 @@
+import "./DisplayTimes.css";
 
 const DisplayTimes = ({meal}) => {
     return (
