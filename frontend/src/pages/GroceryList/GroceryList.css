@@ -10,7 +10,7 @@
 
 /* copy icon */
 i.fa-regular.fa-clone {
-    font-size: 2rem;
+    font-size: 1.25rem;
 }
 
 .groceriesLi {
@@ -19,9 +19,9 @@ i.fa-regular.fa-clone {
 
 }
 
-.ingredientsOnlyContainer {
+.ingredientsOnlyContainer, .mealCountContainer {
     /* border: solid; */
-    width: 23%;
+    width: 37%;
     margin-left: auto;
     margin-right: 32vw;
 }

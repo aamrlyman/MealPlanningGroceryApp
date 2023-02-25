@@ -199,7 +199,7 @@ function copiedGroceries(array, sortType){
           alert(`List Copied to Clipboard!\n${list}`)
         }}
       >
-          <i className="fa-regular fa-clone"></i>
+        <i className="fa-regular fa-clone"></i>
       </button>
 
         </li>
