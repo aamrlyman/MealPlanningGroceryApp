@@ -57,7 +57,7 @@ button:active {
   max-width: 100%;
   overflow: auto;
   text-align: center;
-  margin-left: 1rem;
+  margin: 0 1rem 5rem 1rem;
 }
 
 .form {
@@ -142,6 +142,10 @@ td {
 .fa-regular, .far {
   font-weight: 400;
   font-size: 2.5rem;
+}
+
+ul {
+  list-style: none;
 }
 
 /* https://www.w3schools.com/howto/howto_css_animate_buttons.asp */ 

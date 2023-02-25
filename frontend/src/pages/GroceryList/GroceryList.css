@@ -1,0 +1,38 @@
+.sortOptions {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  align-items: center;
+  width: 40%;
+  margin-right: auto;
+  margin-left: 29vw;
+}
+
+/* copy icon */
+i.fa-regular.fa-clone {
+    font-size: 2rem;
+}
+
+.groceriesLi {
+    text-align: left;
+    padding-left: 1vw;
+
+}
+
+.ingredientsOnlyContainer {
+    /* border: solid; */
+    width: 23%;
+    margin-left: auto;
+    margin-right: 32vw;
+}
+
+h3 {
+    text-align: left;
+    margin-bottom: 6px;
+    margin-top: 6px;
+    text-decoration: underline;
+}
+
+input[type="checkbox"]{
+    cursor: pointer;
+}

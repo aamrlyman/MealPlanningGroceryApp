@@ -164,10 +164,10 @@ function copiedGroceries(array, sortType){
   return (
     
     <div>
-      <ul>
+      <ul className="sortOptions">
         <li>
           <Link to="/groceries"><button type="button" onClick={() => setSortType("ingredientsOnly")}>
-            Ingredients Only
+            Ingredients
           </button></Link>
         </li>
         <li>
@@ -177,7 +177,7 @@ function copiedGroceries(array, sortType){
         </li>
         <li>
           <Link to="+MealNames"> <button type="button" onClick={() => setSortType("+MealNames")}>
-            +MealNames
+            +Meals
           </button></Link>
         </li>
         <li>
@@ -190,19 +190,23 @@ function copiedGroceries(array, sortType){
             Everything
           </button></Link>
         </li>
-      </ul> 
-      <p>*Checkboxes will be reset on refresh</p>
-      <Outlet context={[groceryList, sortType]} />
-
+        <li>
      <button
+      className="noBorder"
         onClick={() => {
           let list =   copiedGroceries(groceryList, sortType)
           navigator.clipboard.writeText(list);
           alert(`List Copied to Clipboard!\n${list}`)
         }}
       >
-        Copy List
+          <i className="fa-regular fa-clone"></i>
       </button>
+
+        </li>
+      </ul> 
+      <Outlet context={[groceryList, sortType]} />
+
+      <p>*Checkboxes will be reset on refresh</p>
     </div>
   );
 };
