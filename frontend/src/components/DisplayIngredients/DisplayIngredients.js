@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 
-const DisplayIngredients = ({ ingredient, fetchIngredients, handleEditClick }) => {
+const DisplayIngredients = ({
+  ingredient,
+  fetchIngredients,
+  handleEditClick,
+}) => {
   const [user, token] = useAuth();
   const { mealId } = useParams();
 
@@ -26,23 +30,21 @@ const DisplayIngredients = ({ ingredient, fetchIngredients, handleEditClick }) =
 
   return (
     <div>
-         { ingredient? 
-      <ul key={ingredient.id}>
-            <li>{ingredient.name}</li>
-            <li>
-               {ingredient.quantity===0?" ": ": "+ ingredient.quantity} {ingredient.unit==="na"? " ": ingredient.unit}
-            </li>
-            <li>
-              <button onClick={() => handleEditClick(ingredient)}>Edit</button>
-            </li>
-            <li>
-              <button type="submit" onClick={() => deleteIngredient(ingredient)} >Delete</button>
-            </li>
-
-      </ul>
-          :
-          ""
-         } 
+      {ingredient ? (
+        <Fragment>
+          <li key={ingredient.id}>
+            {" "}
+            {ingredient.quantity === 0 ? " " : ingredient.quantity}{" "}
+            {ingredient.unit === "na" ? " " : ingredient.unit} {ingredient.name}
+            <button onClick={() => handleEditClick(ingredient)}>Edit</button>
+            <button type="button" onClick={() => deleteIngredient(ingredient)}>
+              Delete
+            </button>
+          </li>
+        </Fragment>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

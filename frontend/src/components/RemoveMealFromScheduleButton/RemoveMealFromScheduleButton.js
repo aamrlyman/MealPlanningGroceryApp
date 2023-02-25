@@ -26,7 +26,7 @@ const RemoveMealFromScheduleButton = ({
       )
     }
   >
-   <i class="fa-solid fa-circle-minus"></i>
+   <i className="fa-solid fa-circle-minus"></i>
   </button>
   );
 };

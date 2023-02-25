@@ -40,7 +40,7 @@ const DeleteUserMeal = ({ meal, fetchMeals }) => {
   return (
     <div>
       <button className="noBorder" type="button" onClick={() => deleteMeal()}>
-        <i class="fa-solid fa-trash-can"></i>
+        <i className="fa-solid fa-trash-can"></i>
       </button>
     </div>
   );

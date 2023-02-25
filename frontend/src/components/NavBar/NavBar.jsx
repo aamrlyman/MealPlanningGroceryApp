@@ -12,8 +12,8 @@ const Navbar = () => {
   const [location, setLocation] = useState("home");
 
   let styleArray = [
-    { textDecoration: "none", color: "#2c2219", "font-style":"normal" },
-    { textDecoration: "none", color: "#7c262b", "font-weight": "bold", "font-style":"normal"},
+    { textDecoration: "none", color: "#2c2219", "fontStyle":"normal" },
+    { textDecoration: "none", color: "#7c262b", "fontWeight": "bold", "fontStyle":"normal"},
   ];
 
   function changeLocation (user, string){

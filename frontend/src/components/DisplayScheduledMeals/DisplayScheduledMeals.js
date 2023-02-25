@@ -56,7 +56,7 @@ const DisplayScheduledMeals = ({
         <Link to={meal && `/meal/${meal.meal.id}/`}>{meal.meal.name}</Link>
       </td>
       <td>
-        <a href={meal.meal.url}>{meal.meal.name} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        <a href={meal.meal.url}>{meal.meal.name} <i className="fa-solid fa-arrow-up-right-from-square"></i></a>
       </td>
       <td className="displaytimesTd">
         <div className="displayTimesContainer">
@@ -68,7 +68,7 @@ const DisplayScheduledMeals = ({
                 removeMealFromSchedule(meal.id, scheduleId, getScheduledMeals)
               }
             >
-              <i class="fa-solid fa-circle-minus"></i>
+              <i className="fa-solid fa-circle-minus"></i>
             </button>
           </div>
         </div>

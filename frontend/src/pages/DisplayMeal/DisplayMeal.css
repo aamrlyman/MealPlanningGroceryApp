@@ -4,18 +4,14 @@
   border: solid 5px #7c262b;
   border-radius: 15px;
   margin: auto;
-  width: 75%;
+  width: fit-content;
+  display: flow-root;
 }
 
 .iconContainer {
-    margin-right: auto;
-    width: 10%;
-  }
-  
-  h1.mealTitle {
-    font-size: 4rem;
-    margin-right: auto;
-    width: 43%;
+    margin-top: 1vh;
+    margin-left: 0.5vw;
+    width: 5%;
   }
   
   h1.mealTitle {
@@ -28,12 +24,11 @@
   }
   
   .mealTitleContainer {
-    border: solid 5px #7c262b;
+    border: solid 3px #7c262b;
     width: fit-content;
-    margin-right: auto;
-    margin-left: 7vw;
-    border-radius: 15px;
-  }
+    margin-left: 4vw;
+    margin-top: -5vh;
+}
   
   .displayTimeMealView {
     margin-top: -15vh;

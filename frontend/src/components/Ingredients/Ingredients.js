@@ -73,14 +73,15 @@ const Ingredients = ({ meal }) => {
             fetchIngredients={fetchIngredients}
             />
               ):
-              (
-                  <DisplayIngredients
-                    meal={meal}
-                    ingredient={ingredient}
-                    fetchIngredients={fetchIngredients}
-                    handleEditClick={handleEditClick}
-                    key={ingredient.id + "Dingre"}
-                  />
+              (<ul className="ingredientsUl" key={ingredient.id}>
+                <DisplayIngredients
+                  meal={meal}
+                  ingredient={ingredient}
+                  fetchIngredients={fetchIngredients}
+                  handleEditClick={handleEditClick}
+                  key={ingredient.id + "Dingre"}
+                />
+              </ul>
                   
           )
 

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import "./DisplayAllMealIngredients.css";
 
 const DisplayAllMealIngredients = (props) => {
   const [user, token] = useAuth();
@@ -29,20 +30,19 @@ const DisplayAllMealIngredients = (props) => {
   }, []);
 
   return (
-    <div>
+    <ul className="allMealIngredients">
       {ingredients &&
         ingredients.map((ingredient) => (
-          <ul key={ingredient.id + "amic"}>
-         
-                <li>
+          <Fragment key={ingredient.id + "amic"}>
+                <li key={ingredient.id}>
                   <span className="quantities">
                   {ingredient.quantity} {ingredient.unit}{" "}
                   </span>
                   {ingredient.name}
                 </li>
-          </ul>
+          </Fragment>
         ))}
-    </div>
+    </ul>
   );
 };
 

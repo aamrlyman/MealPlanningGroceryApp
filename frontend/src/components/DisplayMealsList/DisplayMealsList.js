@@ -25,7 +25,7 @@ const DisplayScheduledMeals = ({
         <Link to={meal && `/meal/${meal.id}/`}> {meal.name}</Link>
       </td>
       <td>
-        <a href={meal.url}><i class="fa-solid fa-arrow-up-right-from-square"></i> </a>
+        <a href={meal.url}><i className="fa-solid fa-arrow-up-right-from-square"></i> </a>
       </td>
       <td className="mealtimesTd">
         <DisplayTimes meal={meal} />

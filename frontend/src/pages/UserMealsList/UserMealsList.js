@@ -47,7 +47,7 @@ const UserMealsList = () => {
                 type="button"
                 onClick={() => setIsDelete(!isDelete)}
               >
-                <i class="fa-solid fa-pencil"></i>
+                <i className="fa-solid fa-pencil"></i>
               </button>
               </span>
             </th>

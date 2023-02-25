@@ -31,7 +31,7 @@ const AddMealToScheduleButton = ({ scheduleId, meal, getScheduledMeals }) => {
       className="noBorder"
       onClick={(event) => addMealToSchedule(scheduleId, meal)}
     >
-    <i class="fa-solid fa-circle-plus"></i>
+    <i className="fa-solid fa-circle-plus"></i>
     </button>
   );
 };
