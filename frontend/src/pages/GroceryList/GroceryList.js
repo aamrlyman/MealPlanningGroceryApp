@@ -120,13 +120,22 @@ const GroceryList = () => {
       case "+quantities":
         copiedList = "Ingredients, (Quantities)";
         let quantities = "";
+        let comma = "";
         for (const index in array) {
           copiedList += `\n${array[index].name} (`;
           for (const i in array[index].meals) {
-            if (i == !(array[index].meals.length - 1)) {
-              quantities += ` ${array[index].meals[i].quantity} ${array[index].meals[i].unit},`;
-            } else
-              quantities += ` ${array[index].meals[i].quantity} ${array[index].meals[i].unit}`;
+            i == !(array[index].meals.length - 1)
+              ? (comma = ",")
+              : (comma = "");
+            quantities += `${
+              array[index].meals[i].quantity === 0
+                ? ""
+                : array[index].meals[i].quantity
+            } ${
+              array[index].meals[i].unit === "na"
+                ? ""
+                : array[index].meals[i].unit
+            }${comma}`;
           }
           copiedList += `${quantities})`;
           quantities = "";
@@ -136,13 +145,20 @@ const GroceryList = () => {
       case "everything":
         copiedList = "Ingredients |  Meals  |  Quantities";
         let everything = "";
+        let commaString = "";
         for (const index in array) {
           copiedList += `\n${array[index].name} (`;
           for (const i in array[index].meals) {
-            if (i == !(array[index].meals.length - 1)) {
-              everything += ` ${array[index].meals[i].name}: ${array[index].meals[i].quantity} ${array[index].meals[i].unit},`;
-            } else
-              everything += ` ${array[index].meals[i].name}: ${array[index].meals[i].quantity} ${array[index].meals[i].unit}`;
+            i == !(array[index].meals.length - 1)
+              ? (commaString = ",")
+              : (commaString = "");
+            everything += ` ${array[index].meals[i].name}: ${
+              array[index].meals[i].quantity === 0
+                ? ""
+                : array[index].meals[i].quantity
+            } ${
+              array[index].meals[i].unit === 0 ? "" : array[index].meals[i].unit
+            }${commaString}`;
           }
           copiedList += `${everything})`;
           everything = "";
