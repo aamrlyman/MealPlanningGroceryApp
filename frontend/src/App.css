@@ -39,7 +39,7 @@ button:hover {
   color: #f0e1b2;
   background-color: #7c262b;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 button:active {
@@ -49,11 +49,10 @@ button:active {
   transform: translateY(4px);
 }
 
-.noBorder{
+.noBorder {
   border: none;
 }
 .container {
-  margin: 0 auto;
   max-width: 100%;
   overflow: auto;
   text-align: center;
@@ -100,37 +99,57 @@ input {
   border: solid 2px #7c262b;
 }
 
-.tableContainter {
+.tableContainter{
   margin: auto;
   width: 90%;
   margin-bottom: 30vh;
   /* border: solid; */
 }
 
-table {
+/* table Classes */
+.scheduleTable,
+.allMealsTable,
+.useMealsTable
+{
+  border: 5px solid #526861;
+  padding: 0.25em;
   margin: auto;
   width: 90%;
   font-size: 1.5em;
   border-collapse: collapse;
-
-  /* overflow-y: scroll; */
-}
-
-table, th {
-  border: 5px solid #526861;
-  
-  padding: .25em;
-  border-radius: 5px;
   /* font-size: 1.25em; */
 }
 
-th {
-font-size: 2rem; 
-font-weight: lighter; 
-background-color: #526861cc;
+.allMealsTable,
+.useMealsTable {
+  margin-top: 2rem;
 }
 
-td {
+
+/* th classes */
+.MealScheduleTableTh,
+.timeHeader,
+.allMealsTh, 
+.userMealsTh
+ {
+  font-size: 2rem;
+  padding: 0.25em;
+  font-weight: lighter;
+  background-color: #526861cc;
+  border: 5px solid #526861;
+}
+
+/* td classes */
+.mealURLTd,
+.mealTd,
+.isCooked,
+.displaytimesTd,
+.allMealsTd,
+.mealTimesTd,
+.userMealsTd,
+.times,
+.addRemoveTd
+{
   /* border-collapse: collapse; */
   border-bottom: dashed #526861;
   border-left: solid 5px #526861;
@@ -139,7 +158,8 @@ td {
 }
 
 /* Icons for MealSchedule, AllMeals, and MyMeals */
-.fa-regular, .far {
+.fa-regular,
+.far {
   font-weight: 400;
   font-size: 2.5rem;
 }
@@ -148,7 +168,7 @@ ul {
   list-style: none;
 }
 
-/* https://www.w3schools.com/howto/howto_css_animate_buttons.asp */ 
+/* https://www.w3schools.com/howto/howto_css_animate_buttons.asp */
 
 /* Evergreen: Hex #526861
 

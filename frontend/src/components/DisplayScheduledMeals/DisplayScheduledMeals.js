@@ -55,7 +55,7 @@ const DisplayScheduledMeals = ({
       <td className="mealTd">
         <Link to={meal && `/meal/${meal.meal.id}/`}>{meal.meal.name}</Link>
       </td>
-      <td>
+      <td className="mealURLTd">
         <a href={meal.meal.url}>{meal.meal.name} <i className="fa-solid fa-arrow-up-right-from-square"></i></a>
       </td>
       <td className="displaytimesTd">

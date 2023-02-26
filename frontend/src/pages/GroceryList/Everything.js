@@ -6,37 +6,38 @@ const Everything = () => {
   let counter1 = 0;
   let counter2 = 0;
   return (
-    <div>
-      <table>
+    <div className="everythingContainer">
+      <table className="groceriesTable">
+      <span style={{fontStyle: "italic", fontSize:".75rem"}}>*Checkboxes reset on refresh</span>
         <thead>
           <tr>
-            <th>Ingredients</th>
-            <th>Meals</th>
-            <th>Quantities</th>
+            <th className="groceriesTh">Ingredients</th>
+            <th className="groceriesTh">Meals</th>
+            <th className="groceriesTh"># of Meals</th>
+            <th className="groceriesTh">Quantities</th>
           </tr>
         </thead>
         <tbody>
           {groceryList &&
             groceryList.map((item) => (
               <tr key={`${item.id} + ${(counter += 1.321)}`}>
-                <td>
+                <td className="everythingTd">
                   <input type="checkbox" /> {item.name}
                 </td>
-                <td>
-                  {/* <ol> */}
+                <td className="everythingTd">
                   {item &&
                     item.meals.map((meal) => (
-                      <p key={(counter2 += 1.2423)}>
+                      <p className="mealNamesP" key={(counter2 += 1.2423)}>
                         <Link to={`/meal/${meal.id}`}>{meal.name}</Link>
                       </p>
                     ))}
-                  {/* </ol> */}
                 </td>
-                <td>
+                <td className="mealCountTd">{item.meals.length}</td>
+                <td className="everythingTd">
                   {/* <ol> */}
                   {item &&
                     item.meals.map((meal) => (
-                      <p key={(counter1 += 1.123)}>
+                      <p className="quantitiesP" key={(counter1 += 1.123)}>
                         {meal.quantity} {meal.unit}
                       </p>
                     ))}

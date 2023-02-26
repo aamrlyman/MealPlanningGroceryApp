@@ -5,14 +5,13 @@ import axios from "axios";
 import { useOutletContext, useNavigate } from "react-router-dom";
 import "./GroceryList.css";
 
-
 const GroceryList = () => {
   const [schedule, getUserSchedule] = useOutletContext();
-  const [ user, token] = useAuth();
+  const [user, token] = useAuth();
   const [groceryList, setGroceryList] = useState();
   const [sortType, setSortType] = useState("ingredientsOnly");
   const [addDashes, setAddDashes] = useState(0);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function eliminateDuplicates(arr) {
     let namesOnly = arr.map((el) => el.name.toLowerCase());
@@ -59,157 +58,217 @@ const GroceryList = () => {
   }
 
   const fetchGroceries = async (scheduleId) => {
-      
     try {
-        let response = await axios.get(
-          `http://127.0.0.1:8000/api/ingredients/grocery_list/${scheduleId}/`,
-          {
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-          }
-        );
-        setGroceryList(sortedGroceryList(response.data));
-        console.log(response.data);
-      } catch (error) {
-        console.log(error.message);
-      }
+      let response = await axios.get(
+        `http://127.0.0.1:8000/api/ingredients/grocery_list/${scheduleId}/`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      setGroceryList(sortedGroceryList(response.data));
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.message);
     }
+  };
   useEffect(() => {
-    schedule? fetchGroceries(schedule.id): navigate("/");
-  },[]);
+    schedule ? fetchGroceries(schedule.id) : navigate("/");
+  }, []);
   //   console.log(scheduledMeals.filter( (m)=> m.meal.id===mealId))
 
-//  useEffect( ()=> {
-//   let list =   copiedGroceries(groceryList, sortType)
-//   navigator.clipboard.writeText(list);
-//   alert(`List Copied to Clipboard!\n${list}`)
-//  }, [sortType] 
-//  );
+  //  useEffect( ()=> {
+  //   let list =   copiedGroceries(groceryList, sortType)
+  //   navigator.clipboard.writeText(list);
+  //   alert(`List Copied to Clipboard!\n${list}`)
+  //  }, [sortType]
+  //  );
 
-function copiedGroceries(array, sortType){
-  let copiedList = "";
-  switch(sortType){
-    case "ingredientsOnly":
-    copiedList = "Ingredients";
-    for(const index in array){
-      copiedList += `\n${array[index].name}`
-    };
-    return copiedList
-
-    case "+MealCount":
-    copiedList = "Ingredients, # of Meals";
-    for(const index in array){
-      copiedList += `\n${array[index].name}, ${array[index].meals.length}`
-    };
-    return copiedList
-
-    case "+MealNames":
-    copiedList = "Ingredients, (Meals)"
-    let meals = ""
-    for(const index in array){
-      copiedList += `\n${array[index].name} (` 
-      for(const i in array[index].meals){
-        if(i ==! (array[index].meals.length - 1)){
-          meals+= ` ${array[index].meals[i].name},`
+  function copiedGroceries(array, sortType) {
+    let copiedList = "";
+    switch (sortType) {
+      case "ingredientsOnly":
+        copiedList = "Ingredients";
+        for (const index in array) {
+          copiedList += `\n${array[index].name}`;
         }
-        else(
-          meals+= ` ${array[index].meals[i].name}`
-        )
-      }
-      copiedList += `${meals})`;
-      meals="";
-    }
-    return copiedList
-  
-    case "+quantities":
-    copiedList = "Ingredients, (Quantities)"
-    let quantities = ""
-    for(const index in array){
-      copiedList += `\n${array[index].name} (` 
-      for(const i in array[index].meals){
-        if(i ==! (array[index].meals.length - 1)){
-          quantities+= ` ${array[index].meals[i].quantity} ${array[index].meals[i].unit},`
-        }
-        else(
-          quantities+= ` ${array[index].meals[i].quantity} ${array[index].meals[i].unit}`
-        )
-      }
-      copiedList += `${quantities})`;
-      quantities="";
-    }
-    return copiedList
+        return copiedList;
 
-    case "everything":
-    copiedList = "Ingredients |  Meals  |  Quantities"
-    let everything = ""
-    for(const index in array){
-      copiedList += `\n${array[index].name} (` 
-      for(const i in array[index].meals){
-        if(i ==! (array[index].meals.length - 1)){
-          everything+= ` ${array[index].meals[i].name}: ${array[index].meals[i].quantity} ${array[index].meals[i].unit},`
+      case "+MealCount":
+        copiedList = "Ingredients, # of Meals";
+        for (const index in array) {
+          copiedList += `\n${array[index].name}, ${array[index].meals.length}`;
         }
-        else(
-          everything+= ` ${array[index].meals[i].name}: ${array[index].meals[i].quantity} ${array[index].meals[i].unit}`
-        )
-      }
-      copiedList += `${everything})`;
-      everything="";
+        return copiedList;
+
+      case "+MealNames":
+        copiedList = "Ingredients, (Meals)";
+        let meals = "";
+        for (const index in array) {
+          copiedList += `\n${array[index].name} (`;
+          for (const i in array[index].meals) {
+            if (i == !(array[index].meals.length - 1)) {
+              meals += ` ${array[index].meals[i].name},`;
+            } else meals += ` ${array[index].meals[i].name}`;
+          }
+          copiedList += `${meals})`;
+          meals = "";
+        }
+        return copiedList;
+
+      case "+quantities":
+        copiedList = "Ingredients, (Quantities)";
+        let quantities = "";
+        for (const index in array) {
+          copiedList += `\n${array[index].name} (`;
+          for (const i in array[index].meals) {
+            if (i == !(array[index].meals.length - 1)) {
+              quantities += ` ${array[index].meals[i].quantity} ${array[index].meals[i].unit},`;
+            } else
+              quantities += ` ${array[index].meals[i].quantity} ${array[index].meals[i].unit}`;
+          }
+          copiedList += `${quantities})`;
+          quantities = "";
+        }
+        return copiedList;
+
+      case "everything":
+        copiedList = "Ingredients |  Meals  |  Quantities";
+        let everything = "";
+        for (const index in array) {
+          copiedList += `\n${array[index].name} (`;
+          for (const i in array[index].meals) {
+            if (i == !(array[index].meals.length - 1)) {
+              everything += ` ${array[index].meals[i].name}: ${array[index].meals[i].quantity} ${array[index].meals[i].unit},`;
+            } else
+              everything += ` ${array[index].meals[i].name}: ${array[index].meals[i].quantity} ${array[index].meals[i].unit}`;
+          }
+          copiedList += `${everything})`;
+          everything = "";
+        }
+        return copiedList;
     }
-    return copiedList
   }
-}
-
 
   return (
-    
-    <div>
+    <div className="groceryListContainer">
       <ul className="sortOptions">
         <li>
-          <Link to="/groceries"><button type="button" onClick={() => setSortType("ingredientsOnly")}>
-            Ingredients
-          </button></Link>
+          {sortType === "ingredientsOnly" ? (
+            <Link to="/groceries">
+              <button
+                style={{ color: "#f0e1b2", backgroundColor: "#7c262b" }}
+                type="button"
+                onClick={() => setSortType("ingredientsOnly")}
+              >
+                Ingredients
+              </button>
+            </Link>
+          ) : (
+            <Link to="/groceries">
+              <button
+                type="button"
+                onClick={() => setSortType("ingredientsOnly")}
+              >
+                Ingredients
+              </button>
+            </Link>
+          )}
         </li>
         <li>
-          <Link to="+MealCount"><button type="button" onClick={() => setSortType("+MealCount")}>
-            +MealCount
-          </button></Link>
+          {sortType === "+MealNames" ? (
+            <Link to="+MealNames">
+              <button
+                style={{ color: "#f0e1b2", backgroundColor: "#7c262b" }}
+                type="button"
+                onClick={() => setSortType("+MealNames")}
+              >
+                +Meals
+              </button>
+            </Link>
+          ) : (
+            <Link to="+MealNames">
+              <button type="button" onClick={() => setSortType("+MealNames")}>
+                +Meals
+              </button>
+            </Link>
+          )}
         </li>
         <li>
-          <Link to="+MealNames"> <button type="button" onClick={() => setSortType("+MealNames")}>
-            +Meals
-          </button></Link>
+          {sortType === "+MealCount" ? (
+            <Link to="+MealCount">
+              <button
+                style={{ color: "#f0e1b2", backgroundColor: "#7c262b" }}
+                type="button"
+                onClick={() => setSortType("+MealCount")}
+              >
+                +MealCount
+              </button>
+            </Link>
+          ) : (
+            <Link to="+MealCount">
+              <button type="button" onClick={() => setSortType("+MealCount")}>
+                +MealCount
+              </button>
+            </Link>
+          )}
         </li>
         <li>
-          <Link to="+quantities"><button type="button" onClick={() => setSortType("+quantities")}>
-            +Quantities
-          </button></Link>
+          {sortType === "+quantities" ? (
+            <Link to="+quantities">
+              <button
+                style={{ color: "#f0e1b2", backgroundColor: "#7c262b" }}
+                type="button"
+                onClick={() => setSortType("+quantities")}
+              >
+                Quantities
+              </button>
+            </Link>
+          ) : (
+            <Link to="+quantities">
+              <button type="button" onClick={() => setSortType("+quantities")}>
+                Quantities
+              </button>
+            </Link>
+          )}
         </li>
         <li>
-          <Link to="everything"><button type="button" onClick={() => setSortType("everything")}>
-            Everything
-          </button></Link>
+          {sortType === "everything" ? (
+            <Link to="everything">
+              <button
+                style={{ color: "#f0e1b2", backgroundColor: "#7c262b" }}
+                type="button"
+                onClick={() => setSortType("everything")}
+              >
+                Everything
+              </button>
+            </Link>
+          ) : (
+            <Link to="everything">
+              <button type="button" onClick={() => setSortType("everything")}>
+                Everything
+              </button>
+            </Link>
+          )}
         </li>
         <li>
-     <button
-      className="noBorder"
-        onClick={() => {
-          let list =   copiedGroceries(groceryList, sortType)
-          navigator.clipboard.writeText(list);
-          alert(`List Copied to Clipboard!\n${list}`)
-        }}
-      >
-        <i className="fa-regular fa-clone"></i>
-      </button>
-
+          <button
+            className="noBorder"
+            onClick={() => {
+              let list = copiedGroceries(groceryList, sortType);
+              navigator.clipboard.writeText(list);
+              alert(`List Copied to Clipboard!\n${list}`);
+            }}
+          >
+            <i className="fa-regular fa-clone"></i>{" "}
+            <span className="copyButtonSpan">copy list</span>
+          </button>
         </li>
-      </ul> 
+      </ul>
       <Outlet context={[groceryList, sortType]} />
-
-      <p>*Checkboxes will be reset on refresh</p>
     </div>
   );
 };
-
 
 export default GroceryList;

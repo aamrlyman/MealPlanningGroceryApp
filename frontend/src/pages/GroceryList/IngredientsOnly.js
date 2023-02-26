@@ -6,17 +6,22 @@ const IngredientsOnly = () => {
   let counter = 1.1;
   return (
     <div className="ingredientsOnlyContainer">
-      <h3>Ingredients</h3>
-      <ul>
+      <table className="groceriesTable">
+         <span style={{fontStyle: "italic", fontSize:".75rem"}}>*Checkboxes reset on refresh</span>
+        <thead>
+          <tr>
+            <th className="groceriesTh">Ingredients</th>
+          </tr>
+        </thead>
         {groceryList &&
           groceryList.map((item) => (
-            <Fragment key={`${item.id} + ${(counter += 0.12312)} `}>
-              <li className="groceriesLi">
+            <tr key={`${item.id} + ${(counter += 0.12312)} `}>
+              <td className="groceriesTd">
                 <input type="checkbox" /> {item.name}
-              </li>
-            </Fragment>
+              </td>
+            </tr>
           ))}
-      </ul>
+      </table>
     </div>
   );
 };

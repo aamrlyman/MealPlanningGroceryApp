@@ -32,14 +32,14 @@ const UserMealsList = () => {
 
   return (
     <div className="tableContainter">
-      <table>
+      <table className="useMealsTable">
         <thead>
           <tr>
-            <th>Scheduled</th>
-            <th>Meal</th>
-            <th>Recipe Url</th>
-            <th>Time</th>
-            <th>
+            <th className="userMealsTh">Scheduled</th>
+            <th className="userMealsTh">Meal</th>
+            <th className="userMealsTh">Recipe Url</th>
+            <th className="userMealsTh">Time</th>
+            <th className="userMealsTh">
               Add
               <span className="editMeals">
               <button

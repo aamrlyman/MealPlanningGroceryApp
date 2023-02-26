@@ -22,14 +22,14 @@ const AllMealsList = () => {
 
   return (
     <div className="tableContainter">
-      <table>
+      <table className="allMealsTable">
         <thead>
           <tr>
-            <th>Scheduled</th>
-            <th>Meal</th>
-            <th>Recipes</th>
-            <th>Time</th>
-            <th>Add</th>
+            <th className="allMealsTh">Scheduled</th>
+            <th className="allMealsTh">Meal</th>
+            <th className="allMealsTh">Recipes</th>
+            <th className="allMealsTh">Time</th>
+            <th className="allMealsTh">Add</th>
           </tr>
         </thead>
         <tbody>

@@ -20,13 +20,13 @@ const DisplayUserMealList = ({
 
   return (
     <tr>
-      <td>
+      <td className="userMealsTd">
         <IsScheduledIcon scheduledMeals={scheduledMeals} meal={meal} />
       </td>
-      <td>
+      <td className="userMealsTd">
         <Link to={meal && `/userMeal/${meal.id}/`}> {meal.name}</Link>
       </td>
-      <td>
+      <td className="userMealsTd">
         <a href={meal.url}>Recipe Link </a>
       </td>
       <td className="times">

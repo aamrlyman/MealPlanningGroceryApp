@@ -1,4 +1,4 @@
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, Link } from "react-router-dom";
 import { Fragment } from "react";
 
 const MealCount = () => {
@@ -6,17 +6,41 @@ const MealCount = () => {
   let counter = 0;
   return (
     <div className="mealCountContainer">
-      <h3> Ingredient, # of Meals</h3>
-      <ul>
-        {groceryList &&
-          groceryList.map((item) => (
-            <Fragment key={`${item.id} + ${(counter += 1.1)}`}>
-              <li className="groceriesLi">
-                <input type="checkbox" /> {item.name}, {item.meals.length}
-              </li>
-            </Fragment>
-          ))}
-      </ul>
+       <table className="groceriesTable">
+       <span style={{fontStyle: "italic", fontSize:".75rem"}}>*Checkboxes reset on refresh</span>
+        <thead>
+          <tr>
+            <th className="groceriesTh">
+              Ingredients
+            </th>
+            <th className="groceriesTh">
+              Meal Names
+              </th>
+            <th className="groceriesTh">
+              # of Meals
+              </th>
+          </tr>
+        </thead>
+        <tbody>
+          {groceryList &&
+            groceryList.map((item) => (
+              <tr key={`${item.id} + ${(counter += 1.98989)}`}>
+                <td className="mealNamesTd">
+                  <input type="checkbox" /> {item.name}
+                </td>
+                <td className="mealNamesTd">
+                  {item &&
+                    item.meals.map((meal) => (
+                      <p className="mealNamesP" key={`${(counter += 0.1233)}`}>
+                        <Link to={`/meal/${meal.id}`}>{meal.name}</Link>
+                      </p>
+                    ))}
+                </td>
+                    <td className="mealCountTd">{item.meals.length}</td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
     </div>
   );
 };

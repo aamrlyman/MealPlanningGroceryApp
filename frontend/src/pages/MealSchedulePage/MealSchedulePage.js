@@ -28,12 +28,12 @@ const MealSchedulePage = () => {
         </div>
       ) : (
         <div className="tableContainter">
-          <table>
+          <table className="scheduleTable">
             <thead>
               <tr>
-                <th>Cooked</th>
-                <th>Meal</th>
-                <th>Recipes</th>
+                <th className="MealScheduleTableTh">Cooked</th>
+                <th className="MealScheduleTableTh">Meal</th>
+                <th className="MealScheduleTableTh">Recipes</th>
                 <th className="timeHeader">Time</th>
                 {/* <th className="filler"></th> */}
               </tr>

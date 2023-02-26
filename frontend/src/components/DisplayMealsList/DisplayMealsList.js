@@ -18,19 +18,19 @@ const DisplayScheduledMeals = ({
 
   return (
     <tr>
-      <td>
+      <td className="allMealsTd">
         <IsScheduledIcon scheduledMeals={scheduledMeals} meal={meal} />
       </td>
-      <td>
+      <td className="allMealsTd">
         <Link to={meal && `/meal/${meal.id}/`}> {meal.name}</Link>
       </td>
-      <td>
+      <td className="allMealsTd">
         <a href={meal.url}><i className="fa-solid fa-arrow-up-right-from-square"></i> </a>
       </td>
       <td className="mealtimesTd">
         <DisplayTimes meal={meal} />
       </td>
-      <td>
+      <td className="allMealsTd">
         {meal &&
         scheduledMeals &&
         scheduledMeals.some((sMeal) => sMeal.meal.id == meal.id) ? (
