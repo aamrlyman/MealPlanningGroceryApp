@@ -31,15 +31,16 @@ const DisplayAllMealIngredients = (props) => {
 
   return (
     <ul className="allMealIngredients">
+      <h2>Ingredients</h2>
       {ingredients &&
         ingredients.map((ingredient) => (
           <Fragment key={ingredient.id + "amic"}>
-                <li key={ingredient.id}>
-                  <span className="quantities">
-                  {ingredient.quantity} {ingredient.unit}{" "}
-                  </span>
-                  {ingredient.name}
-                </li>
+            <li key={ingredient.id}>
+              <span className="quantities">
+                {ingredient.quantity} {ingredient.unit}{" "}
+              </span>
+              {ingredient.name}
+            </li>
           </Fragment>
         ))}
     </ul>

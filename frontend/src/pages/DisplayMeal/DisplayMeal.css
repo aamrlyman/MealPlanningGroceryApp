@@ -1,41 +1,94 @@
 /* DisplayMeal */
 
 .mealViewContainer {
-  border: solid 5px #7c262b;
-  border-radius: 15px;
-  margin: auto;
   width: fit-content;
-  display: flow-root;
+  /* position: relative; */
+  border: solid 3px #7c262b;
+  border-radius: 17px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+}
+
+.iconNameTimesContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+  /* margin-left: auto; */
+  /* margin-right: 0vw; */
+}
+
+.mealTitleContainer {
+  border: solid 3px #7c262b;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  width: fit-content;
+}
+
+h1.mealTitle {
+  font-size: 3rem;
+  padding: .5vw 1vw .5vw 1vw;
+  font-style: italic;
+  font-family: apple-sd-gothic-light;
+  font-weight: 100;
+  letter-spacing: 3px;
 }
 
 .iconContainer {
-    margin-top: 1vh;
-    margin-left: 0.5vw;
-    width: 5%;
-  }
-  
-  h1.mealTitle {
-    font-size: 4rem;
-    padding: 1vw;
-    font-style: italic;
-    font-family: apple-sd-gothic-light;
-    font-weight: 100;
-    letter-spacing: 3px;
-  }
-  
-  .mealTitleContainer {
-    border: solid 3px #7c262b;
-    width: fit-content;
-    margin-left: 4vw;
-    margin-top: -5vh;
+  margin-left: 0.5vw;
 }
-  
-  .displayTimeMealView {
-    margin-top: -15vh;
-    margin-left: 35vw;
-    width: fit-content;
-    border: dashed 3px #7c262b;
-    border-radius: 6px;
-    padding: 6px;
-  }
-  
+
+.displayTimeMealView {
+  margin-right: 1vw;
+  width: fit-content;
+  border: dashed 3px #7c262b;
+  border-radius: 6px;
+  padding: 1.25rem 1rem 0 1rem;
+}
+
+.ingredientAndNotesContainer {
+  display: flex;
+  margin: 3vh 3vw 0 3vw;
+}
+
+ul.allMealIngredients {
+  list-style: square;
+  text-align: left;
+  margin-right: 1vw;
+  width: 50%;
+}
+
+h2 {
+  margin-bottom: 4px;
+  text-decoration:underline ;
+  font-style: italic;
+}
+
+.mealNotes {
+  border-left: solid 2px #7c262b;
+  padding-left: 1vw;
+  width: 50%;
+  text-align: left;
+}
+
+.mealViewRecipeURL {
+  width: 50%;
+  margin-left: auto;
+  text-align: left;
+  padding-left: 2vw;
+}
+
+p.mealNotesP {
+  font-size: 1rem;
+}
+
+.addButtonContainerMealView {
+  width: 7%;
+  margin-left: auto;
+}
+
+div.addButtonContainerMealView > button.noBorder {
+  transform: none;
+  font-size: larger;
+}

@@ -40,25 +40,28 @@ const DisplayMeal = () => {
 
   return (
     <div className="mealViewContainer">
-      <div className="iconContainer">
-        <IsScheduledIcon scheduledMeals={scheduledMeals} meal={meal} />
+      <div className="iconNameTimesContainer">
+        <div className="iconContainer">
+          <IsScheduledIcon scheduledMeals={scheduledMeals} meal={meal} />
+        </div>
+        <div className="mealTitleContainer">
+          <h1 className="mealTitle">{meal && meal.name}</h1>
+        </div>
+        <div className="displayTimeMealView">
+          {meal ? <DisplayTimes meal={meal} /> : ""}
+        </div>
       </div>
-      <div className="mealTitleContainer">
-        <h1 className="mealTitle">{meal && meal.name}</h1>
-      </div>
-      <div className="displayTimeMealView">
-        {meal ? <DisplayTimes meal={meal} /> : ""}
-      </div>
-      <div className="ingredientContainer">
-        <h2>Ingredients</h2>
+      <div className="ingredientAndNotesContainer">
         <DisplayAllMealIngredients />
+        <div className="mealNotes">
+          <h3>Notes:</h3>
+          <p className="mealNotesP">{meal && meal.notes}</p>
+        </div>
       </div>
-      <div>
-        <p>{meal && meal.notes}</p>
+      <div className="mealViewRecipeURL">
+        <a href={meal && meal.url}> Recipe Link <i className="fa-solid fa-arrow-up-right-from-square"></i></a>
       </div>
-      <div>
-        <a href={meal && meal.url}> Recipe Link</a>
-      </div>
+      <div className="addButtonContainerMealView">
       {meal &&
       scheduledMeals &&
       scheduledMeals.some((sMeal) => sMeal.meal.id == meal.id) ? (
@@ -79,6 +82,7 @@ const DisplayMeal = () => {
           />
         )
       )}
+      </div>
     </div>
   );
 };
