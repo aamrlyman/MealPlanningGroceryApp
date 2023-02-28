@@ -6,19 +6,19 @@ const MealCount = () => {
   let counter = 0;
   return (
     <div className="mealCountContainer">
-       <table className="groceriesTable">
-       <span style={{fontStyle: "italic", fontSize:".75rem"}}>*Checkboxes reset on refresh</span>
+      <table className="groceriesTable">
         <thead>
           <tr>
-            <th className="groceriesTh">
-              Ingredients
-            </th>
-            <th className="groceriesTh">
-              Meal Names
-              </th>
-            <th className="groceriesTh">
-              # of Meals
-              </th>
+            <td>
+              <span className="checkBoxCaveat">
+                *Checkboxes reset on refresh
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <th className="groceriesTh">Ingredients</th>
+            <th className="groceriesTh">Meal Names</th>
+            <th className="groceriesTh"># of Meals</th>
           </tr>
         </thead>
         <tbody>
@@ -26,7 +26,9 @@ const MealCount = () => {
             groceryList.map((item) => (
               <tr key={`${item.id} + ${(counter += 1.98989)}`}>
                 <td className="mealNamesTd">
-                  <input type="checkbox" /> {item.name}
+                  <label>
+                    <input type="checkbox" /> {item.name}
+                  </label>
                 </td>
                 <td className="mealNamesTd">
                   {item &&
@@ -36,7 +38,7 @@ const MealCount = () => {
                       </p>
                     ))}
                 </td>
-                    <td className="mealCountTd">{item.meals.length}</td>
+                <td className="mealCountTd">{item.meals.length}</td>
               </tr>
             ))}
         </tbody>

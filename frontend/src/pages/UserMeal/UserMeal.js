@@ -42,7 +42,7 @@ const UserMeal = () => {
   return (
     <div>
       {isEdit ? (
-        <div className="editMealAndIngredientContain">
+        <div className="editMealAndIngredientContainer">
           <EditMeal meal={meal} setIsEdit={setIsEdit} fetchMeal={fetchMeal} />
           {meal && (
             <div>

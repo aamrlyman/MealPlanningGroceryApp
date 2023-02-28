@@ -74,19 +74,11 @@ const GroceryList = () => {
     }
   };
   useEffect(() => {
-    // schedule ? fetchGroceries(schedule.id) : navigate("/");
     if(schedule) {
       fetchGroceries(schedule.id);
     }
   }, [schedule]);
-  //   console.log(scheduledMeals.filter( (m)=> m.meal.id===mealId))
 
-  //  useEffect( ()=> {
-  //   let list =   copiedGroceries(groceryList, sortType)
-  //   navigator.clipboard.writeText(list);
-  //   alert(`List Copied to Clipboard!\n${list}`)
-  //  }, [sortType]
-  //  );
 
   function copiedGroceries(array, sortType) {
     let copiedList = "";

@@ -8,8 +8,14 @@ const Everything = () => {
   return (
     <div className="everythingContainer">
       <table className="groceriesTable">
-      <span style={{fontStyle: "italic", fontSize:".75rem"}}>*Checkboxes reset on refresh</span>
         <thead>
+          <tr>
+            <td>
+              <span className="checkBoxCaveat">
+                *Checkboxes reset on refresh
+              </span>
+            </td>
+          </tr>
           <tr>
             <th className="groceriesTh">Ingredients</th>
             <th className="groceriesTh">Meals</th>
@@ -22,7 +28,9 @@ const Everything = () => {
             groceryList.map((item) => (
               <tr key={`${item.id} + ${(counter += 1.321)}`}>
                 <td className="everythingTd">
-                  <input type="checkbox" /> {item.name}
+                  <label>
+                    <input type="checkbox" /> {item.name}
+                  </label>
                 </td>
                 <td className="everythingTd">
                   {item &&

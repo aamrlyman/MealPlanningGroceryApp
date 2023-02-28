@@ -15,15 +15,17 @@
 .ingredientsOnlyContainer,
 .mealCountContainer,
 .mealNamesContainer, 
-.quantitiesContainer, 
+.quantitiesContainer,
 .everythingContainer 
 {
   /* border: solid; */
-  width: 37%;
+  max-width: 640px;
   margin-left: auto;
-  margin-right: 32vw;
+  margin-right: 27vw;
   /* border: solid; */
 }
+
+
 .groceriesTable {
   border: none;
   padding: 0;
@@ -83,6 +85,11 @@ input[type="checkbox"] {
 span.copyButtonSpan {
     font-size: .75em;
     font-style: italic;
+}
+
+.checkBoxCaveat {
+  font-style: italic;
+  font-size: .75rem 
 }
 
 /* 
