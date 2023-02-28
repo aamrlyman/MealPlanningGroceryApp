@@ -8,7 +8,6 @@ const CibusPlanning = (props) => {
   const [schedule, setSchedule] = useState();
   const [scheduledMeals, setScheduledMeals] = useState();
   const [user, token] = useAuth();
-
   const getUserSchedule = async () => {
     try {
       let response = await axios.get("http://127.0.0.1:8000/api/schedules/", {
@@ -111,6 +110,7 @@ const CibusPlanning = (props) => {
         console.log(error.message);
       }
   };
+  console.log("planning loaded", schedule)
 
   return (
     <div className="container">

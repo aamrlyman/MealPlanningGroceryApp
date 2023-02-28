@@ -29,23 +29,31 @@ const DisplayIngredients = ({
   };
 
   return (
-    <div>
+    <ul className="UserMealIngredients">
       {ingredient ? (
         <Fragment>
-          <li key={ingredient.id}>
+          <li className="ingredientLi" key={ingredient.id}>
             {" "}
-            {ingredient.quantity === 0 ? " " : ingredient.quantity}{" "}
-            {ingredient.unit === "na" ? " " : ingredient.unit} {ingredient.name}
-            <button onClick={() => handleEditClick(ingredient)}>Edit</button>
-            <button type="button" onClick={() => deleteIngredient(ingredient)}>
-              Delete
+            {ingredient.quantity === 0 ? " " : ingredient.quantity}{" "}{ingredient.unit === "na" ? " " : ingredient.unit} {ingredient.name}
+            <button
+              className="editIngredientButton"
+              onClick={() => handleEditClick(ingredient)}
+            >
+              <i className="fa-solid fa-pencil"></i>
+            </button>
+            <button
+              className="deleteIngredientButton"
+              type="button"
+              onClick={() => deleteIngredient(ingredient)}
+            >
+              <i className="fa-solid fa-trash-can"></i>
             </button>
           </li>
         </Fragment>
       ) : (
         ""
       )}
-    </div>
+    </ul>
   );
 };
 

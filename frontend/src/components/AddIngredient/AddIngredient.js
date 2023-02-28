@@ -56,14 +56,14 @@ formData.meal_id = mealId;
         <input
           type="number"
           name="quantity"
-          value={formData.quantity ? formData.quantity: formData.quantity=0 }
+          value={(formData.quantity > 0) ? formData.quantity: formData.quantity=0 }
           onChange={handleInputChange}
         ></input>
         <label>unit</label>
         <input
           type="text"
           name="unit"
-          value={formData.unit ? formData.unit: formData.unit = "na"}
+          value={formData.unit}
           onChange={handleInputChange}
         ></input>
 

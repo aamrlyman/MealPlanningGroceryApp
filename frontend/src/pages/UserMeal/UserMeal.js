@@ -6,6 +6,8 @@ import Ingredients from "../../components/Ingredients/Ingredients";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { useOutletContext } from "react-router-dom";
+import "./UserMeal.css";
+import DisplayIngredients from "../../components/DisplayIngredients/DisplayIngredients";
 
 const UserMeal = () => {
   const [schedule, scheduledMeals, getScheduledMeals, removeMealFromSchedule] =
@@ -40,7 +42,15 @@ const UserMeal = () => {
   return (
     <div>
       {isEdit ? (
-        <EditMeal meal={meal} setIsEdit={setIsEdit} fetchMeal={fetchMeal} />
+        <div className="editMealAndIngredientContain">
+          <EditMeal meal={meal} setIsEdit={setIsEdit} fetchMeal={fetchMeal} />
+          {meal && (
+            <div>
+              <h2>Ingredients</h2>
+              <Ingredients key={mealId + "ing"} meal={meal} />
+            </div>
+          )}
+        </div>
       ) : (
         <DisplayUserMeal
           meal={meal}
@@ -50,13 +60,6 @@ const UserMeal = () => {
           setIsEdit={setIsEdit}
           removeMealFromSchedule={removeMealFromSchedule}
         />
-      )}
-      
-      {meal && (
-        <div>
-          <h2>Ingredients</h2>
-          <Ingredients key={mealId + "ing"} meal={meal} />
-        </div>
       )}
     </div>
   );

@@ -74,8 +74,11 @@ const GroceryList = () => {
     }
   };
   useEffect(() => {
-    schedule ? fetchGroceries(schedule.id) : navigate("/");
-  }, []);
+    // schedule ? fetchGroceries(schedule.id) : navigate("/");
+    if(schedule) {
+      fetchGroceries(schedule.id);
+    }
+  }, [schedule]);
   //   console.log(scheduledMeals.filter( (m)=> m.meal.id===mealId))
 
   //  useEffect( ()=> {

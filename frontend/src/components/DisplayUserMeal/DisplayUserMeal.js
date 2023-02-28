@@ -8,6 +8,8 @@ import DeleteUserMeal from "../DeleteMeal/DeleteMeal";
 import DisplayTimes from "../DisplayTimes/DisplayTimes";
 import RemoveMealFromScheduleButton from "../RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
 import { useNavigate } from "react-router-dom";
+import DisplayAllMealIngredients from "../../components/DisplayAllMealIngredients/DisplayAllMealIngredients";
+
 
 const DisplayUserMeal = ({
   setIsEdit,
@@ -40,46 +42,62 @@ const DisplayUserMeal = ({
   };
 
   return (
-    <div>
-      <div>
-        <IsScheduledIcon scheduledMeals={scheduledMeals} meal={meal} />
+    <div className="mealViewContainer">
+      
+      <div className="iconNameTimesEditContainer">
+        <div className="iconContainer">
+          <IsScheduledIcon scheduledMeals={scheduledMeals} meal={meal} />
+        </div>
+        <div className="mealTitleContainer">
+          <h1 className="mealTitle">{meal && meal.name}</h1>
+        </div>
+        <div className="displayTimeMealView">
+          {meal ? <DisplayTimes meal={meal} /> : ""}
+        </div>
+        <div className="editDeleteButtonContainer">
+          <button
+            className="noBorder"
+            type="button"
+            onClick={() => setIsEdit(true)}
+          >
+            <i className="fa-solid fa-pencil"></i>
+          </button>
+          <DeleteUserMeal meal={meal} />
+        </div>
       </div>
-      <div>
-        <h1>{meal && meal.name}</h1>
-        <button type="button" onClick={() => setIsEdit(true)}>
-          Edit
-        </button>
+
+
+      <div className="userIngredientAndNotesContainer">
+      <DisplayAllMealIngredients />
+        <div className="mealNotes">
+          <h3>Notes:</h3>
+          <p className="mealNotesP">{meal && meal.notes}</p>
+        </div>
       </div>
-      {meal ? (
-       <DisplayTimes meal={meal} />
-      ) : (
-        ""
-      )}
-      <div>
+
+
+      <div className="RecipeURLAndAddButtonContainer">
         <a href={meal && meal.url}> Recipe Link</a>
-        <div>
-          {meal &&
-          scheduledMeals &&
-          scheduledMeals.some((sMeal) => sMeal.meal.id == meal.id) ? (
-            <RemoveMealFromScheduleButton
+        {meal &&
+        scheduledMeals &&
+        scheduledMeals.some((sMeal) => sMeal.meal.id == meal.id) ? (
+          <RemoveMealFromScheduleButton
             meal={meal}
             scheduledMeals={scheduledMeals}
             getScheduledMeals={getScheduledMeals}
             removeMealFromSchedule={removeMealFromSchedule}
             scheduleId={scheduleId}
           />
-          ) : (
-            meal && (
-              <AddMealToScheduleButton
-                meal={meal}
-                scheduleId={scheduleId}
-                getScheduledMeals={getScheduledMeals}
-              />
-            )
-          )}
-        </div>
+        ) : (
+          meal && (
+            <AddMealToScheduleButton
+              meal={meal}
+              scheduleId={scheduleId}
+              getScheduledMeals={getScheduledMeals}
+            />
+          )
+        )}
       </div>
-      <DeleteUserMeal meal={meal} />
     </div>
   );
 };
