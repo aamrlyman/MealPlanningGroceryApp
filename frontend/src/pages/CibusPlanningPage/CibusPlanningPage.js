@@ -110,7 +110,6 @@ const CibusPlanning = (props) => {
         console.log(error.message);
       }
   };
-  console.log("planning loaded", schedule)
 
   return (
     <div className="container">

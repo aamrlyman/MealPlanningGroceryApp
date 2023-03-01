@@ -9,7 +9,7 @@ import DisplayTimes from "../DisplayTimes/DisplayTimes";
 import RemoveMealFromScheduleButton from "../RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
 import { useNavigate } from "react-router-dom";
 import DisplayAllMealIngredients from "../../components/DisplayAllMealIngredients/DisplayAllMealIngredients";
-
+import "./DisplayUserMeal.css";
 
 const DisplayUserMeal = ({
   setIsEdit,
@@ -67,7 +67,7 @@ const DisplayUserMeal = ({
       </div>
 
 
-      <div className="userIngredientAndNotesContainer">
+      <div className="ingredientAndNotesContainer">
       <DisplayAllMealIngredients />
         <div className="mealNotes">
           <h3>Notes:</h3>

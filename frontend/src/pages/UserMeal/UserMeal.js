@@ -45,11 +45,11 @@ const UserMeal = () => {
         <div className="editMealAndIngredientContainer">
           <EditMeal meal={meal} setIsEdit={setIsEdit} fetchMeal={fetchMeal} />
           {meal && (
-            <div>
-              <h2>Ingredients</h2>
-              <Ingredients key={mealId + "ing"} meal={meal} />
-            </div>
-          )}
+          <div>
+            <h2>Ingredients</h2>
+            <Ingredients key={mealId + "ing"} meal={meal} />
+          </div>
+        )}       
         </div>
       ) : (
         <DisplayUserMeal

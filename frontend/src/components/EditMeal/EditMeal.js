@@ -4,12 +4,13 @@ import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
 import axios from "axios";
 import UserMeal from "../../pages/UserMeal/UserMeal";
+import "./EditMeal.css";
+import Ingredients from "../../components/Ingredients/Ingredients";
 
-
-const EditMeal = ({setIsEdit, meal, fetchMeal}) => {
+const EditMeal = ({ setIsEdit, meal, fetchMeal }) => {
   const [user, token] = useAuth();
   const navigate = useNavigate();
-  const {mealId} = useParams();
+  const { mealId } = useParams();
   const [formData, handleInputChange, handleSubmit] = useCustomForm(
     meal,
     editMeal
@@ -36,15 +37,51 @@ const EditMeal = ({setIsEdit, meal, fetchMeal}) => {
   }
 
   return (
-      <div>
+    <div>
       <form onSubmit={handleSubmit}>
-        <label>Meal Name</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleInputChange}
-        ></input>
+        <div className="MealNameAndTimesContainer">
+          <div className="editMealNameContainer">
+            <label>Meal Name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+            ></input>
+          </div>
+          <div className="editTimesContainer">
+            <p>Prep Time</p>
+            <label>Hours</label>
+            <input
+              type="number"
+              name="prep_time_hours"
+              value={formData.prep_time_hours}
+              onChange={handleInputChange}
+            ></input>
+            <label>Minutes</label>
+            <input
+              type="number"
+              name="prep_time_minutes"
+              value={formData.prep_time_minutes}
+              onChange={handleInputChange}
+            ></input>
+            <p>Cook Time</p>
+            <label>Hours</label>
+            <input
+              type="number"
+              name="cook_time_hours"
+              value={formData.cook_time_hours}
+              onChange={handleInputChange}
+            ></input>
+            <label>Minutes</label>
+            <input
+              type="number"
+              name="cook_time_minutes"
+              value={formData.cook_time_minutes}
+              onChange={handleInputChange}
+            ></input>
+          </div>
+        </div>
         <label>Notes</label>
         <textarea
           type="text"
@@ -59,38 +96,10 @@ const EditMeal = ({setIsEdit, meal, fetchMeal}) => {
           value={formData.url}
           onChange={handleInputChange}
         ></input>
-        <p>Prep Time</p>
-        <label>Hours</label>
-        <input
-          type="number"
-          name="prep_time_hours"
-          value={formData.prep_time_hours}
-          onChange={handleInputChange}
-        ></input>
-        <label>Minutes</label>
-        <input
-          type="number"
-          name="prep_time_minutes"
-          value={formData.prep_time_minutes}
-          onChange={handleInputChange}
-        ></input>
-        <p>Cook Time</p>
-        <label>Hours</label>
-        <input
-          type="number"
-          name="cook_time_hours"
-          value={formData.cook_time_hours}
-          onChange={handleInputChange}
-        ></input>
-        <label>Minutes</label>
-        <input
-          type="number"
-          name="cook_time_minutes"
-          value={formData.cook_time_minutes}
-          onChange={handleInputChange}
-        ></input>
         <button type="submit">Save</button>
-        <button type="button" onClick={()=>setIsEdit(false)}>cancel</button>
+        <button type="button" onClick={() => setIsEdit(false)}>
+          cancel
+        </button>
       </form>
     </div>
   );
