@@ -20,23 +20,22 @@ const Ingredients = ({ meal }) => {
   });
   const [isAddIngredient, setIsAddIngredient] = useState(false);
 
-
   async function fetchIngredients() {
-        try {
-            let response = await axios.get(
-                `http://127.0.0.1:8000/api/ingredients/meal_id/${mealId}/`,
-                {
-                    headers: {
-                        Authorization: "Bearer " + token,
-                    },
-                }
-            );
-            setIngredients(response.data);
-            console.log(response.data);
-        } catch (error) {
-            console.log(error.message);
+    try {
+      let response = await axios.get(
+        `http://127.0.0.1:8000/api/ingredients/meal_id/${mealId}/`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
         }
+      );
+      setIngredients(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.message);
     }
+  }
   useEffect(() => {
     fetchIngredients();
   }, []);
@@ -60,20 +59,21 @@ const Ingredients = ({ meal }) => {
 
   return (
     <div>
-      {ingredients &&
-        ingredients.map((ingredient) => (
-          editIngredientId === ingredient.id? (
-            <EditIngredients 
-            ingredient={ingredient}
-            editIngredient={editIngredient}
-            setEditIngredient={setEditIngredient}
-            setEditIngredientId={setEditIngredientId}
-            key={ingredient.id + "Eingre"}
-            handleCancelClick={handleCancelClick}
-            fetchIngredients={fetchIngredients}
-            />
-              ):
-              (<ul className="ingredientsUl" key={ingredient.id}>
+      <ul className="ingredientsUL">
+        {ingredients &&
+          ingredients.map((ingredient) =>
+            editIngredientId === ingredient.id ? (
+              <EditIngredients
+                ingredient={ingredient}
+                editIngredient={editIngredient}
+                setEditIngredient={setEditIngredient}
+                setEditIngredientId={setEditIngredientId}
+                key={ingredient.id + "Eingre"}
+                handleCancelClick={handleCancelClick}
+                fetchIngredients={fetchIngredients}
+              />
+            ) : (
+              <li>
                 <DisplayIngredients
                   meal={meal}
                   ingredient={ingredient}
@@ -81,24 +81,26 @@ const Ingredients = ({ meal }) => {
                   handleEditClick={handleEditClick}
                   key={ingredient.id + "Dingre"}
                 />
-              </ul>
-                  
-          )
-
-        ))}
-    { !isAddIngredient?  (
-      <button type="button" onClick={()=>setIsAddIngredient(!isAddIngredient)}>+</button>
-    )
-    :
-(    
-  <AddIngredient
-    key={meal.id + "add"}
-    meal={meal}
-    fetchIngredients={fetchIngredients}
-    isAddIngredient={isAddIngredient}
-    setIsAddIngredient={setIsAddIngredient}
-    />
-  )}
+              </li>
+            )
+          )}
+      </ul>
+      {!isAddIngredient ? (
+        <button
+          type="button"
+          onClick={() => setIsAddIngredient(!isAddIngredient)}
+        >
+          +
+        </button>
+      ) : (
+        <AddIngredient
+          key={meal.id + "add"}
+          meal={meal}
+          fetchIngredients={fetchIngredients}
+          isAddIngredient={isAddIngredient}
+          setIsAddIngredient={setIsAddIngredient}
+        />
+      )}
     </div>
   );
 };

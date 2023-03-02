@@ -43,7 +43,7 @@ h1.mealTitle {
   width: fit-content;
   border: dashed 3px #7c262b;
   border-radius: 6px;
-  padding: 1.25rem 1rem;
+  padding: 1rem 1rem;
   white-space: nowrap;
 }
 
@@ -92,3 +92,4 @@ div.addButtonContainerMealView > button.noBorder {
   transform: none;
   font-size: 1.5rem;
 }
+

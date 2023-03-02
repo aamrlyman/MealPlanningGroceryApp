@@ -40,12 +40,12 @@ const UserMeal = () => {
   };
 
   return (
-    <div>
+    <div className="mealAndEditViewContainer">
       {isEdit ? (
         <div className="editMealAndIngredientContainer">
           <EditMeal meal={meal} setIsEdit={setIsEdit} fetchMeal={fetchMeal} />
           {meal && (
-          <div>
+          <div className="editIngredientsContainer">
             <h2>Ingredients</h2>
             <Ingredients key={mealId + "ing"} meal={meal} />
           </div>

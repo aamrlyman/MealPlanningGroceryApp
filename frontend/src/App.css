@@ -93,7 +93,7 @@ a:hover {
   border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 } */
 
-input {
+input, textarea {
   border-radius: 5px;
   background-color: #f0e1b2;
   border: solid 2px #7c262b;
