@@ -42,15 +42,7 @@ const Ingredients = ({ meal }) => {
 
   const handleEditClick = (ingredient) => {
     setEditIngredientId(ingredient.id);
-    // console.log(ingredient);
-    // const ingredientValues = {
-    //     name: ingredient.name,
-    //     unit: ingredient.unit,
-    //     quantity: ingredient.quantity,
-    //     meal_id: mealId,
-
-    // };
-    // setEditIngredient(ingredientValues);
+  
   };
 
   const handleCancelClick = () => {
@@ -73,7 +65,6 @@ const Ingredients = ({ meal }) => {
                 fetchIngredients={fetchIngredients}
               />
             ) : (
-              <li>
                 <DisplayIngredients
                   meal={meal}
                   ingredient={ingredient}
@@ -81,16 +72,16 @@ const Ingredients = ({ meal }) => {
                   handleEditClick={handleEditClick}
                   key={ingredient.id + "Dingre"}
                 />
-              </li>
             )
           )}
       </ul>
       {!isAddIngredient ? (
         <button
+          className="noBorder"
           type="button"
           onClick={() => setIsAddIngredient(!isAddIngredient)}
         >
-          +
+          <i class="fa-solid fa-circle-plus"></i>
         </button>
       ) : (
         <AddIngredient

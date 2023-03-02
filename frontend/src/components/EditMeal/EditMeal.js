@@ -108,6 +108,7 @@ const EditMeal = ({ setIsEdit, meal, fetchMeal }) => {
                 <h3>Notes:</h3>
               </label>
               <textarea
+                style={{"width":"292px", "height":"270px"}}
                 type="text"
                 name="notes"
                 value={formData.notes}
@@ -115,13 +116,15 @@ const EditMeal = ({ setIsEdit, meal, fetchMeal }) => {
               ></textarea>
             </div>
             <div className="editURLContainer">
-              <label>Recipe Link</label>
+              <label className="editLinkLabel">
               <input
+                className="editLinkInput"
                 type="text"
                 name="url"
                 value={formData.url}
                 onChange={handleInputChange}
               ></input>
+              </label>
             </div>
         </div>
       </form>

@@ -17,6 +17,7 @@ ul.userMealIngredients {
 button.editIngredientButton {
   border: none;
   font-size: 0.65rem;
+  padding: 0 0.5rem;
 }
 
 .mealNameTimesButtonsContainer {
@@ -77,7 +78,7 @@ input[type="number"] {
   flex-direction: column;
   width: 50%;
   position: relative;
-  bottom: -22px;
+  bottom: -16px;
   left: 391px;
   text-align: left;
 }
@@ -106,4 +107,34 @@ textarea {
 i.fa-regular.fa-floppy-disk,
 i.fa-regular.fa-rectangle-xmark {
   font-size: 2rem;
+}
+
+button.deleteIngredientButton {
+    border: none;
+    font-size: .9rem;
+    padding-bottom: 0;
+    padding-top: 3px;
+}
+
+/* .editLinkLabel{
+    font-style: italic;
+    color: #bb745c;
+}
+
+.editLinkLabel:hover {
+    color: #7c262b;
+    text-decoration: underline;
+} */
+
+input.editLinkInput {
+    width: 82%;
+    padding: 1px 5px;
+    color: #bb745c;
+    font-style: italic;
+}
+
+.spacer {
+    /* border: solid; */
+    height: 4vh;
+    width: 100%;
 }

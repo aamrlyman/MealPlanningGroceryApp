@@ -50,17 +50,18 @@ const UserMeal = () => {
             <Ingredients key={mealId + "ing"} meal={meal} />
           </div>
         )}       
+        {isEdit? <div className="spacer"></div>: ""}
         </div>
       ) : (
         <DisplayUserMeal
-          meal={meal}
-          scheduleId={schedule && schedule.id}
-          getScheduledMeals={getScheduledMeals}
-          scheduledMeals={scheduledMeals}
-          setIsEdit={setIsEdit}
-          removeMealFromSchedule={removeMealFromSchedule}
+        meal={meal}
+        scheduleId={schedule && schedule.id}
+        getScheduledMeals={getScheduledMeals}
+        scheduledMeals={scheduledMeals}
+        setIsEdit={setIsEdit}
+        removeMealFromSchedule={removeMealFromSchedule}
         />
-      )}
+        )}
     </div>
   );
 };
