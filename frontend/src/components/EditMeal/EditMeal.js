@@ -108,7 +108,7 @@ const EditMeal = ({ setIsEdit, meal, fetchMeal }) => {
                 <h3>Notes:</h3>
               </label>
               <textarea
-                style={{"width":"292px", "height":"270px"}}
+                style={{"width":"288px", "height":"248px"}}
                 type="text"
                 name="notes"
                 value={formData.notes}

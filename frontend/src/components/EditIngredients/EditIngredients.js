@@ -4,13 +4,11 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import useCustomForm from "../../hooks/useCustomForm";
 
-
-
 const EditIngredients = ({
   ingredient,
   fetchIngredients,
   handleCancelClick,
-  setEditIngredientId
+  setEditIngredientId,
 }) => {
   const [user, token] = useAuth();
   const { mealId } = useParams();
@@ -32,7 +30,7 @@ const EditIngredients = ({
         }
       );
       fetchIngredients();
-      setEditIngredientId(null)
+      setEditIngredientId(null);
       console.log(response.data);
     } catch (error) {
       console.log(error.message);
@@ -42,43 +40,50 @@ const EditIngredients = ({
   return (
     <div>
       {ingredient ? (
-        <form onSubmit={handleSubmit}>
-          <table key={ingredient.id}>
-            <tbody>
-              <tr>
-                <td>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                  ></input>
-                </td>
-                <td>
-                  <input
-                    type="number"
-                    name="quantity"
-                    value={formData.quantity}
-                    onChange={handleInputChange}
-                  ></input>
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    name="unit"
-                    value={formData.unit}
-                    onChange={handleInputChange}
-                  ></input>
-                </td>
-                <td>
-                  <button type="button" onClick={() => handleCancelClick()}>Cancel</button>
-                </td>
-                <td>
-                  <button type="submit">Save</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <form onSubmit={handleSubmit} className="editIngredientForm">
+          <tr className="editIngredientTr">
+            <td>
+              <button
+                className="noBorder"
+                type="button"
+                onClick={() => handleCancelClick()}
+              >
+                <i className="fa-solid fa-xmark"></i>
+              </button>
+            </td>
+            <td>
+              <input
+                className="ingredientNameInput"
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+              ></input>
+            </td>
+            <td>
+              <input
+                className="ingredientQuantityInput"
+                type="number"
+                name="quantity"
+                value={formData.quantity}
+                onChange={handleInputChange}
+              ></input>
+            </td>
+            <td>
+              <input
+                className="ingredientUnitInput"
+                type="text"
+                name="unit"
+                value={formData.unit}
+                onChange={handleInputChange}
+              ></input>
+            </td>
+            <td>
+              <button className="noBorder" type="submit">
+                <i className="fa-solid fa-floppy-disk"></i>
+              </button>
+            </td>
+          </tr>
         </form>
       ) : (
         ""

@@ -131,10 +131,16 @@ input.editLinkInput {
     padding: 1px 5px;
     color: #bb745c;
     font-style: italic;
+    margin-top: 1vh;
 }
 
 .spacer {
     /* border: solid; */
     height: 4vh;
     width: 100%;
+}
+
+input.ingredientNameInput, input.ingredientUnitInput {
+    width: 100%;
+    white-space: normal;
 }
