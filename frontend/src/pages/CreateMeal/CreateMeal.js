@@ -34,69 +34,116 @@ const CreateMeal = () => {
         }
       );
       console.log(response.data);
-      navigate(`/userMeal/${response.data.id}`)
+      navigate(`/userMeal/${response.data.id}`);
     } catch (error) {
       console.log(error.message);
     }
   }
 
   return (
-      <div>
-      <form onSubmit={handleSubmit}>
-        <label>Meal Name</label>
+    <form onSubmit={handleSubmit} className="createMealForm">
+      <div className="mealNameTimesButtonsContainer">
+        <div className="editMealNameContainer">
+          <label></label>
+          <input
+            className="editMealInput"
+            placeholder="Meal Name"
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+          ></input>
+        </div>
+        <div className="editTimesContainer">
+          <label>
+            <span className="pTitle">
+              Prep: <span style={{ color: "#e6c593" }}>|</span>
+            </span>
+            <input
+              type="number"
+              name="prep_time_hours"
+              value={formData.prep_time_hours}
+              onChange={handleInputChange}
+            ></input>
+            <label>h </label>
+            <input
+              type="number"
+              name="prep_time_minutes"
+              value={formData.prep_time_minutes}
+              onChange={handleInputChange}
+            ></input>
+            <label>m</label>
+          </label>
+          <br />
+          <label>
+            <span className="pTitle">Cook: </span>
+            <input
+              type="number"
+              name="cook_time_hours"
+              value={formData.cook_time_hours}
+              onChange={handleInputChange}
+            ></input>
+            <label>h </label>
+            <input
+              type="number"
+              name="cook_time_minutes"
+              value={formData.cook_time_minutes}
+              onChange={handleInputChange}
+            ></input>
+            <label>m</label>
+          </label>
+        </div>
+        <div className="saveCancleButtonContainer">
+          <div className="cancelButtonContainer">
+            <button
+              className="cancleSaveButtons"
+              type="button"
+              onClick={() => navigate("/userMealsList/")}
+            >
+              <i className="fa-regular fa-rectangle-xmark"></i>
+            </button>
+          </div>
+          <div className="saveButtonContainer">
+            <button className="cancleSaveButtons" type="submit">
+              <i className="fa-regular fa-floppy-disk"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="ingredientAndNotesContainer">
+        <div className="blankIngredientsContainer">
+          <h2>Ingredients</h2>
+          <p>
+            To add ingredients to your meal, add a meal name click the</p> 
+            <button className="cancleSaveButtons" type="submit">
+              <i className="fa-regular fa-floppy-disk"></i>
+            </button> <p>button.</p>
+        </div>
+        <div className="mealNotes">
+          <label>
+            <h3>Notes:</h3>
+          </label>
+          <textarea
+            placeholder="Example: This recipe takes a lot longer to make than you think it will, but its worth it."
+            type="text"
+            name="notes"
+            value={formData.notes}
+            onChange={handleInputChange}
+          ></textarea>
+        </div>
+      </div>
+      <div className="mealViewRecipeURL">
+      <label className="editLinkLabel">
         <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleInputChange}
-        ></input>
-        <label>Notes</label>
-        <textarea
-          type="text"
-          name="notes"
-          value={formData.notes}
-          onChange={handleInputChange}
-        ></textarea>
-        <label>Recipe Link</label>
-        <input
+          placeholder="https://www.allrecipes.com/recipe/8532956/dump-and-go-instant-pot-tortilla-soup/"
           type="text"
           name="url"
           value={formData.url}
           onChange={handleInputChange}
-        ></input>
-        <p>Prep Time</p>
-        <label>Hours</label>
-        <input
-          type="number"
-          name="prep_time_hours"
-          value={formData.prep_time_hours}
-          onChange={handleInputChange}
-        ></input>
-        <label>Minutes</label>
-        <input
-          type="number"
-          name="prep_time_minutes"
-          value={formData.prep_time_minutes}
-          onChange={handleInputChange}
-        ></input>
-        <p>Cook Time</p>
-        <label>Hours</label>
-        <input
-          type="number"
-          name="cook_time_hours"
-          value={formData.cook_time_hours}
-          onChange={handleInputChange}
-        ></input>
-        <label>Minutes</label>
-        <input
-          type="number"
-          name="cook_time_minutes"
-          value={formData.cook_time_minutes}
-          onChange={handleInputChange}
-        ></input>
-        <button type="submit">Save</button>
-      </form>
-    </div>
+          ></input>
+          </label>
+          </div>
+    </form>
   );
 };
 

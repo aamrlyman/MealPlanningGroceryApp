@@ -89,14 +89,14 @@ const EditMeal = ({ setIsEdit, meal, fetchMeal }) => {
             </label>
           </div>
           <div className="saveCancleButtonContainer">
-            <div className="saveButtonContainer">
-              <button className="cancleSaveButtons" type="submit">
-                <i className="fa-regular fa-floppy-disk"></i>
-              </button>
-            </div>
             <div className="cancelButtonContainer">
               <button className="cancleSaveButtons" type="button" onClick={() => setIsEdit(false)}>
                 <i className="fa-regular fa-rectangle-xmark"></i>
+              </button>
+            </div>
+            <div className="saveButtonContainer">
+              <button className="cancleSaveButtons" type="submit">
+                <i className="fa-regular fa-floppy-disk"></i>
               </button>
             </div>
           </div>

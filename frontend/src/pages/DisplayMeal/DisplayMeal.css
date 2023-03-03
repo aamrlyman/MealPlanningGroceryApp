@@ -1,6 +1,7 @@
 /* DisplayMeal */
 
-.mealViewContainer {
+.mealViewContainer,
+.createMealForm {
   max-width: 700px;
   /* position: relative; */
   border: solid 3px #7c262b;
@@ -27,7 +28,7 @@
 
 h1.mealTitle {
   font-size: 3rem;
-  padding: .5vw 1vw .5vw 1vw;
+  padding: 0.5vw 1vw 0.5vw 1vw;
   font-style: italic;
   font-family: apple-sd-gothic-light;
   font-weight: 100;
@@ -61,7 +62,7 @@ ul.allMealIngredients {
 
 h2 {
   margin-bottom: 4px;
-  text-decoration:underline ;
+  text-decoration: underline;
   font-style: italic;
 }
 
@@ -92,4 +93,3 @@ div.addButtonContainerMealView > button.noBorder {
   transform: none;
   font-size: 1.5rem;
 }
-
