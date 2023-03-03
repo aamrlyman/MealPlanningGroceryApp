@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
 import axios from "axios";
+import "./CreateMeal.css";
 
 let initialValues = {
   name: "",
@@ -110,20 +111,22 @@ const CreateMeal = () => {
           </div>
         </div>
       </div>
-      <div className="ingredientAndNotesContainer">
+      <div className="fillerIngredientAndNotesContainer">
         <div className="blankIngredientsContainer">
           <h2>Ingredients</h2>
-          <p>
-            To add ingredients to your meal, add a meal name click the</p> 
+          <p>To add ingredients to your meal, add a meal name click save.</p>
+          <div className="createMealSaveContainer">
             <button className="cancleSaveButtons" type="submit">
               <i className="fa-regular fa-floppy-disk"></i>
-            </button> <p>button.</p>
+            </button>
+          </div>
         </div>
-        <div className="mealNotes">
-          <label>
-            <h3>Notes:</h3>
+        <div className="createNotes">
+          <label >
+            <h3 className="createNotesLabel">Notes:</h3>
           </label>
           <textarea
+            style={{ width: "314px", height: "248px" }}
             placeholder="Example: This recipe takes a lot longer to make than you think it will, but its worth it."
             type="text"
             name="notes"
@@ -132,17 +135,18 @@ const CreateMeal = () => {
           ></textarea>
         </div>
       </div>
-      <div className="mealViewRecipeURL">
-      <label className="editLinkLabel">
-        <input
-          placeholder="https://www.allrecipes.com/recipe/8532956/dump-and-go-instant-pot-tortilla-soup/"
-          type="text"
-          name="url"
-          value={formData.url}
-          onChange={handleInputChange}
+      <div className="createRecipeURLContainer">
+        <label className="createLinkLabel">
+          <input
+            className="createLinkInput"
+            placeholder="https://www.allrecipes.com/recipe/8532956/dump-and-go-instant-pot-tortilla-soup/"
+            type="text"
+            name="url"
+            value={formData.url}
+            onChange={handleInputChange}
           ></input>
-          </label>
-          </div>
+        </label>
+      </div>
     </form>
   );
 };

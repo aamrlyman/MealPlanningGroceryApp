@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import EditMeal from "../../components/EditMeal/EditMeal";
+import EditMeal from "../EditMeal/EditMeal";
 import DisplayUserMeal from "../../components/DisplayUserMeal/DisplayUserMeal";
 import Ingredients from "../../components/Ingredients/Ingredients";
 import useAuth from "../../hooks/useAuth";

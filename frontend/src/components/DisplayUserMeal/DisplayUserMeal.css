@@ -11,13 +11,14 @@
   }
   
   .RecipeURLAndAddButtonContainer {
-  width: 50%;
-  margin-left: auto;
-  text-align: left;
-  padding-left: 1vw;
-  display: flex;
-  justify-content: space-between;
-  }
+    width: 50%;
+    margin-left: auto;
+    text-align: left;
+    padding-left: 1.6vw;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1vh;
+}
   div.RecipeURLAndAddButtonContainer > button.noBorder {
   transform: none;
   font-size: 1.5rem;
