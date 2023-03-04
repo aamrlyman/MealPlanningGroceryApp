@@ -74,25 +74,25 @@ const Ingredients = ({ meal }) => {
                 />
               )
             )}
-        </tbody>
-      </table>
       {!isAddIngredient ? (
         <button
-          className="noBorder"
-          type="button"
-          onClick={() => setIsAddIngredient(!isAddIngredient)}
+        className="noBorder"
+        type="button"
+        onClick={() => setIsAddIngredient(!isAddIngredient)}
         >
           <i className="fa-solid fa-circle-plus"></i>
         </button>
       ) : (
         <AddIngredient
-          key={meal.id + "add"}
-          meal={meal}
-          fetchIngredients={fetchIngredients}
-          isAddIngredient={isAddIngredient}
-          setIsAddIngredient={setIsAddIngredient}
+        key={meal.id + "add"}
+        meal={meal}
+        fetchIngredients={fetchIngredients}
+        isAddIngredient={isAddIngredient}
+        setIsAddIngredient={setIsAddIngredient}
         />
-      )}
+        )}
+        </tbody>
+      </table>
     </div>
   );
 };
