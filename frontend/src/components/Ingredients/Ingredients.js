@@ -42,7 +42,6 @@ const Ingredients = ({ meal }) => {
 
   const handleEditClick = (ingredient) => {
     setEditIngredientId(ingredient.id);
-  
   };
 
   const handleCancelClick = () => {
@@ -51,20 +50,21 @@ const Ingredients = ({ meal }) => {
 
   return (
     <div>
-      <ul className="ingredientsUL">
-        {ingredients &&
-          ingredients.map((ingredient) =>
-            editIngredientId === ingredient.id ? (
-              <EditIngredients
-                ingredient={ingredient}
-                editIngredient={editIngredient}
-                setEditIngredient={setEditIngredient}
-                setEditIngredientId={setEditIngredientId}
-                key={ingredient.id + "Eingre"}
-                handleCancelClick={handleCancelClick}
-                fetchIngredients={fetchIngredients}
-              />
-            ) : (
+      <table className="ingredientsTable">
+        <tbody>
+          {ingredients &&
+            ingredients.map((ingredient) =>
+              editIngredientId === ingredient.id ? (
+                <EditIngredients
+                  ingredient={ingredient}
+                  editIngredient={editIngredient}
+                  setEditIngredient={setEditIngredient}
+                  setEditIngredientId={setEditIngredientId}
+                  key={ingredient.id + "Eingre"}
+                  handleCancelClick={handleCancelClick}
+                  fetchIngredients={fetchIngredients}
+                />
+              ) : (
                 <DisplayIngredients
                   meal={meal}
                   ingredient={ingredient}
@@ -72,16 +72,17 @@ const Ingredients = ({ meal }) => {
                   handleEditClick={handleEditClick}
                   key={ingredient.id + "Dingre"}
                 />
-            )
-          )}
-      </ul>
+              )
+            )}
+        </tbody>
+      </table>
       {!isAddIngredient ? (
         <button
           className="noBorder"
           type="button"
           onClick={() => setIsAddIngredient(!isAddIngredient)}
         >
-          <i class="fa-solid fa-circle-plus"></i>
+          <i className="fa-solid fa-circle-plus"></i>
         </button>
       ) : (
         <AddIngredient
