@@ -37,7 +37,7 @@ const DisplayUserMeal = ({
       console.log(response);
     } catch (error) {
       console.log(error.message);
-      alert("You can't delete a meal that is being used on a schedule");
+    alert("You can't delete a meal that is being used on a schedule");
     }
   };
 

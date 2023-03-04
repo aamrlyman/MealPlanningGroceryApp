@@ -19,6 +19,7 @@ const UserMeal = () => {
   const [isEdit, setIsEdit] = useState(true);
 
   useEffect(() => {
+    setIsEdit(true);
     fetchMeal();
   }, []);
 
