@@ -142,6 +142,6 @@ input.editLinkInput {
 }
 
 input.ingredientNameInput, input.ingredientUnitInput {
-    width: 100%;
-    white-space: normal;
+  width: 100%;
+  padding: 2px 0px 2px 4px;
 }

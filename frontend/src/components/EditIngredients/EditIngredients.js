@@ -41,49 +41,57 @@ const EditIngredients = ({
     <div>
       {ingredient ? (
         <form onSubmit={handleSubmit} className="editIngredientForm">
-          <tr className="editIngredientTr">
-            <td>
-              <button
-                className="noBorder"
-                type="button"
-                onClick={() => handleCancelClick()}
-              >
-                <i className="fa-solid fa-xmark"></i>
-              </button>
-            </td>
-            <td>
-              <input
-                className="ingredientNameInput"
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-              ></input>
-            </td>
-            <td>
-              <input
-                className="ingredientQuantityInput"
-                type="number"
-                name="quantity"
-                value={formData.quantity}
-                onChange={handleInputChange}
-              ></input>
-            </td>
-            <td>
-              <input
-                className="ingredientUnitInput"
-                type="text"
-                name="unit"
-                value={formData.unit}
-                onChange={handleInputChange}
-              ></input>
-            </td>
-            <td>
-              <button className="noBorder" type="submit">
-                <i className="fa-solid fa-floppy-disk"></i>
-              </button>
-            </td>
-          </tr>
+          <table>
+            <tbody>
+              <tr className="editIngredientTr">
+                <td>
+                  <button
+                    className="noBorder"
+                    type="button"
+                    onClick={() => handleCancelClick()}
+                  >
+                    <i className="fa-solid fa-xmark"></i>
+                  </button>
+                </td>
+                <td>
+                  <input
+                    className="ingredientNameInput"
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                  ></input>
+                </td>
+                <td>
+                  <input
+                    className="ingredientQuantityInput"
+                    type="number"
+                    name="quantity"
+                    value={
+                      formData.quantity > 0
+                        ? formData.quantity
+                        : (formData.quantity = 0)
+                    }
+                    onChange={handleInputChange}
+                  ></input>
+                </td>
+                <td>
+                  <input
+                    className="ingredientUnitInput"
+                    type="text"
+                    name="unit"
+                    value={formData.unit}
+                    onChange={handleInputChange}
+                  ></input>
+                </td>
+                <td>
+                  <button className="noBorder" type="submit">
+                    <i className="fa-solid fa-floppy-disk"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </form>
       ) : (
         ""
