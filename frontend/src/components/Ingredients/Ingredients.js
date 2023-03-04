@@ -50,8 +50,6 @@ const Ingredients = ({ meal }) => {
 
   return (
     <div>
-      <table className="ingredientsTable">
-        <tbody>
           {ingredients &&
             ingredients.map((ingredient) =>
               editIngredientId === ingredient.id ? (
@@ -75,28 +73,22 @@ const Ingredients = ({ meal }) => {
               )
             )}
       {!isAddIngredient ? (
-        <tr>
-          <td>
-        <button
-        className="noBorder"
-        type="button"
-        onClick={() => setIsAddIngredient(!isAddIngredient)}
-        >
-          <i className="fa-solid fa-circle-plus"></i>
-        </button>
-          </td>
-        </tr>
+            <button
+              className="noBorder"
+              type="button"
+              onClick={() => setIsAddIngredient(!isAddIngredient)}
+            >
+              <i className="fa-solid fa-circle-plus"></i>
+            </button>
       ) : (
         <AddIngredient
-        key={meal.id + "add"}
-        meal={meal}
-        fetchIngredients={fetchIngredients}
-        isAddIngredient={isAddIngredient}
-        setIsAddIngredient={setIsAddIngredient}
+          key={meal.id + "add"}
+          meal={meal}
+          fetchIngredients={fetchIngredients}
+          isAddIngredient={isAddIngredient}
+          setIsAddIngredient={setIsAddIngredient}
         />
-        )}
-        </tbody>
-      </table>
+      )}
     </div>
   );
 };
