@@ -75,6 +75,8 @@ const Ingredients = ({ meal }) => {
               )
             )}
       {!isAddIngredient ? (
+        <tr>
+          <td>
         <button
         className="noBorder"
         type="button"
@@ -82,6 +84,8 @@ const Ingredients = ({ meal }) => {
         >
           <i className="fa-solid fa-circle-plus"></i>
         </button>
+          </td>
+        </tr>
       ) : (
         <AddIngredient
         key={meal.id + "add"}

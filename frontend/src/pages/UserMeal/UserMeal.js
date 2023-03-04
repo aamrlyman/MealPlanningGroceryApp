@@ -16,7 +16,7 @@ const UserMeal = () => {
   const [user, token] = useAuth();
   const { mealId } = useParams();
   const [meal, setMeal] = useState();
-  const [isEdit, setIsEdit] = useState(false);
+  const [isEdit, setIsEdit] = useState(true);
 
   useEffect(() => {
     fetchMeal();
@@ -41,7 +41,7 @@ const UserMeal = () => {
 
   return (
     <div className="mealAndEditViewContainer">
-      {isEdit ? (
+      {isEdit && meal ? (
         <div className="editMealAndIngredientContainer">
           <EditMeal meal={meal} setIsEdit={setIsEdit} fetchMeal={fetchMeal} />
           {meal && (
