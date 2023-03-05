@@ -82,6 +82,7 @@ a {
   text-decoration: none;
 }
 
+
 a:hover {
   color: #7c262b;
   text-decoration: underline;
@@ -97,6 +98,17 @@ input, textarea {
   border-radius: 5px;
   background-color: #f0e1b2;
   border: solid 2px #7c262b;
+}
+
+input:focus{
+  border: solid 2.5px #526861 ;
+}
+textarea:focus{
+  border: solid 3px #526861 ;
+  padding: 2px;
+}
+textarea{
+  padding: 3px;
 }
 
 .tableContainter{

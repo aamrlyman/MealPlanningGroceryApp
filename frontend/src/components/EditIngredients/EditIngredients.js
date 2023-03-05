@@ -58,6 +58,7 @@ const EditIngredients = ({
                     className="ingredientNameInput"
                     type="text"
                     name="name"
+                    placeholder=" Ingredient Name"
                     value={formData.name}
                     onChange={handleInputChange}
                   ></input>
@@ -80,6 +81,7 @@ const EditIngredients = ({
                     className="ingredientUnitInput"
                     type="text"
                     name="unit"
+                    placeholder="unit"
                     value={formData.unit}
                     onChange={handleInputChange}
                   ></input>

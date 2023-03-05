@@ -127,9 +127,7 @@ const GroceryList = () => {
                 ? ""
                 : array[index].meals[i].quantity
             } ${
-              array[index].meals[i].unit === "na"
-                ? ""
-                : array[index].meals[i].unit
+              array[index].meals[i].unit
             }${comma}`;
           }
           copiedList += `${quantities})`;

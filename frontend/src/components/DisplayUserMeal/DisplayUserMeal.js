@@ -37,13 +37,12 @@ const DisplayUserMeal = ({
       console.log(response);
     } catch (error) {
       console.log(error.message);
-    alert("You can't delete a meal that is being used on a schedule");
+      alert("You can't delete a meal that is being used on a schedule");
     }
   };
 
   return (
     <div className="mealViewContainer">
-      
       <div className="iconNameTimesEditContainer">
         <div className="iconContainer">
           <IsScheduledIcon scheduledMeals={scheduledMeals} meal={meal} />
@@ -66,15 +65,13 @@ const DisplayUserMeal = ({
         </div>
       </div>
 
-
       <div className="ingredientAndNotesContainer">
-      <DisplayAllMealIngredients />
+        <DisplayAllMealIngredients />
         <div className="mealNotes">
           <h3>Notes:</h3>
           <p className="mealNotesP">{meal && meal.notes}</p>
         </div>
       </div>
-
 
       <div className="RecipeURLAndAddButtonContainer">
         <a href={meal && meal.url}> Recipe Link</a>

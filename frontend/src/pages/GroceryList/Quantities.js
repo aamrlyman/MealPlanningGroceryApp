@@ -36,7 +36,7 @@ const MealCount = () => {
                       <p className="quantitiesP" key={(counter += 0.123)}>
                         <Link to={`/meal/${meal.id}`}>
                           {meal.quantity === 0 ? "" : meal.quantity}{" "}
-                          {meal.unit === "na" ? "" : meal.unit}
+                          {meal.unit}
                         </Link>
                       </p>
                     ))}

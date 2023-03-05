@@ -43,6 +43,7 @@ const EditMeal = ({ setIsEdit, meal, fetchMeal }) => {
             <label></label>
             <input
               className="editMealInput"
+              placeholder="Meal Name"
               type="text"
               name="name"
               value={formData.name}
@@ -90,7 +91,7 @@ const EditMeal = ({ setIsEdit, meal, fetchMeal }) => {
           </div>
           <div className="saveCancleButtonContainer">
             <div className="cancelButtonContainer">
-              <button className="cancleSaveButtons" type="button" onClick={() => setIsEdit(false)}>
+              <button className="cancleSaveButtons" type="button" onClick={() => navigate("/userMealsList")}>
                 <i className="fa-regular fa-rectangle-xmark"></i>
               </button>
             </div>
@@ -109,6 +110,7 @@ const EditMeal = ({ setIsEdit, meal, fetchMeal }) => {
               </label>
               <textarea
                 style={{"width":"288px", "height":"248px"}}
+                placeholder="Example: This recipe takes a lot longer to make than you think it will, but its worth it."
                 type="text"
                 name="notes"
                 value={formData.notes}
@@ -119,6 +121,7 @@ const EditMeal = ({ setIsEdit, meal, fetchMeal }) => {
               <label className="editLinkLabel">
               <input
                 className="editLinkInput"
+                placeholder="https://www.allrecipes.com/recipe/8532956/dump-and-go-instant-pot-tortilla-soup/"
                 type="text"
                 name="url"
                 value={formData.url}

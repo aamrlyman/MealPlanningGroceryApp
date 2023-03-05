@@ -41,8 +41,8 @@ const DisplayIngredients = ({
           </button>
             </td>
             <td>
-          {ingredient.quantity === 0 ? " " : ingredient.quantity}{" "}
-          {ingredient.unit === "na" ? " " : ingredient.unit} {ingredient.name}              
+          {ingredient.quantity === 0 ? "" : ingredient.quantity}{" "}
+          {ingredient.unit === "" ? "" : ingredient.unit} {ingredient.name}              
             </td>
             <td>
           <button
