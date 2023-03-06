@@ -33,4 +33,37 @@ button.noBorderTrashCan {
     margin-left: auto;
     width: 6%;
   }
+
+  p.firstLineP {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #7c262b;
+}
+p.secondLineP{
+  font-style: italic;
+  margin-top: 1vh;
+  font-weight: 600;
+}
+
+.homePageFillerDiv {
+  margin-top: 4vh;
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #f0e1b2;
+  border: solid 3px #7c262b;
+  border-radius: 10px;
+  padding: 1vw
+}
   
+/* Evergreen: Hex #526861
+
+Burgundy: Hex #7c262b
+
+Pale Red: Hex #bb745c
+
+Soft Gold: Hex #e6c593
+
+Yellow Creme: Hex #f0e1b2
+
+Dark Charcoal: Hex #2c2219 */

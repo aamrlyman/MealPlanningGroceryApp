@@ -19,12 +19,14 @@ const MealSchedulePage = () => {
   return (
     <div>
       <h1 className="Welcome">Welcome {user.username}!</h1>
-      {!scheduledMeals ? (
-        <div>
-        <p>
-          Go to <Link to="/mealsList">All Meals</Link> to add some meals to your meal plan, 
-          Or Click on the <Link to="createMeal">+</Link> to add some of your own.
-        </p>
+      {scheduledMeals && scheduledMeals.length < 1 ? (
+        <div className="homePageFillerDiv">
+          <p className="firstLineP">Looks like you haven't planned any meals yet!</p>
+          <p className="secondLineP">
+            Go to <Link to="/mealsList">All Meals</Link> to add some meals to
+            your meal plan, Or Click on the <Link to="/createMeal">+</Link> to
+            add some of your own.
+          </p>
         </div>
       ) : (
         <div className="tableContainter">

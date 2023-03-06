@@ -54,7 +54,7 @@ button.editIngredientButton {
   /* width: fit-content; */
   border: dashed 3px #7c262b;
   border-radius: 6px;
-  padding: .75rem;
+  padding: 0.75rem;
   white-space: nowrap;
   text-align: left;
   /* position: relative;
@@ -71,7 +71,7 @@ input[type="number"] {
   width: 50%;
   text-align: left;
   margin-left: 1.5vw;
-  border-right: solid 3px #7c262b;
+  /* border-right: solid 3px #7c262b; */
 }
 
 .editNotesURLContainer {
@@ -80,16 +80,25 @@ input[type="number"] {
   width: 50%;
   position: relative;
   bottom: -16px;
-  left: 391px;
+  left: 350px;
   text-align: left;
 }
 
+.editMealNotes {
+  border-left: solid 3px #7c262b;
+  padding-left: 25px;
+}
+
 form.editMealForm {
-    height: 95px;
-    width: 700px;
+  height: 95px;
+  width: 700px;
 }
 textarea {
   width: 82%;
+}
+
+label.editLinkLabel {
+  margin-left: 28px;
 }
 
 /* .saveCancleButtonContainer {
@@ -102,7 +111,7 @@ textarea {
 }
 
 .cancelButtonContainer {
-    margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
 }
 
 i.fa-regular.fa-floppy-disk,
@@ -111,10 +120,10 @@ i.fa-regular.fa-rectangle-xmark {
 }
 
 button.deleteIngredientButton {
-    border: none;
-    font-size: .9rem;
-    padding-bottom: 0;
-    padding-top: 3px;
+  border: none;
+  font-size: 0.9rem;
+  padding-bottom: 0;
+  padding-top: 3px;
 }
 
 /* .editLinkLabel{
@@ -128,20 +137,33 @@ button.deleteIngredientButton {
 } */
 
 input.editLinkInput {
-    width: 82%;
-    padding: 1px 5px;
-    color: #bb745c;
-    font-style: italic;
-    margin-top: 1vh;
+  width: 82%;
+  padding: 1px 5px;
+  color: #bb745c;
+  font-style: italic;
+  margin-top: 1vh;
 }
 
-.spacer {
-    /* border: solid; */
-    height: 4vh;
-    width: 100%;
-}
 
-input.ingredientNameInput, input.ingredientUnitInput {
+input.ingredientNameInput,
+input.ingredientUnitInput {
   width: 100%;
   padding: 2px 0px 2px 4px;
+}
+
+form.editIngredientForm,
+form.addIngredientForm {
+  width: 88%;
+}
+
+td.ingredientInfoTd {
+  width: 80%;
+}
+
+td.ingredientInputTd, td.unitTd {
+  width: 20%;
+}
+
+.cancleEditIngredientButton, .saveIngredientButton{
+  border: none;
 }

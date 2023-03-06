@@ -51,6 +51,7 @@ button:active {
 
 .noBorder {
   border: none;
+  margin-bottom: 1vw;
 }
 .container {
   max-width: 100%;

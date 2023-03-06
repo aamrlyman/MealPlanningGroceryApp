@@ -68,7 +68,7 @@ const DisplayScheduledMeals = ({
                 removeMealFromSchedule(meal.id, scheduleId, getScheduledMeals)
               }
             >
-              <i className="fa-solid fa-circle-minus"></i>
+              <i className="fa-solid fa-circle-xmark"></i>
             </button>
           </div>
         </div>

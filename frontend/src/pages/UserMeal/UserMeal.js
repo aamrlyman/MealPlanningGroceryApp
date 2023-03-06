@@ -51,7 +51,7 @@ const UserMeal = () => {
             <Ingredients key={mealId + "ing"} meal={meal} />
           </div>
         )}       
-        {isEdit? <div className="spacer"></div>: ""}
+        {/* {isEdit? <div className="spacer"></div>: ""} */}
         </div>
       ) : (
         <DisplayUserMeal

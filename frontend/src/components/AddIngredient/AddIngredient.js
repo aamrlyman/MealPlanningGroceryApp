@@ -52,7 +52,7 @@ const AddIngredient = ({
             <tr className="editIngredientTr">
               <td>
                 <button
-                  className="noBorder"
+                  className="cancleEditIngredientButton"
                   type="button"
                   onClick={() => setIsAddIngredient(!isAddIngredient)}
                 >
@@ -86,7 +86,7 @@ const AddIngredient = ({
                   ></input>
                 </label>
               </td>
-              <td className="ingredientNameTd">
+              <td className="ingredientInputTd">
                 <label>
                   <input
                     className="ingredientUnitInput"
@@ -99,7 +99,7 @@ const AddIngredient = ({
                 </label>
               </td>
               <td>
-                <button className="noBorder" type="submit">
+                <button className="saveIngredientButton" type="submit">
                   <i className="fa-solid fa-floppy-disk"></i>
                 </button>
               </td>

@@ -212,13 +212,13 @@ const GroceryList = () => {
                 type="button"
                 onClick={() => setSortType("+MealCount")}
               >
-                +MealCount
+                # of Meals
               </button>
             </Link>
           ) : (
             <Link to="+MealCount">
               <button type="button" onClick={() => setSortType("+MealCount")}>
-                +MealCount
+              # of Meals
               </button>
             </Link>
           )}

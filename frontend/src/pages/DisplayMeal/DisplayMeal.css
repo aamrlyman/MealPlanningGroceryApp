@@ -9,7 +9,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 2rem;
-  min-height: 60vh;
+  /* min-height: 60vh; */
 }
 
 .iconNameTimesContainer {
@@ -72,6 +72,7 @@ h2 {
   padding-left: 1vw;
   width: 50%;
   text-align: left;
+  min-height: 26vh;
 }
 
 .mealViewRecipeURL {
@@ -86,7 +87,7 @@ p.mealNotesP {
 }
 
 .addButtonContainerMealView {
-  width: 7%;
+  width: 16%;
   margin-left: auto;
 }
 

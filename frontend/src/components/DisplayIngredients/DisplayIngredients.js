@@ -31,29 +31,34 @@ const DisplayIngredients = ({
   return (
     <Fragment>
       {ingredient ? (
-          <tr className="ingredientLi" key={ingredient.id}>
-            <td>
-          <button
-            className="editIngredientButton"
-            onClick={() => handleEditClick(ingredient)}
-            >
-            <i className="fa-solid fa-pencil"></i>
-          </button>
-            </td>
-            <td>
-          {ingredient.quantity === 0 ? "" : ingredient.quantity}{" "}
-          {ingredient.unit === "" ? "" : ingredient.unit} {ingredient.name}              
-            </td>
-            <td>
-          <button
-            className="deleteIngredientButton"
-            type="button"
-            onClick={() => deleteIngredient(ingredient)}
-            >
-            <i className="fa-solid fa-trash-can"></i>
-          </button>
-            </td>
-          </tr>
+        <table>
+          <tbody>
+            <tr className="ingredientLi" key={ingredient.id}>
+              <td>
+                <button
+                  className="editIngredientButton"
+                  onClick={() => handleEditClick(ingredient)}
+                >
+                  <i className="fa-solid fa-pencil"></i>
+                </button>
+              </td>
+              <td className="ingredientInfoTd">
+                {ingredient.quantity === 0 ? "" : ingredient.quantity}{" "}
+                {ingredient.unit === "" ? "" : ingredient.unit}{" "}
+                {ingredient.name}
+              </td>
+              <td>
+                <button
+                  className="deleteIngredientButton"
+                  type="button"
+                  onClick={() => deleteIngredient(ingredient)}
+                >
+                  <i className="fa-solid fa-trash-can"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       ) : (
         ""
       )}

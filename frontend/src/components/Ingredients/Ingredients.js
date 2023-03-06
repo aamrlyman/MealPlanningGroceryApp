@@ -50,36 +50,36 @@ const Ingredients = ({ meal }) => {
 
   return (
     <div>
-          {ingredients &&
-            ingredients.map((ingredient) =>
-              editIngredientId === ingredient.id ? (
-                <EditIngredients
-                  ingredient={ingredient}
-                  editIngredient={editIngredient}
-                  setEditIngredient={setEditIngredient}
-                  setEditIngredientId={setEditIngredientId}
-                  key={ingredient.id + "Eingre"}
-                  handleCancelClick={handleCancelClick}
-                  fetchIngredients={fetchIngredients}
-                />
-              ) : (
-                <DisplayIngredients
-                  meal={meal}
-                  ingredient={ingredient}
-                  fetchIngredients={fetchIngredients}
-                  handleEditClick={handleEditClick}
-                  key={ingredient.id + "Dingre"}
-                />
-              )
-            )}
+      {ingredients &&
+        ingredients.map((ingredient) =>
+          editIngredientId === ingredient.id ? (
+            <EditIngredients
+              ingredient={ingredient}
+              editIngredient={editIngredient}
+              setEditIngredient={setEditIngredient}
+              setEditIngredientId={setEditIngredientId}
+              key={ingredient.id + "Eingre"}
+              handleCancelClick={handleCancelClick}
+              fetchIngredients={fetchIngredients}
+            />
+          ) : (
+            <DisplayIngredients
+              meal={meal}
+              ingredient={ingredient}
+              fetchIngredients={fetchIngredients}
+              handleEditClick={handleEditClick}
+              key={ingredient.id + "Dingre"}
+            />
+          )
+        )}
       {!isAddIngredient ? (
-            <button
-              className="noBorder"
-              type="button"
-              onClick={() => setIsAddIngredient(!isAddIngredient)}
-            >
-              <i className="fa-solid fa-circle-plus"></i>
-            </button>
+        <button
+          className="noBorder"
+          type="button"
+          onClick={() => setIsAddIngredient(!isAddIngredient)}
+        >
+          <i className="fa-solid fa-circle-plus"></i>
+        </button>
       ) : (
         <AddIngredient
           key={meal.id + "add"}

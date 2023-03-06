@@ -46,7 +46,7 @@ const EditIngredients = ({
               <tr className="editIngredientTr">
                 <td>
                   <button
-                    className="noBorder"
+                    className="cancleEditIngredientButton"
                     type="button"
                     onClick={() => handleCancelClick()}
                   >
@@ -76,7 +76,7 @@ const EditIngredients = ({
                     onChange={handleInputChange}
                   ></input>
                 </td>
-                <td>
+                <td className="unitTd">
                   <input
                     className="ingredientUnitInput"
                     type="text"
@@ -87,7 +87,7 @@ const EditIngredients = ({
                   ></input>
                 </td>
                 <td>
-                  <button className="noBorder" type="submit">
+                  <button className="saveIngredientButton" type="submit">
                     <i className="fa-solid fa-floppy-disk"></i>
                   </button>
                 </td>
