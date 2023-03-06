@@ -51,7 +51,6 @@ const Navbar = () => {
               <Link
                 className="navLink"
                 to="/"
-                // style={styleArray[0]}
                 onClick={() => changeLocation(user, "home")}
               >
                 <img src={cibuslogo2} width="400" height="100" />
