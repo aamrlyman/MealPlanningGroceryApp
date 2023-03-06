@@ -142,7 +142,7 @@ const CreateMeal = () => {
             <h3 className="createNotesLabel">Notes:</h3>
           </label>
           <textarea
-            style={{ width: "314px", height: "248px" }}
+            style={{ width: "314px", height: "25vh" }}
             placeholder="Example: This recipe takes a lot longer to make than you think it will, but its worth it."
             type="text"
             name="notes"

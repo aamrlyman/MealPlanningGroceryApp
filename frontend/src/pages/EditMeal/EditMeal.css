@@ -6,7 +6,6 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 2rem;
-  min-height: 60vh;
 }
 
 ul.userMealIngredients {
@@ -71,6 +70,8 @@ input[type="number"] {
   width: 50%;
   text-align: left;
   margin-left: 1.5vw;
+  min-height: 28vh;
+  margin-bottom: 1vh;
   /* border-right: solid 3px #7c262b; */
 }
 
@@ -166,4 +167,9 @@ td.ingredientInputTd, td.unitTd {
 
 .cancleEditIngredientButton, .saveIngredientButton{
   border: none;
+}
+
+.spacer {
+  width: 100%;
+  height: 39px;
 }

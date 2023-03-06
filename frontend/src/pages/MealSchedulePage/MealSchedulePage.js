@@ -19,7 +19,7 @@ const MealSchedulePage = () => {
   return (
     <div>
       <h1 className="Welcome">Welcome {user.username}!</h1>
-      {scheduledMeals && scheduledMeals.length < 1 ? (
+      {!scheduledMeals || scheduledMeals.length < 1 ? (
         <div className="homePageFillerDiv">
           <p className="firstLineP">Looks like you haven't planned any meals yet!</p>
           <p className="secondLineP">

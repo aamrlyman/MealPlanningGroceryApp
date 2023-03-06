@@ -46,7 +46,7 @@ const Everything = () => {
                   {item &&
                     item.meals.map((meal) => (
                       <p className="quantitiesP" key={(counter1 += 1.123)}>
-                        {meal.quantity} {meal.unit}
+                        {meal.quantity===0? "": meal.quantity} {meal.unit}
                       </p>
                     ))}
                   {/* </ol> */}
