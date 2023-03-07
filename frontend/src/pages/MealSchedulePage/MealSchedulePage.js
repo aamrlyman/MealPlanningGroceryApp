@@ -26,9 +26,15 @@ const MealSchedulePage = () => {
             Looks like you haven't planned any meals yet!
           </p>
           <p className="secondLineP">
-            Go to <Link to="/mealsList">All Meals</Link> and click <span style={{color:"#7c262b"}}><i className="fa-solid fa-circle-plus"></i></span> to add pre-made meals to
-            your meal plan, Or Click on the <Link style={{fontSize:"1.75rem"}} to="/createMeal">+</Link> to
-            create and add some of your own.
+            Go to <Link to="/mealsList">All Meals</Link> and click{" "}
+            <span style={{ color: "#7c262b" }}>
+              <i className="fa-solid fa-circle-plus"></i>
+            </span>{" "}
+            to add pre-made meals to your meal plan, Or Click on the{" "}
+            <Link style={{ fontSize: "1.75rem" }} to="/createMeal">
+              +
+            </Link>{" "}
+            to create and add some of your own.
           </p>
         </div>
       ) : (
@@ -65,15 +71,15 @@ const MealSchedulePage = () => {
               className="noBorderTrashCan"
               type="submit"
               onClick={() => clearSchedule(schedule)}
-              >
+            >
               <i className="fa-regular fa-trash-can"></i>
             </button>
-
-                {/* This still needs some work
-                 <div className="clearScheduleToolTip">
-                  <span className="copyButtonSpan">Clear Meal Schedule</span>
-                </div> */}
-    
+            { isHovered?
+            <div className="clearScheduleToolTip">
+              <span className="copyButtonSpan">Clear Meal Schedule</span>
+            </div>:
+            ""
+            }
           </div>
         </div>
       )}

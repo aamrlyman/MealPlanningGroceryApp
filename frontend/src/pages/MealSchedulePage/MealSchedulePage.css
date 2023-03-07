@@ -30,9 +30,14 @@ button.noBorderTrashCan {
 }
 
 .trashCanContainer {
-    margin-left: auto;
-    width: 6%;
-  }
+  margin-left: auto;
+  margin-right: auto;
+  width: 98%;
+  /* border: solid; */
+  text-align: right;
+  display: flex;
+  flex-direction: row-reverse;
+}
 
   p.firstLineP {
     font-size: 1.5rem;
@@ -56,16 +61,16 @@ p.secondLineP{
   padding: 1vw
 }
 
-/* .clearScheduleToolTip{
-  display:inline-block;
-  position:fixed;
+.clearScheduleToolTip{
+  /* display:inline-block;
+  position:fixed; */
   background-color:#5268612c;
-  margin-right: 1vw;
-  margin-bottom: 10vh;
+  margin-right: 3px;
+  /* margin-bottom: 10vh; */
   border: solid 2px #526861;
   border-radius: 5px;
-  padding: 2px;
-  /* width: 100px; */
+  padding: 9px;}
+  /* width: 100px;
 
   
 /* Evergreen: Hex #526861
