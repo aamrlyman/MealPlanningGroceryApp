@@ -41,7 +41,7 @@ button.noBorderTrashCan {
 }
 p.secondLineP{
   font-style: italic;
-  margin-top: 1vh;
+  margin-top: 2vh;
   font-weight: 600;
 }
 
@@ -55,6 +55,18 @@ p.secondLineP{
   border-radius: 10px;
   padding: 1vw
 }
+
+/* .clearScheduleToolTip{
+  display:inline-block;
+  position:fixed;
+  background-color:#5268612c;
+  margin-right: 1vw;
+  margin-bottom: 10vh;
+  border: solid 2px #526861;
+  border-radius: 5px;
+  padding: 2px;
+  /* width: 100px; */
+
   
 /* Evergreen: Hex #526861
 

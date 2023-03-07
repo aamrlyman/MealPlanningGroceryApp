@@ -12,6 +12,7 @@ const GroceryList = () => {
   const [sortType, setSortType] = useState("ingredientsOnly");
   const [addDashes, setAddDashes] = useState(0);
   const navigate = useNavigate();
+  const [isHovered, setIsHovered] = useState(false);
 
   function eliminateDuplicates(arr) {
     let namesOnly = arr.map((el) => el.name.toLowerCase());
@@ -74,11 +75,10 @@ const GroceryList = () => {
     }
   };
   useEffect(() => {
-    if(schedule) {
+    if (schedule) {
       fetchGroceries(schedule.id);
     }
   }, [schedule]);
-
 
   function copiedGroceries(array, sortType) {
     let copiedList = "";
@@ -126,9 +126,7 @@ const GroceryList = () => {
               array[index].meals[i].quantity === 0
                 ? ""
                 : array[index].meals[i].quantity
-            } ${
-              array[index].meals[i].unit
-            }${comma}`;
+            } ${array[index].meals[i].unit}${comma}`;
           }
           copiedList += `${quantities})`;
           quantities = "";
@@ -218,7 +216,7 @@ const GroceryList = () => {
           ) : (
             <Link to="+MealCount">
               <button type="button" onClick={() => setSortType("+MealCount")}>
-              # of Meals
+                # of Meals
               </button>
             </Link>
           )}
@@ -263,7 +261,9 @@ const GroceryList = () => {
         </li>
         <li>
           <button
-            className="noBorder"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="copyButton"
             onClick={() => {
               let list = copiedGroceries(groceryList, sortType);
               navigator.clipboard.writeText(list);
@@ -271,8 +271,16 @@ const GroceryList = () => {
             }}
           >
             <i className="fa-regular fa-clone"></i>{" "}
-            <span className="copyButtonSpan">copy list</span>
           </button>
+          {isHovered ? (
+            <div className="toolTip">
+              <span className="copyButtonSpan">
+                Copy grocery list to clipboard.
+              </span>
+            </div>
+          ) : (
+            ""
+          )}
         </li>
       </ul>
       <Outlet context={[groceryList, sortType]} />

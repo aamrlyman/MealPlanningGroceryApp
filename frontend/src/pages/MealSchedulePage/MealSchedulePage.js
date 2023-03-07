@@ -8,6 +8,7 @@ import "./MealSchedulePage.css";
 
 const MealSchedulePage = () => {
   const [user, token] = useAuth();
+  const [isHovered, setIsHovered] = useState(false);
   const [
     schedule,
     scheduledMeals,
@@ -21,11 +22,13 @@ const MealSchedulePage = () => {
       <h1 className="Welcome">Welcome {user.username}!</h1>
       {!scheduledMeals || scheduledMeals.length < 1 ? (
         <div className="homePageFillerDiv">
-          <p className="firstLineP">Looks like you haven't planned any meals yet!</p>
+          <p className="firstLineP">
+            Looks like you haven't planned any meals yet!
+          </p>
           <p className="secondLineP">
-            Go to <Link to="/mealsList">All Meals</Link> to add some meals to
-            your meal plan, Or Click on the <Link to="/createMeal">+</Link> to
-            add some of your own.
+            Go to <Link to="/mealsList">All Meals</Link> and click <span style={{color:"#7c262b"}}><i className="fa-solid fa-circle-plus"></i></span> to add pre-made meals to
+            your meal plan, Or Click on the <Link style={{fontSize:"1.75rem"}} to="/createMeal">+</Link> to
+            create and add some of your own.
           </p>
         </div>
       ) : (
@@ -57,12 +60,20 @@ const MealSchedulePage = () => {
           </table>
           <div className="trashCanContainer">
             <button
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
               className="noBorderTrashCan"
               type="submit"
               onClick={() => clearSchedule(schedule)}
-            >
+              >
               <i className="fa-regular fa-trash-can"></i>
             </button>
+
+                {/* This still needs some work
+                 <div className="clearScheduleToolTip">
+                  <span className="copyButtonSpan">Clear Meal Schedule</span>
+                </div> */}
+    
           </div>
         </div>
       )}
