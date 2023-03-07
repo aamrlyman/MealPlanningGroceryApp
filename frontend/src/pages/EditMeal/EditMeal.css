@@ -67,12 +67,12 @@ input[type="number"] {
 }
 
 .editIngredientsContainer {
-  width: 50%;
+  width: 47.4%;
   text-align: left;
   margin-left: 1.5vw;
-  min-height: 28vh;
+  min-height: 34vh;
   margin-bottom: 1vh;
-  /* border-right: solid 3px #7c262b; */
+  border-right: solid 3px #7c262b;
 }
 
 .editNotesURLContainer {
@@ -86,7 +86,7 @@ input[type="number"] {
 }
 
 .editMealNotes {
-  border-left: solid 3px #7c262b;
+  /* border-left: solid 3px #7c262b; */
   padding-left: 25px;
 }
 
@@ -169,7 +169,7 @@ td.ingredientInputTd, td.unitTd {
   border: none;
 }
 
-.spacer {
+/* .spacer {
   width: 100%;
   height: 39px;
-}
+} */

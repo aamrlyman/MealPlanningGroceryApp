@@ -51,7 +51,6 @@ const UserMeal = () => {
             <Ingredients key={mealId + "ing"} meal={meal} />
           </div>
         )}       
-        <div className="spacer"></div>
         </div>
       ) : (
         <DisplayUserMeal
