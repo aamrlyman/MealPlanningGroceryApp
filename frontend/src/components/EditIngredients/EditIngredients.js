@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import useCustomForm from "../../hooks/useCustomForm";
+import { URL_HOST } from "../../urlHost";
 
 const EditIngredients = ({
   ingredient,
@@ -21,7 +22,7 @@ const EditIngredients = ({
   async function editIngredients() {
     try {
       let response = await axios.put(
-        `http://127.0.0.1:8000/api/ingredients/${ingredient.id}/`,
+        `${URL_HOST}/api/ingredients/${ingredient.id}/`,
         formData,
         {
           headers: {

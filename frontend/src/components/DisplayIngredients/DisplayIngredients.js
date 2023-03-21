@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import { URL_HOST } from "../../urlHost";
 
 const DisplayIngredients = ({
   ingredient,
@@ -14,7 +15,7 @@ const DisplayIngredients = ({
   const deleteIngredient = async (ingredient) => {
     try {
       let response = await axios.delete(
-        `http://127.0.0.1:8000/api/ingredients/${ingredient.id}/`,
+        `${URL_HOST}/api/ingredients/${ingredient.id}/`,
         {
           headers: {
             Authorization: "Bearer " + token,

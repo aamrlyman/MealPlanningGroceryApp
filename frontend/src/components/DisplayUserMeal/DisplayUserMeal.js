@@ -10,6 +10,7 @@ import RemoveMealFromScheduleButton from "../RemoveMealFromScheduleButton/Remove
 import { useNavigate } from "react-router-dom";
 import DisplayAllMealIngredients from "../../components/DisplayAllMealIngredients/DisplayAllMealIngredients";
 import "./DisplayUserMeal.css";
+import { URL_HOST } from "../../urlHost";
 
 const DisplayUserMeal = ({
   setIsEdit,
@@ -26,7 +27,7 @@ const DisplayUserMeal = ({
   const deleteMeal = async () => {
     try {
       let response = await axios.delete(
-        `http://127.0.0.1:8000/api/meals/${mealId}/`,
+        `${URL_HOST}/api/meals/${mealId}/`,
         {
           headers: {
             Authorization: "Bearer " + token,

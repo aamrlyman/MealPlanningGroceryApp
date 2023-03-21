@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
 import axios from "axios";
 import "./CreateMeal.css";
+import { URL_HOST } from "../../urlHost";
 
 let initialValues = {
   name: "",
@@ -26,7 +27,7 @@ const CreateMeal = () => {
   async function createMeal() {
     try {
       let response = await axios.post(
-        `http://127.0.0.1:8000/api/meals/user/`,
+        `${URL_HOST}/api/meals/user/`,
         formData,
         {
           headers: {

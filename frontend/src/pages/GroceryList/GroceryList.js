@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { useOutletContext, useNavigate } from "react-router-dom";
 import "./GroceryList.css";
+import { URL_HOST } from "../../urlHost";
 
 const GroceryList = () => {
   const [schedule, getUserSchedule] = useOutletContext();
@@ -61,7 +62,7 @@ const GroceryList = () => {
   const fetchGroceries = async (scheduleId) => {
     try {
       let response = await axios.get(
-        `http://127.0.0.1:8000/api/ingredients/grocery_list/${scheduleId}/`,
+        `${URL_HOST}/api/ingredients/grocery_list/${scheduleId}/`,
         {
           headers: {
             Authorization: "Bearer " + token,

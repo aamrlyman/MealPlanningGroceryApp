@@ -1,5 +1,6 @@
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
+import { URL_HOST } from "../../urlHost";
 
 const AddMealToScheduleButton = ({ scheduleId, meal, getScheduledMeals }) => {
   const [user, token] = useAuth();
@@ -7,7 +8,7 @@ const AddMealToScheduleButton = ({ scheduleId, meal, getScheduledMeals }) => {
   const addMealToSchedule = async (scheduleId, meal) => {
     try {
       let response = await axios.post(
-        `http://127.0.0.1:8000/api/schedules/${scheduleId}/`,
+        `${URL_HOST}/api/schedules/${scheduleId}/`,
         {
           meal_id: meal.id,
           schedule_id: scheduleId,

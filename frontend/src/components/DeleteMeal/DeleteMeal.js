@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { URL_HOST } from "../../urlHost";
 
 const DeleteUserMeal = ({ meal, fetchMeals }) => {
   const [user, token] = useAuth();
@@ -19,14 +20,14 @@ const DeleteUserMeal = ({ meal, fetchMeals }) => {
     }
     try {
       let response = await axios.delete(
-        `http://127.0.0.1:8000/api/meals/${meal.id}/`,
+        `${URL_HOST}/api/meals/${meal.id}/`,
         {
           headers: {
             Authorization: "Bearer " + token,
           },
         }
       );
-      if (window.location.href === "http://localhost:3000/userMealsList/") {
+      if (window.location.href === `http://localhost:3000/userMealsList/`) {
         fetchMeals();
       } else navigate("/userMealsList/");
       console.log(response);

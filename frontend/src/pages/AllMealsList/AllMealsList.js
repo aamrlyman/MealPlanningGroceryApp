@@ -3,6 +3,8 @@ import axios from "axios";
 import DisplayMealsList from "../../components/DisplayMealsList/DisplayMealsList";
 import { useOutletContext } from "react-router-dom";
 import "./AllMealsList.css"
+import { URL_HOST } from "../../urlHost";
+
 const AllMealsList = () => {
   const [schedule, scheduledMeals, getScheduledMeals, removeMealFromSchedule] = useOutletContext();
   const [meals, setMeals] = useState();
@@ -10,7 +12,7 @@ const AllMealsList = () => {
   useEffect(() => {
     const fetchMeals = async () => {
       try {
-        let response = await axios.get("http://127.0.0.1:8000/api/meals/");
+        let response = await axios.get(`${URL_HOST}/api/meals/`);
         setMeals(response.data);
         console.log(response.data);
       } catch (error) {

@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useOutletContext } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 

@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Outlet } from "react-router-dom";
+import { URL_HOST } from "../../urlHost";
 import axios from "axios";
 
 const CibusPlanning = (props) => {
@@ -10,7 +11,7 @@ const CibusPlanning = (props) => {
   const [user, token] = useAuth();
   const getUserSchedule = async () => {
     try {
-      let response = await axios.get("http://127.0.0.1:8000/api/schedules/", {
+      let response = await axios.get(`${URL_HOST}/api/schedules/`, {
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -33,7 +34,7 @@ const CibusPlanning = (props) => {
   const createUserSchedule = async () => {
     try {
       let response = await axios.post(
-        "http://127.0.0.1:8000/api/schedules/",
+        `${URL_HOST}/api/schedules/`,
         { user_id: user.id },
         {
           headers: {
@@ -49,7 +50,7 @@ const CibusPlanning = (props) => {
   const getScheduledMeals = async (scheduleId) => {
     try {
       let response = await axios.get(
-        `http://127.0.0.1:8000/api/schedules/${scheduleId}/`,
+        `${URL_HOST}/api/schedules/${scheduleId}/`,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -70,7 +71,7 @@ const CibusPlanning = (props) => {
   ) => {
     try {
       let response = await axios.delete(
-        `http://127.0.0.1:8000/api/schedules/scheduled_meal/${scheduledMealId}/`,
+        `${URL_HOST}/api/schedules/scheduled_meal/${scheduledMealId}/`,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -96,7 +97,7 @@ const CibusPlanning = (props) => {
     }
     try {
         let response = await axios.delete(
-          `http://127.0.0.1:8000/api/schedules/${schedule.id}/`,
+          `${URL_HOST}/api/schedules/${schedule.id}/`,
           {
             headers: {
               Authorization: "Bearer " + token,

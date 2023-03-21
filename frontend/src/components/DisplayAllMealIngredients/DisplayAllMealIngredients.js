@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import "./DisplayAllMealIngredients.css";
+import { URL_HOST } from "../../urlHost";
 
 const DisplayAllMealIngredients = (props) => {
   const [user, token] = useAuth();
@@ -13,7 +14,7 @@ const DisplayAllMealIngredients = (props) => {
     const fetchIngredients = async () => {
       try {
         let response = await axios.get(
-          `http://127.0.0.1:8000/api/ingredients/meal_id/${mealId}/`,
+          `${URL_HOST}/api/ingredients/meal_id/${mealId}/`,
           {
             headers: {
               Authorization: "Bearer " + token,

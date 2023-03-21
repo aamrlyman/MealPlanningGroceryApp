@@ -3,9 +3,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
 import axios from "axios";
-import UserMeal from "../UserMeal/UserMeal";
+import { URL_HOST } from "../../urlHost";
 import "./EditMeal.css";
-import Ingredients from "../../components/Ingredients/Ingredients";
+
 
 const EditMeal = ({ setIsEdit, meal, fetchMeal }) => {
   const [user, token] = useAuth();
@@ -19,7 +19,7 @@ const EditMeal = ({ setIsEdit, meal, fetchMeal }) => {
   async function editMeal() {
     try {
       let response = await axios.put(
-        `http://127.0.0.1:8000/api/meals/${mealId}/`,
+        `${URL_HOST}/api/meals/${mealId}/`,
         formData,
         {
           headers: {

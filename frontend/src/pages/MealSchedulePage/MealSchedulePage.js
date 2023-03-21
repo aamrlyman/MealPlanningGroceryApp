@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Fragment, useContext } from "react";
 import useAuth from "../../hooks/useAuth";
 import DisplayScheduledMeals from "../../components/DisplayScheduledMeals/DisplayScheduledMeals";
-import axios from "axios";
 import { useOutletContext, Link } from "react-router-dom";
 import "./MealSchedulePage.css";
 // import ScheduleIdContext from "../../context/scheduleIdContext";
@@ -26,9 +25,9 @@ const MealSchedulePage = () => {
             Looks like you haven't planned any meals yet!
           </p>
           <p className="secondLineP">
-            Go to <Link to="/mealsList">All Meals</Link> and click{" "}
+            Go to <Link to="/mealsList">All Meals</Link> and click the{" "}
             <span style={{ color: "#7c262b" }}>
-              <i className="fa-solid fa-circle-plus"></i>
+            <Link to="/mealsList"><i className="fa-solid fa-circle-plus"></i></Link>
             </span>{" "}
             to add pre-made meals to your meal plan, Or Click on the{" "}
             <Link style={{ fontSize: "1.75rem" }} to="/createMeal">

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
 import axios from "axios";
+import { URL_HOST } from "../../urlHost";
 
 let initialValues = {
   name: "",
@@ -28,7 +29,7 @@ const AddIngredient = ({
   async function postIngredient() {
     try {
       let response = await axios.post(
-        `http://127.0.0.1:8000/api/ingredients/meal_id/${mealId}/`,
+        `${URL_HOST}/api/ingredients/meal_id/${mealId}/`,
         formData,
         {
           headers: {

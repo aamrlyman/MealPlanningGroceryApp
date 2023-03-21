@@ -3,6 +3,7 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import RemoveMealFromScheduleButton from "../../components/RemoveMealFromScheduleButton/RemoveMealFromScheduleButton";
 import DisplayTimes from "../../components/DisplayTimes/DisplayTimes";
+import { URL_HOST } from "../../urlHost";
 
 const DisplayScheduledMeals = ({
   meal,
@@ -16,7 +17,7 @@ const DisplayScheduledMeals = ({
   const isCookedToggle = async (scheduledMealId) => {
     try {
       let response = await axios.put(
-        `http://127.0.0.1:8000/api/schedules/scheduled_meal/${scheduledMealId}/`,
+        `${URL_HOST}/api/schedules/scheduled_meal/${scheduledMealId}/`,
         meal,
         {
           headers: {

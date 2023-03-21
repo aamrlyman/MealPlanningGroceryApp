@@ -10,6 +10,7 @@ import DisplayAllMealIngredients from "../../components/DisplayAllMealIngredient
 import { useOutletContext } from "react-router-dom";
 import DisplayTimes from "../../components/DisplayTimes/DisplayTimes";
 import "./DisplayMeal.css";
+import { URL_HOST } from "../../urlHost";
 
 const DisplayMeal = () => {
   const [schedule, scheduledMeals, getScheduledMeals, removeMealFromSchedule] =
@@ -22,7 +23,7 @@ const DisplayMeal = () => {
     const fetchMeals = async () => {
       try {
         let response = await axios.get(
-          `http://127.0.0.1:8000/api/meals/${mealId}/`,
+          `${URL_HOST}/api/meals/${mealId}/`,
           {
             headers: {
               Authorization: "Bearer " + token,

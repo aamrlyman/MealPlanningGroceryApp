@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { Fragment } from "react";
 import EditIngredients from "../../components/EditIngredients/EditIngredients";
+import { URL_HOST } from "../../urlHost";
 
 const Ingredients = ({ meal }) => {
   const [ingredients, setIngredients] = useState();
@@ -23,7 +24,7 @@ const Ingredients = ({ meal }) => {
   async function fetchIngredients() {
     try {
       let response = await axios.get(
-        `http://127.0.0.1:8000/api/ingredients/meal_id/${mealId}/`,
+        `${URL_HOST}/api/ingredients/meal_id/${mealId}/`,
         {
           headers: {
             Authorization: "Bearer " + token,
