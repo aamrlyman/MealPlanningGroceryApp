@@ -28,9 +28,6 @@ const DeleteUserMeal = ({ meal, afterDelete }) => {
         }
       );
       afterDelete();
-      // if (window.location.href === `http://localhost:3000/userMealsList/`) {
-      //   fetchMeals();
-      // } else navigate("/userMealsList/");
       console.log(response);
     } catch (error) {
       console.log(error.message);
